@@ -1,0 +1,18 @@
+.overlay {
+    position: fixed;
+    top: 78px;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(2px);
+    z-index: 1200;
+}
+.paper {
+    width: 428px;
+    background-color: var(--primary-color);
+    padding: 46px 20px 46px;
+}

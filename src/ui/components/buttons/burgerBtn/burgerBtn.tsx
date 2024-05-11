@@ -1,14 +1,18 @@
-import React from 'react'
-import s from './burgerBtn.module.css'
+import React from 'react';
+import s from './burgerBtn.module.css';
 
-const BurgerBtn: React.FC = () => {
+interface IBurgerBtnProps {
+    onToggleModal: () => void;
+}
+
+const BurgerBtn: React.FC<IBurgerBtnProps> = ({ onToggleModal }) => {
     return (
-        <button type="button" className={s.hamburger}>
+        <button type="button" className={s.hamburger} onClick={onToggleModal}>
             <div className={s.line}></div>
             <div className={s.line}></div>
             <div className={s.line}></div>
         </button>
-    )
-}
+    );
+};
 
-export default BurgerBtn
+export default BurgerBtn;
