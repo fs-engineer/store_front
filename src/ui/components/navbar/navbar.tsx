@@ -3,13 +3,23 @@ import s from './navbar.module.css';
 import Logo from '@/ui/components/logo/logo';
 import BurgerBtn from '@/ui/components/buttons/burgerBtn/burgerBtn';
 import SearchBtn from '@/ui/components/buttons/searchBtn/searchBtn';
+import LoginBtn from '@/ui/components/buttons/logingBtn/loginBtn';
+import BasketBtn from '@/ui/components/buttons/basketBtn/basketBtn';
 
 function Navbar() {
     return (
-        <header className={s.footer}>
-            <BurgerBtn />
+        <header className={s.header}>
+            <div className={s.rightMarginWrap}>
+                <BurgerBtn />
+            </div>
             <SearchBtn />
-            <Logo />
+            <div className={s.logoWrap}>
+                <Logo />
+            </div>
+            <div className={s.rightMarginWrap}>
+                <LoginBtn />
+            </div>
+            <BasketBtn />
         </header>
     );
 }

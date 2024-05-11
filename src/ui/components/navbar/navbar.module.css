@@ -1,4 +1,4 @@
-.footer {
+.header {
     position: fixed;
     height: 78px;
     left: 0;
@@ -8,5 +8,14 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    background-color: var(--neutral-color)
+    background-color: var(--neutral-color);
+    padding: 0 24px 0 24px;
+}
+.logoWrap {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+}
+.rightMarginWrap {
+    margin-right: 8px;
 }

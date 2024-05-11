@@ -1,15 +1,15 @@
-import { FC } from 'react'
+import { FC } from 'react';
 
-import React from 'react'
-import LogoIcon from '@/ui/components/icons/logoIcon'
-import Link from 'next/link'
+import React from 'react';
+import LogoIcon from '@/ui/components/icons/logoIcon';
+import Link from 'next/link';
 
 const Logo: FC = () => {
     return (
-        <Link href="/public">
+        <Link href="/">
             <LogoIcon />
         </Link>
-    )
-}
+    );
+};
 
-export default Logo
+export default Logo;
