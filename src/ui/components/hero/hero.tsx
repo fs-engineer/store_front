@@ -7,8 +7,20 @@ const Hero = () => {
     return (
         <section className={s.section}>
             <div className={s.imgWrap}>
-                <Image src="/images/hero/mobile/hero_1.jpg" alt="червоні квіти" width={213} height={289} />
-                <Image src="/images/hero/mobile/hero_2.jpg" alt="чарівна жінка" width={215} height={289} />
+                <Image
+                    src="/images/hero/mobile/hero_1.jpg"
+                    alt="червоні квіти"
+                    width={213}
+                    height={289}
+                    priority={true}
+                />
+                <Image
+                    src="/images/hero/mobile/hero_2.jpg"
+                    alt="чарівна жінка"
+                    width={215}
+                    height={289}
+                    priority={true}
+                />
             </div>
             <p className={s.description}>
                 Незалежно від вашого типу шкіри чи ваших потреб, Nevitaly пропонує широкий вибір косметичних засобів, що
@@ -22,8 +34,15 @@ const Hero = () => {
                     width={190}
                     height={289}
                     className={clsx(s.imgMargin, s.imgMargin)}
+                    priority={true}
                 />
-                <Image src="/images/hero/mobile/hero_4.jpg" alt="руда жінка з кремом в руці" width={190} height={289} />
+                <Image
+                    src="/images/hero/mobile/hero_4.jpg"
+                    alt="руда жінка з кремом в руці"
+                    width={190}
+                    height={289}
+                    priority={true}
+                />
             </div>
         </section>
     );
