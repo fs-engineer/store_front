@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 const Logo: FC = () => {
     return (
-        <Link href="/">
+        <Link href="/public">
             <LogoIcon />
         </Link>
     )
