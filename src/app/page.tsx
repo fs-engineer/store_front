@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import styles from './page.module.css'
+import Navbar from '@/ui/components/navbar/navbar'
 
 export default function Home() {
-    return <main className={styles.main}>Nevitaly</main>
+    return <main className={styles.main}></main>
 }

@@ -1,10 +1,8 @@
 import React from 'react'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import '@/ui/common/styles/globals.css'
-import { nunito } from '@/ui/fonts'
-
-const inter = Inter({ subsets: ['latin'] })
+import { nunito } from '@/ui/common/fonts'
+import Navbar from '@/ui/components/navbar/navbar'
 
 export const metadata: Metadata = {
     title: '@kiss.viktory',
@@ -19,6 +17,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={`${nunito.className} antialiased`}>
+                <Navbar />
                 {children}
             </body>
         </html>
