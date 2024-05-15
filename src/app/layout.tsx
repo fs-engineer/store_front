@@ -1,5 +1,3 @@
-'use Client';
-
 import React from 'react';
 import type { Metadata } from 'next';
 import '@/ui/common/styles/globals.css';

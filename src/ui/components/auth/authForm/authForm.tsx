@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useFormState } from 'react-dom';
 import s from './authForm.module.css';
-import axios from 'axios';
+import { authenticate } from '@/app/lib/auth/actions';
 
 // enum FormType {
 //     LOGIN = 'login',
@@ -11,38 +12,16 @@ import axios from 'axios';
 // useState<S>(initialState: S | (() => S)): [S, Dispatch<SetStateAction<S>>];
 
 const AuthForm = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-
-        const token = await axios.post('localhost:5050/auth/login', {
-            email,
-            password,
-        });
-
-        alert(token);
-        console.log(token);
-    };
+    const [errorMessage, dispatch] = useFormState(authenticate, undefined);
 
     return (
         <>
             <h2 className={s.title}>Вхід до особистого кабінету</h2>
-            <form className={s.form} onSubmit={handleSubmit}>
+            <form className={s.form} action={dispatch}>
                 <label htmlFor="email" className={s.label}>
                     E-Mail <span className={s.labelStar}>*</span>
                 </label>
-                <input
-                    className={s.input}
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Введіть e-mail"
-                    value={email}
-                    onChange={({ target: { value } }): void => setEmail(value)}
-                    required
-                />
+                <input className={s.input} type="email" id="email" name="email" placeholder="Введіть e-mail" required />
                 <label htmlFor="password" className={s.label}>
                     Пароль <span className={s.labelStar}>*</span>
                 </label>
@@ -52,8 +31,6 @@ const AuthForm = () => {
                     id="password"
                     name="password"
                     placeholder="Введіть пароль"
-                    value={password}
-                    onChange={({ target: { value } }) => setPassword(value)}
                     required
                 />
                 <button type="submit" className={s.submitBtn}>
