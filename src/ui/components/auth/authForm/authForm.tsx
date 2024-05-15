@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import s from './authForm.module.css';
+import axios from 'axios';
 
 // enum FormType {
 //     LOGIN = 'login',
@@ -13,10 +14,22 @@ const AuthForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        const token = await axios.post('localhost:5050/auth/login', {
+            email,
+            password,
+        });
+
+        alert(token);
+        console.log(token);
+    };
+
     return (
         <>
             <h2 className={s.title}>Вхід до особистого кабінету</h2>
-            <form className={s.form}>
+            <form className={s.form} onSubmit={handleSubmit}>
                 <label htmlFor="email" className={s.label}>
                     E-Mail <span className={s.labelStar}>*</span>
                 </label>

@@ -1,13 +1,9 @@
 import React from 'react';
 import s from './burgerBtn.module.css';
 
-interface IBurgerBtnProps {
-    onToggleModal: () => void;
-}
-
-const BurgerBtn: React.FC<IBurgerBtnProps> = ({ onToggleModal }) => {
+const BurgerBtn = () => {
     return (
-        <button type="button" className={s.hamburger} onClick={onToggleModal}>
+        <button type="button" className={s.hamburger}>
             <div className={s.line}></div>
             <div className={s.line}></div>
             <div className={s.line}></div>

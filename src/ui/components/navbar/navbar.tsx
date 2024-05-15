@@ -20,14 +20,14 @@ function Navbar() {
         <>
             <header className={s.header}>
                 <div className={s.rightMarginWrap}>
-                    <BurgerBtn onToggleModal={toggleModal} />
+                    <BurgerBtn />
                 </div>
                 <SearchBtn />
                 <div className={s.logoWrap}>
                     <Logo />
                 </div>
                 <div className={s.rightMarginWrap}>
-                    <LoginBtn />
+                    <LoginBtn onToggleModal={toggleModal} />
                 </div>
                 <BasketBtn />
             </header>
