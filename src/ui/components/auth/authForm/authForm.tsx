@@ -1,15 +1,57 @@
-import React from 'react';
+import React, { useState } from 'react';
 import s from './authForm.module.css';
 
+// enum FormType {
+//     LOGIN = 'login',
+//     REGISTER = 'register',
+//     PASS_RESET = 'passwordReset',
+// }
+
+// useState<S>(initialState: S | (() => S)): [S, Dispatch<SetStateAction<S>>];
+
 const AuthForm = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
     return (
-        <form className={s.form}>
-            <label htmlFor="email">E-Mail</label>
-            <input type="email" id="email" name="email" />
-            <label htmlFor="password">Пароль</label>
-            <input type="password" id="password" name="password" />
-            <button type="submit">Увійти</button>
-        </form>
+        <>
+            <h2 className={s.title}>Вхід до особистого кабінету</h2>
+            <form className={s.form}>
+                <label htmlFor="email" className={s.label}>
+                    E-Mail <span className={s.labelStar}>*</span>
+                </label>
+                <input
+                    className={s.input}
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Введіть e-mail"
+                    value={email}
+                    onChange={({ target: { value } }): void => setEmail(value)}
+                    required
+                />
+                <label htmlFor="password" className={s.label}>
+                    Пароль <span className={s.labelStar}>*</span>
+                </label>
+                <input
+                    className={s.input}
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Введіть пароль"
+                    value={password}
+                    onChange={({ target: { value } }) => setPassword(value)}
+                    required
+                />
+                <button type="submit" className={s.submitBtn}>
+                    Увійти
+                </button>
+            </form>
+            <div className={s.bottomMenuWrap}>
+                <p>Забули пароль?</p>
+                <p>Реєстрація</p>
+            </div>
+        </>
     );
 };
 

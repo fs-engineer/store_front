@@ -7,7 +7,7 @@ const ClientWrapper = ({ children }: Readonly<{ children: ReactNode }>) => {
     return (
         <>
             <Navbar />
-            {children}
+            <main>{children}</main>
         </>
     );
 };
