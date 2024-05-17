@@ -1,16 +1,13 @@
 import React from 'react';
 import s from '../iconButtons.module.css';
 import LoginIcon from '@/ui/components/icons/loginIcon';
+import Link from 'next/link';
 
-interface ILoginBtnProps {
-    onToggleModal: () => void;
-}
-
-const LoginBtn: React.FC<ILoginBtnProps> = ({ onToggleModal }) => {
+const LoginBtn = () => {
     return (
-        <button type="button" className={s.button} onClick={onToggleModal}>
+        <Link className={s.button} href={'/login'}>
             <LoginIcon />
-        </button>
+        </Link>
     );
 };
 

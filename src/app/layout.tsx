@@ -1,10 +1,8 @@
-'use Client';
-
 import React from 'react';
 import type { Metadata } from 'next';
 import '@/ui/common/styles/globals.css';
 import { nunito } from '@/ui/common/fonts';
-import ClientWrapper from '@/ui/components/navbar/clientWrapper';
+import Navbar from '@/ui/components/navbar/navbar';
 
 export const metadata: Metadata = {
     title: '@kiss.viktory',
@@ -15,7 +13,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     return (
         <html lang="en">
             <body className={`${nunito.className} antialiased`}>
-                <ClientWrapper>{children}</ClientWrapper>
+                <Navbar />
+                <main style={{ padding: '78px' }}>{children}</main>
+                {/*<ClientWrapper>{children}</ClientWrapper>*/}
             </body>
         </html>
     );

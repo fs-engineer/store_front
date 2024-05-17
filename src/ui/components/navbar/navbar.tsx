@@ -1,21 +1,15 @@
-'use Client';
+'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import s from './navbar.module.css';
 import Logo from '@/ui/components/logo/logo';
 import BurgerBtn from '@/ui/components/buttons/burgerBtn/burgerBtn';
 import SearchBtn from '@/ui/components/buttons/searchBtn/searchBtn';
 import LoginBtn from '@/ui/components/buttons/logingBtn/loginBtn';
 import BasketBtn from '@/ui/components/buttons/basketBtn/basketBtn';
-import AuthModal from '@/ui/components/auth/authModal/authModal';
+import { logout } from '@/app/lib/auth/actions';
 
-function Navbar() {
-    const [modal, setModal] = useState(false);
-
-    const toggleModal = () => {
-        setModal((modal) => !modal);
-    };
-
+const Navbar = () => {
     return (
         <>
             <header className={s.header}>
@@ -27,14 +21,13 @@ function Navbar() {
                     <Logo />
                 </div>
                 <div className={s.rightMarginWrap}>
-                    <LoginBtn onToggleModal={toggleModal} />
+                    <LoginBtn />
                 </div>
+                <button onClick={() => logout()}>signOut</button>
                 <BasketBtn />
             </header>
-
-            {modal ? <AuthModal onClose={toggleModal} /> : null}
         </>
     );
-}
+};
 
 export default Navbar;

@@ -43,6 +43,7 @@
     border-radius: 5px;
     color: var(--primary-color);
     background-color: var(--neutral-color);
+    cursor: pointer;
 }
 .bottomMenuWrap {
     display: flex;
