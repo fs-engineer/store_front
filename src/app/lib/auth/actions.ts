@@ -1,7 +1,7 @@
 'use server';
 
 import { AuthError } from 'next-auth';
-import { auth, signIn, signOut } from '@/auth';
+import { signIn, signOut } from '@/auth';
 import axios from 'axios';
 import { JWT } from 'next-auth/jwt';
 
