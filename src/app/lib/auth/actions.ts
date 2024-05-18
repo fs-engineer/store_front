@@ -61,7 +61,7 @@ export const checkUser = async (email: string, password: string) => {
     }
 };
 
-export async function login(formData: FormData) {
+export async function login(_: string | undefined, formData: FormData) {
     try {
         await signIn('credentials', formData, { redirectTo: '/products' });
     } catch (error) {

@@ -1,15 +1,17 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import s from './navbar.module.css';
 import Logo from '@/ui/components/logo/logo';
 import BurgerBtn from '@/ui/components/buttons/burgerBtn/burgerBtn';
 import SearchBtn from '@/ui/components/buttons/searchBtn/searchBtn';
 import LoginBtn from '@/ui/components/buttons/logingBtn/loginBtn';
 import BasketBtn from '@/ui/components/buttons/basketBtn/basketBtn';
-import { logout } from '@/app/lib/auth/actions';
+import ProfileBtn from '@/ui/components/buttons/profileBtn/profileBtn';
 
 const Navbar = () => {
+    const [modal, setModal] = useState(false);
+
     return (
         <>
             <header className={s.header}>
@@ -21,10 +23,10 @@ const Navbar = () => {
                     <Logo />
                 </div>
                 <div className={s.rightMarginWrap}>
-                    <LoginBtn />
+                    <BasketBtn />
                 </div>
-                <button onClick={() => logout()}>signOut</button>
-                <BasketBtn />
+                <ProfileBtn />
+                <LoginBtn />
             </header>
         </>
     );

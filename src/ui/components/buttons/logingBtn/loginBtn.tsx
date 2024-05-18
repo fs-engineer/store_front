@@ -6,7 +6,7 @@ import Link from 'next/link';
 const LoginBtn = () => {
     return (
         <Link className={s.button} href={'/login'}>
-            <LoginIcon />
+            <LoginIcon width={24} height={24} />
         </Link>
     );
 };

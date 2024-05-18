@@ -5,7 +5,7 @@ import s from '../iconButtons.module.css';
 const BasketBtn = () => {
     return (
         <button type="button" className={s.button}>
-            <BasketIcon />
+            <BasketIcon width={22} height={27} />
         </button>
     );
 };

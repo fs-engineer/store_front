@@ -14,7 +14,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <html lang="en">
             <body className={`${nunito.className} antialiased`}>
                 <Navbar />
+
                 <main style={{ padding: '78px' }}>{children}</main>
+
                 {/*<ClientWrapper>{children}</ClientWrapper>*/}
             </body>
         </html>

@@ -2,8 +2,9 @@
 
 import React from 'react';
 import s from './authForm.module.css';
-
+import { useFormState, useFormStatus } from 'react-dom';
 import { login } from '@/app/lib/auth/actions';
+import { useSession } from 'next-auth/react';
 
 // enum FormType {
 //     LOGIN = 'login',
@@ -14,10 +15,13 @@ import { login } from '@/app/lib/auth/actions';
 // useState<S>(initialState: S | (() => S)): [S, Dispatch<SetStateAction<S>>];
 
 const AuthForm = () => {
+    const [errorMessage, dispatch] = useFormState(login, undefined);
+
     return (
         <>
             <h2 className={s.title}>Вхід до особистого кабінету</h2>
-            <form className={s.form} action={(formData) => login(formData)}>
+
+            <form className={s.form} action={dispatch}>
                 <label htmlFor="email" className={s.label}>
                     E-Mail <span className={s.labelStar}>*</span>
                 </label>
@@ -36,6 +40,13 @@ const AuthForm = () => {
                 <button type="submit" className={s.submitBtn}>
                     Увійти
                 </button>
+                <div>
+                    {errorMessage && (
+                        <>
+                            <p>{errorMessage}</p>
+                        </>
+                    )}
+                </div>
             </form>
             <div className={s.bottomMenuWrap}>
                 <p>Забули пароль?</p>
