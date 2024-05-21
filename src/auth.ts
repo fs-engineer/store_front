@@ -5,7 +5,12 @@ import { ZodError } from 'zod';
 import { authConfig } from '@/app/lib/auth/auth.config';
 import { checkUser, refreshToken } from '@/app/lib/auth/actions';
 
-export const { handlers, signIn, signOut, auth } = NextAuth({
+export const {
+    handlers: { GET, POST },
+    signIn,
+    signOut,
+    auth,
+} = NextAuth({
     ...authConfig,
     providers: [
         Credentials({

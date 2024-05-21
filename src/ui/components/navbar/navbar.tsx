@@ -8,9 +8,12 @@ import SearchBtn from '@/ui/components/buttons/searchBtn/searchBtn';
 import LoginBtn from '@/ui/components/buttons/logingBtn/loginBtn';
 import BasketBtn from '@/ui/components/buttons/basketBtn/basketBtn';
 import ProfileBtn from '@/ui/components/buttons/profileBtn/profileBtn';
+import { useSession } from 'next-auth/react';
 
 const Navbar = () => {
     const [modal, setModal] = useState(false);
+    const { data: session } = useSession();
+    console.log(session);
 
     return (
         <>
