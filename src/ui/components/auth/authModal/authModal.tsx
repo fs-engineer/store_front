@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import s from './authModal.module.css';
-import AuthForm from '@/ui/components/auth/authForm/authForm';
+import LoginForm from '@/ui/components/auth/authForm/loginForm';
 
 interface IProps {
     onClose: () => void;
@@ -27,7 +27,7 @@ const AuthModal: React.FC<IProps> = ({ onClose }) => {
     };
     return (
         <div className={s.overlay} onClick={handleClose}>
-            <div className={s.paper}>{<AuthForm />}</div>
+            <div className={s.paper}>{<LoginForm />}</div>
         </div>
     );
 };

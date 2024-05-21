@@ -4,6 +4,7 @@ import { AuthError } from 'next-auth';
 import { signIn, signOut } from '@/auth';
 import axios from 'axios';
 import { JWT } from 'next-auth/jwt';
+import { redirect } from 'next/navigation';
 
 // export const getAllUsers = async () => {
 //     const session = await auth();
@@ -63,7 +64,16 @@ export const checkUser = async (email: string, password: string) => {
 
 export async function login(_: string | undefined, formData: FormData) {
     try {
-        await signIn('credentials', formData, { redirectTo: '/products' });
+        const email = formData.get('email') as string;
+        const password = formData.get('password') as string;
+
+        await signIn('credentials', {
+            email,
+            password,
+            redirect: false,
+        });
+
+        redirect('/products'); // Manually redirect after successful login
     } catch (error) {
         if (error instanceof AuthError) {
             switch (error.type) {

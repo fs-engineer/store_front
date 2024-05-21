@@ -8,12 +8,11 @@ import SearchBtn from '@/ui/components/buttons/searchBtn/searchBtn';
 import LoginBtn from '@/ui/components/buttons/logingBtn/loginBtn';
 import BasketBtn from '@/ui/components/buttons/basketBtn/basketBtn';
 import ProfileBtn from '@/ui/components/buttons/profileBtn/profileBtn';
-import { useSession } from 'next-auth/react';
+import { useCurrentSession } from '@/useCurrentSession';
 
 const Navbar = () => {
     const [modal, setModal] = useState(false);
-    const { data: session } = useSession();
-    console.log(session);
+    const { session, status } = useCurrentSession();
 
     return (
         <>
@@ -28,7 +27,7 @@ const Navbar = () => {
                 <div className={s.rightMarginWrap}>
                     <BasketBtn />
                 </div>
-                <ProfileBtn />
+                {session?.user?.id ? <ProfileBtn /> : null}
                 <LoginBtn />
             </header>
         </>

@@ -10,7 +10,7 @@ declare module 'next-auth' {
         };
         accessToken: string;
         refreshToken: string;
-        expiresIn: number;
+        expires: number;
     }
 }
 

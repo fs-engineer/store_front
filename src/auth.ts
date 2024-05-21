@@ -1,9 +1,10 @@
-import NextAuth from 'next-auth';
+import NextAuth, { Session } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import { signInSchema } from '@/app/lib/auth/zod';
 import { ZodError } from 'zod';
 import { authConfig } from '@/app/lib/auth/auth.config';
 import { checkUser, refreshToken } from '@/app/lib/auth/actions';
+import { JWT } from 'next-auth/jwt';
 
 export const {
     handlers: { GET, POST },
@@ -18,7 +19,7 @@ export const {
             // e.g. domain, username, password, 2FA token, etc.
             credentials: {
                 email: {
-                    label: 'email',
+                    label: 'Email',
                     type: 'text',
                 },
                 password: {
@@ -30,6 +31,7 @@ export const {
                 try {
                     // logic to check credentials
                     const { email, password } = await signInSchema.parseAsync(credentials);
+
                     // logic to verify if user exists
                     const user = await checkUser(email, password);
 
@@ -44,6 +46,7 @@ export const {
                 } catch (error) {
                     if (error instanceof ZodError) {
                         // Return `null` to indicate that the credentials are invalid
+                        console.log(error);
                         return null;
                     }
                 }
@@ -58,12 +61,17 @@ export const {
 
             return await refreshToken(token);
         },
-        async session({ token, session }) {
+        async session({ token, session }: { token: JWT; session: Session }) {
             session.user = token.user;
             session.accessToken = token.accessToken;
             session.refreshToken = token.refreshToken;
+            session.expires = token.expiresIn;
 
             return session;
         },
+    },
+    secret: process.env.NEXTAUTH_SECRET,
+    session: {
+        strategy: 'jwt',
     },
 });

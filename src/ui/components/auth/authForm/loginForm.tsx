@@ -2,9 +2,10 @@
 
 import React from 'react';
 import s from './authForm.module.css';
-import { useFormState, useFormStatus } from 'react-dom';
+import { useFormState } from 'react-dom';
 import { login } from '@/app/lib/auth/actions';
-import { useSession } from 'next-auth/react';
+import { redirect } from 'next/navigation';
+import { useCurrentSession } from '@/useCurrentSession';
 
 // enum FormType {
 //     LOGIN = 'login',
@@ -14,8 +15,12 @@ import { useSession } from 'next-auth/react';
 
 // useState<S>(initialState: S | (() => S)): [S, Dispatch<SetStateAction<S>>];
 
-const AuthForm = () => {
+const LoginForm = () => {
     const [errorMessage, dispatch] = useFormState(login, undefined);
+    const { session } = useCurrentSession();
+    if (session?.user?.id) {
+        redirect('/products');
+    }
 
     return (
         <>
@@ -56,4 +61,4 @@ const AuthForm = () => {
     );
 };
 
-export default AuthForm;
+export default LoginForm;
