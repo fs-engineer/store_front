@@ -17,7 +17,7 @@ const NavLinks = () => {
 
     return (
         <ul className={s.list}>
-            {menuItems.map((item, i) => (
+            {menuItems.map((item) => (
                 <li key={item.name} className={s.listItem}>
                     <Link
                         href={item.href}

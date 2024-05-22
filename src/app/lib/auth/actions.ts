@@ -5,31 +5,11 @@ import { signIn } from '@/auth';
 import axios from 'axios';
 import { JWT } from 'next-auth/jwt';
 
-// export const getAllUsers = async () => {
-//     const session = await Auth();
-//
-//     if (!session) {
-//         return;
-//     }
-//     const token = session?.accessToken;
-//
-//     try {
-//         const { data } = await axios.get('http://localhost:5050/api/users', {
-//             headers: {
-//                 Authorization: `Bearer ${token}`,
-//             },
-//         });
-//
-//         return data;
-//     } catch (e) {
-//         // console.log(e);
-//         return null;
-//     }
-// };
+const baseUrl = process.env.LOCAL_HOST_DEV_URL;
 
 export const refreshToken = async (token: JWT): Promise<JWT> => {
     const { data } = await axios.post(
-        'http://localhost:5050/api/auth/refresh',
+        `${baseUrl}/auth/refresh`,
         {},
         {
             headers: { Authorization: `Refresh ${token.refreshToken}` },
@@ -48,7 +28,7 @@ export const refreshToken = async (token: JWT): Promise<JWT> => {
 
 export const checkUser = async (email: string, password: string) => {
     try {
-        const { data } = await axios.post('http://localhost:5050/api/auth/login', { email, password });
+        const { data } = await axios.post(`${baseUrl}/auth/login`, { email, password });
 
         if (!data) {
             return null;

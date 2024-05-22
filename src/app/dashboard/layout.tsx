@@ -1,5 +1,5 @@
 import React from 'react';
-import Sidebar from '@/ui/components/Dashboard/Sidebar/Sidebar';
+import Sidebar from '@/ui/components/Sidebar/Sidebar';
 import s from './layout.module.css';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
