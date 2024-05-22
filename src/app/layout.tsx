@@ -2,9 +2,10 @@ import React from 'react';
 import type { Metadata } from 'next';
 import '@/ui/common/styles/globals.css';
 import { nunito } from '@/ui/common/fonts';
-import Navbar from '@/ui/components/Navbar/Navbar';
+import Header from '@/ui/components/Header/Header';
 import { SessionProvider } from 'next-auth/react';
 import s from './layout.module.css';
+import Footer from '@/ui/components/Footer/Footer';
 
 export const metadata: Metadata = {
     title: '@kiss.viktory',
@@ -16,8 +17,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <html lang="en">
             <body className={`${nunito.className} antialiased`}>
                 <SessionProvider>
-                    <Navbar />
+                    <Header />
                     <main className={s.main}>{children}</main>
+                    <Footer />
                 </SessionProvider>
             </body>
         </html>

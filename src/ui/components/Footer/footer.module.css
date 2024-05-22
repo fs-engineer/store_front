@@ -1,0 +1,10 @@
+.footer {
+    display: flex;
+    justify-content: center;
+    height: 286px;
+    align-items: center;
+    background-color: var(--neutral-color);
+}
+.title {
+    color: var(--primary-color);
+}

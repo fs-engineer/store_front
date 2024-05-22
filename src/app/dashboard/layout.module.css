@@ -1,0 +1,15 @@
+.layout {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: stretch;
+    padding: 36px 15px 0;
+}
+.wrapper {
+    display: flex;
+    align-items: flex-start;
+    height: 100%;
+}
+.title {
+    margin: 0 0 24px;
+}

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import s from './navbar.module.css';
+import s from './header.module.css';
 import Logo from '@/ui/components/Logo/Logo';
 import BurgerBtn from '@/ui/components/Buttons/BurgerBtn/BurgerBtn';
 import SearchBtn from '@/ui/components/Buttons/SearchBtn/SearchBtn';
@@ -14,7 +14,7 @@ import { Session } from 'next-auth';
 import Modal from '@/ui/components/Modal/Modal';
 import SignOutConfWindow from '@/ui/components/Auth/SignOutConfWindow/SignOutConfWindow';
 
-const Navbar = () => {
+const Header = () => {
     const [modal, setModal] = useState(false);
     const { session }: { session: Session | null } = useCurrentSession();
 
@@ -53,4 +53,4 @@ const Navbar = () => {
     );
 };
 
-export default Navbar;
+export default Header;
