@@ -1,10 +1,9 @@
 'use server';
 
 import { AuthError } from 'next-auth';
-import { signIn, signOut } from '@/auth';
+import { signIn } from '@/auth';
 import axios from 'axios';
 import { JWT } from 'next-auth/jwt';
-import { redirect } from 'next/navigation';
 
 // export const getAllUsers = async () => {
 //     const session = await auth();
@@ -70,33 +69,15 @@ export async function login(_: string | undefined, formData: FormData) {
         await signIn('credentials', {
             email,
             password,
-            redirect: false,
+            redirectTo: '/products',
         });
-
-        redirect('/products'); // Manually redirect after successful login
     } catch (error) {
         if (error instanceof AuthError) {
             switch (error.type) {
                 case 'CredentialsSignin':
-                    return 'Invalid credentials.';
+                    return 'Не вірний e-mail або пароль';
                 default:
-                    return 'Something went wrong.';
-            }
-        }
-        throw error;
-    }
-}
-
-export async function logout() {
-    try {
-        await signOut();
-    } catch (error) {
-        if (error instanceof AuthError) {
-            switch (error.type) {
-                case 'CredentialsSignin':
-                    return 'Invalid credentials.';
-                default:
-                    return 'Something went wrong.';
+                    return 'Щось пішло не так! :(';
             }
         }
         throw error;

@@ -4,6 +4,7 @@ import '@/ui/common/styles/globals.css';
 import { nunito } from '@/ui/common/fonts';
 import Navbar from '@/ui/components/navbar/navbar';
 import { SessionProvider } from 'next-auth/react';
+import s from './layout.module.css';
 
 export const metadata: Metadata = {
     title: '@kiss.viktory',
@@ -16,7 +17,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <body className={`${nunito.className} antialiased`}>
                 <SessionProvider>
                     <Navbar />
-                    <main style={{ padding: '78px' }}>{children}</main>
+                    <main className={s.main}>{children}</main>
                 </SessionProvider>
             </body>
         </html>

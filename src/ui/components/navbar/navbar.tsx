@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import s from './navbar.module.css';
 import Logo from '@/ui/components/logo/logo';
 import BurgerBtn from '@/ui/components/buttons/burgerBtn/burgerBtn';
@@ -8,11 +8,12 @@ import SearchBtn from '@/ui/components/buttons/searchBtn/searchBtn';
 import LoginBtn from '@/ui/components/buttons/logingBtn/loginBtn';
 import BasketBtn from '@/ui/components/buttons/basketBtn/basketBtn';
 import ProfileBtn from '@/ui/components/buttons/profileBtn/profileBtn';
-import { useCurrentSession } from '@/useCurrentSession';
+import { useCurrentSession } from '@/hooks/useCurrentSession';
+import LogoutBtn from '@/ui/components/buttons/logoutBtn/logoutBtn';
+import { Session } from 'next-auth';
 
 const Navbar = () => {
-    const [modal, setModal] = useState(false);
-    const { session, status } = useCurrentSession();
+    const { session }: { session: Session | null } = useCurrentSession();
 
     return (
         <>
@@ -27,8 +28,13 @@ const Navbar = () => {
                 <div className={s.rightMarginWrap}>
                     <BasketBtn />
                 </div>
-                {session?.user?.id ? <ProfileBtn /> : null}
-                <LoginBtn />
+                {session?.user?.id ? (
+                    <>
+                        <ProfileBtn />
+                        <LogoutBtn />
+                    </>
+                ) : null}
+                {!session?.user?.id ? <LoginBtn /> : null}
             </header>
         </>
     );
