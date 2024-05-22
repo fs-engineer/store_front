@@ -2,7 +2,7 @@ import React from 'react';
 import type { Metadata } from 'next';
 import '@/ui/common/styles/globals.css';
 import { nunito } from '@/ui/common/fonts';
-import Navbar from '@/ui/components/navbar/navbar';
+import Navbar from '@/ui/components/Navbar/Navbar';
 import { SessionProvider } from 'next-auth/react';
 import s from './layout.module.css';
 

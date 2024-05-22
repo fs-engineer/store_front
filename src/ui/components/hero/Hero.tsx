@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import clsx from 'clsx';
-import s from './hero.module.css';
+import s from './Hero.module.css';
 
 const Hero = () => {
     return (

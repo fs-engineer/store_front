@@ -1,5 +1,5 @@
 import React from 'react';
-import s from '@/ui/components/auth/authForm/authForm.module.css';
+import s from '@/ui/components/auth/authForms/authForm.module.css';
 import Link from 'next/link';
 
 const RegisterForm = () => {

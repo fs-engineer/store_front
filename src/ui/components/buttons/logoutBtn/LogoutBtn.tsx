@@ -1,5 +1,5 @@
 import React from 'react';
-import LoginIcon from '@/ui/components/icons/loginIcon';
+import LoginIcon from '@/ui/components/icons/LoginIcon';
 import s from '../iconButtons.module.css';
 import { signOut } from 'next-auth/react';
 

@@ -1,15 +1,15 @@
 'use client';
 
 import React from 'react';
-import s from './navbar.module.css';
-import Logo from '@/ui/components/logo/logo';
-import BurgerBtn from '@/ui/components/buttons/burgerBtn/burgerBtn';
-import SearchBtn from '@/ui/components/buttons/searchBtn/searchBtn';
-import LoginBtn from '@/ui/components/buttons/logingBtn/loginBtn';
-import BasketBtn from '@/ui/components/buttons/basketBtn/basketBtn';
-import ProfileBtn from '@/ui/components/buttons/profileBtn/profileBtn';
+import s from './Navbar.module.css';
+import Logo from '@/ui/components/logo/Logo';
+import BurgerBtn from '@/ui/components/buttons/burgerBtn/BurgerBtn';
+import SearchBtn from '@/ui/components/buttons/searchBtn/SearchBtn';
+import LoginBtn from '@/ui/components/buttons/logingBtn/LoginBtn';
+import BasketBtn from '@/ui/components/buttons/basketBtn/BasketBtn';
+import ProfileBtn from '@/ui/components/buttons/profileBtn/ProfileBtn';
 import { useCurrentSession } from '@/hooks/useCurrentSession';
-import LogoutBtn from '@/ui/components/buttons/logoutBtn/logoutBtn';
+import LogoutBtn from '@/ui/components/buttons/logoutBtn/LogoutBtn';
 import { Session } from 'next-auth';
 
 const Navbar = () => {

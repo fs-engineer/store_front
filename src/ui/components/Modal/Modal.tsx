@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
-import s from './authModal.module.css';
-import LoginForm from '@/ui/components/auth/authForm/loginForm';
+import s from './Modal.module.css';
 
 interface IProps {
     onClose: () => void;
+    children: React.ReactNode;
 }
 
-const AuthModal: React.FC<IProps> = ({ onClose }) => {
+const Modal: React.FC<IProps> = ({ onClose, children }) => {
     useEffect(() => {
         function handleEscKey(e: KeyboardEvent) {
             if (e.code === 'Escape') {
@@ -27,9 +27,9 @@ const AuthModal: React.FC<IProps> = ({ onClose }) => {
     };
     return (
         <div className={s.overlay} onClick={handleClose}>
-            <div className={s.paper}>{<LoginForm />}</div>
+            <div className={s.paper}>{children}</div>
         </div>
     );
 };
 
-export default AuthModal;
+export default Modal;

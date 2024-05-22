@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import React from 'react';
-import LogoIcon from '@/ui/components/icons/logoIcon';
+import LogoIcon from '@/ui/components/icons/LogoIcon';
 import Link from 'next/link';
 
 const Logo: FC = () => {

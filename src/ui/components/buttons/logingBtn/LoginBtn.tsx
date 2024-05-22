@@ -1,6 +1,6 @@
 import React from 'react';
 import s from '../iconButtons.module.css';
-import LoginIcon from '@/ui/components/icons/loginIcon';
+import LoginIcon from '@/ui/components/icons/LoginIcon';
 import Link from 'next/link';
 
 const LoginBtn = () => {
