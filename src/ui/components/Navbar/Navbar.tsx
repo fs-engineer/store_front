@@ -1,19 +1,26 @@
 'use client';
 
-import React from 'react';
-import s from './Navbar.module.css';
-import Logo from '@/ui/components/logo/Logo';
-import BurgerBtn from '@/ui/components/buttons/burgerBtn/BurgerBtn';
-import SearchBtn from '@/ui/components/buttons/searchBtn/SearchBtn';
-import LoginBtn from '@/ui/components/buttons/logingBtn/LoginBtn';
-import BasketBtn from '@/ui/components/buttons/basketBtn/BasketBtn';
-import ProfileBtn from '@/ui/components/buttons/profileBtn/ProfileBtn';
+import React, { useState } from 'react';
+import s from './navbar.module.css';
+import Logo from '@/ui/components/Logo/Logo';
+import BurgerBtn from '@/ui/components/Buttons/BurgerBtn/BurgerBtn';
+import SearchBtn from '@/ui/components/Buttons/SearchBtn/SearchBtn';
+import LoginBtn from '@/ui/components/Buttons/LoginBtn/LoginBtn';
+import BasketBtn from '@/ui/components/Buttons/BasketBtn/BasketBtn';
+import ProfileBtn from '@/ui/components/Buttons/ProfileBtn/ProfileBtn';
 import { useCurrentSession } from '@/hooks/useCurrentSession';
-import LogoutBtn from '@/ui/components/buttons/logoutBtn/LogoutBtn';
+import LogoutBtn from '@/ui/components/Buttons/LogoutBtn/LogoutBtn';
 import { Session } from 'next-auth';
+import Modal from '@/ui/components/Modal/Modal';
+import SignOutConfWindow from '@/ui/components/Auth/SignOutConfWindow/SignOutConfWindow';
 
 const Navbar = () => {
+    const [modal, setModal] = useState(false);
     const { session }: { session: Session | null } = useCurrentSession();
+
+    const toggleModal = () => {
+        setModal((prevState) => !prevState);
+    };
 
     return (
         <>
@@ -31,11 +38,17 @@ const Navbar = () => {
                 {session?.user?.id ? (
                     <>
                         <ProfileBtn />
-                        <LogoutBtn />
+                        <LogoutBtn onOpenModal={toggleModal} />
                     </>
                 ) : null}
                 {!session?.user?.id ? <LoginBtn /> : null}
             </header>
+
+            {modal ? (
+                <Modal onClose={toggleModal}>
+                    <SignOutConfWindow onClose={toggleModal} />
+                </Modal>
+            ) : null}
         </>
     );
 };

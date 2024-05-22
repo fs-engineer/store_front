@@ -34,18 +34,6 @@
 .labelStar {
     color: var(--accent-red-color);
 }
-.submitBtn {
-    display: flex;
-    width: 100%;
-    height: 50px;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    color: var(--primary-color);
-    background-color: var(--neutral-color);
-    cursor: pointer;
-}
 .bottomMenuWrap {
     display: flex;
     justify-content: space-between;

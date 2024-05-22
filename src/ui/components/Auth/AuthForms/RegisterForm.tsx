@@ -1,6 +1,7 @@
 import React from 'react';
-import s from '@/ui/components/auth/authForms/authForm.module.css';
+import s from '@/ui/components/Auth/AuthForms/authForm.module.css';
 import Link from 'next/link';
+import SubmitBtn from '@/ui/components/Buttons/SubmitBtn/SubmitBtn';
 
 const RegisterForm = () => {
     return (
@@ -31,9 +32,7 @@ const RegisterForm = () => {
                     placeholder="Підтвердіть пароль"
                     required
                 />
-                <button type="submit" className={s.submitBtn}>
-                    Зареєструватися
-                </button>
+                <SubmitBtn text={'Зареєструватися'} type={'submit'} />
             </form>
             <div className={s.bottomMenuWrap}>
                 <p>Забули пароль?</p>

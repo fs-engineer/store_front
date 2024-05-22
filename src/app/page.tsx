@@ -1,5 +1,5 @@
-import Hero from '@/ui/components/hero/Hero';
-import Bestsellers from '@/ui/components/bestsellers/Bestsellers';
+import Hero from '@/ui/components/Hero/Hero';
+import Bestsellers from '@/ui/components/Bestsellers/Bestsellers';
 
 export default function Home() {
     return (

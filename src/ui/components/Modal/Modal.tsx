@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import s from './Modal.module.css';
+import s from './modal.module.css';
 
 interface IProps {
     onClose: () => void;
-    children: React.ReactNode;
+    children: React.ReactElement;
 }
 
 const Modal: React.FC<IProps> = ({ onClose, children }) => {
@@ -27,7 +27,7 @@ const Modal: React.FC<IProps> = ({ onClose, children }) => {
     };
     return (
         <div className={s.overlay} onClick={handleClose}>
-            <div className={s.paper}>{children}</div>
+            <div className={s.paper}>{React.cloneElement(children, { onClose })}</div>
         </div>
     );
 };

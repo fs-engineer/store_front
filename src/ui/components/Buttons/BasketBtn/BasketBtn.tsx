@@ -1,5 +1,5 @@
 import React from 'react';
-import BasketIcon from '@/ui/components/icons/BasketIcon';
+import BasketIcon from '@/ui/components/Icons/BasketIcon';
 import s from '../iconButtons.module.css';
 
 const BasketBtn = () => {

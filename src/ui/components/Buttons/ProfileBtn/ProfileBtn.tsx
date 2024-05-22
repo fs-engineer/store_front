@@ -1,5 +1,5 @@
 import React from 'react';
-import ProfileIcon from '@/ui/components/icons/ProfileIcon';
+import ProfileIcon from '@/ui/components/Icons/ProfileIcon';
 import s from '../iconButtons.module.css';
 
 const ProfileBtn = () => {

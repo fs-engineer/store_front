@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchIcon from '@/ui/components/icons/SearchIcon';
+import SearchIcon from '@/ui/components/Icons/SearchIcon';
 import s from '../iconButtons.module.css';
 
 const SearchBtn: React.FC = () => {

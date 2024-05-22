@@ -6,7 +6,7 @@ import axios from 'axios';
 import { JWT } from 'next-auth/jwt';
 
 // export const getAllUsers = async () => {
-//     const session = await auth();
+//     const session = await Auth();
 //
 //     if (!session) {
 //         return;
