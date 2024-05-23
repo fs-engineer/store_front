@@ -11,3 +11,18 @@ export interface ISearchParams {
         page: number;
     };
 }
+
+export interface IUser {
+    id: number;
+    email: string;
+    name: string | null;
+    lastName: string | null;
+    number: string | null;
+    roles: IRole[];
+}
+
+export interface IRole {
+    id: number;
+    name: 'ADMIN' | 'USER' | 'GUEST';
+    description: string;
+}

@@ -9,7 +9,7 @@ import { JWT } from 'next-auth/jwt';
 export const {
     handlers: { GET, POST },
     signIn,
-    signOut,
+    // signOut,
     auth,
 } = NextAuth({
     ...authConfig,
