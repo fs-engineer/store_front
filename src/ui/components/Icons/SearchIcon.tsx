@@ -1,5 +1,5 @@
 import React from 'react';
-import { IIcon } from '@/ui/components/interfaces';
+import { IIcon } from '@/interfaces';
 
 const SearchIcon: React.FC<IIcon> = ({ width = 24, height = 24, fill = '#F8F8F8' }) => {
     return (

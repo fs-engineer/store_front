@@ -4,3 +4,10 @@ export interface IIcon {
     fill?: string;
     stroke?: string;
 }
+
+export interface ISearchParams {
+    searchParams: {
+        query: string;
+        page: number;
+    };
+}

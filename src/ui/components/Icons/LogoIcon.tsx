@@ -1,7 +1,7 @@
-import { FC } from 'react'
+import { FC } from 'react';
 
-import React from 'react'
-import { IIcon } from '@/ui/components/interfaces'
+import React from 'react';
+import { IIcon } from '@/interfaces';
 
 const LogoIcon: FC<IIcon> = ({ width = 39, height = 44, fill = '#F8F8F8' }) => {
     return (
@@ -67,7 +67,7 @@ const LogoIcon: FC<IIcon> = ({ width = 39, height = 44, fill = '#F8F8F8' }) => {
                 <path d="M1.5 2.057v37" stroke="#F8F8F8" strokeWidth="2.362" strokeLinecap="round" />
             </svg>
         </div>
-    )
-}
+    );
+};
 
-export default LogoIcon
+export default LogoIcon;
