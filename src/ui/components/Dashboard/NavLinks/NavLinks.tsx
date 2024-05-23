@@ -7,9 +7,10 @@ import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
 
 const menuItems = [
-    { name: 'Products', href: '/dashboard/products' },
-    { name: 'Users', href: '/dashboard/users' },
-    { name: 'Roles', href: '/dashboard/roles' },
+    { name: 'Продукти', href: '/dashboard/products' },
+    { name: 'Користувачі', href: '/dashboard/users' },
+    { name: 'Ролі', href: '/dashboard/roles' },
+    { name: 'Бренди', href: '/dashboard/brands' },
 ];
 
 const NavLinks = () => {

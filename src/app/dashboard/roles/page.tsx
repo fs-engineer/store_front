@@ -1,10 +1,11 @@
 import React from 'react';
+import { Container, Title } from '@/ui/components';
 
 const Page = () => {
     return (
-        <div>
-            <h1>Dashboard roles page</h1>
-        </div>
+        <Container>
+            <Title text={'Користувачі'} />
+        </Container>
     );
 };
 

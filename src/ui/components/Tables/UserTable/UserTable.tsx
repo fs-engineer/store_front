@@ -1,18 +1,18 @@
 import React from 'react';
 import { getAllUsers } from '@/app/lib/users/data';
 import { ISearchParams, IUser } from '@/interfaces';
-import Table from '@/ui/components/Table/Table';
-import TableHead from '@/ui/components/Table/TableHead';
-import TableRow from '@/ui/components/Table/TableRow';
-import TableHeadCell from '@/ui/components/Table/TableHeadCell';
-import TableBody from '@/ui/components/Table/TableBody';
-import TableCell from '@/ui/components/Table/TableCell';
+import Table from '@/ui/components/Tables/Table/Table';
+import TableHead from '@/ui/components/Tables/Table/TableHead';
+import TableRow from '@/ui/components/Tables/Table/TableRow';
+import TableHeadCell from '@/ui/components/Tables/Table/TableHeadCell';
+import TableBody from '@/ui/components/Tables/Table/TableBody';
+import TableCell from '@/ui/components/Tables/Table/TableCell';
 import { getDataFields } from '@/common/helpers/getDataFields';
 import { getRolesName } from '@/common/helpers/getRolesName';
 
 const userFields: string[] = ['id', 'email', 'name', 'lastName', 'number', 'roles'];
 
-const UserList = async ({ searchParams }: ISearchParams) => {
+const UserTable = async ({ searchParams }: ISearchParams) => {
     const data = await getAllUsers({ searchParams });
 
     if (!data) {
@@ -55,4 +55,4 @@ const UserList = async ({ searchParams }: ISearchParams) => {
     );
 };
 
-export default UserList;
+export default UserTable;
