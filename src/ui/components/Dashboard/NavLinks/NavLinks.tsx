@@ -5,16 +5,28 @@ import s from './navLinks.module.css';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
-
-const menuItems = [
-    { name: 'Продукти', href: '/dashboard/products' },
-    { name: 'Користувачі', href: '/dashboard/users' },
-    { name: 'Ролі', href: '/dashboard/roles' },
-    { name: 'Бренди', href: '/dashboard/brands' },
-];
+import getMenuIcon from '@/ui/components/Dashboard/NavLinks/helpers/getMenuIcon/getMenuIcon';
 
 const NavLinks = () => {
     const pathName = usePathname();
+    const menuItems = [
+        {
+            name: 'Продукти',
+            href: '/dashboard/products',
+        },
+        {
+            name: 'Користувачі',
+            href: '/dashboard/users',
+        },
+        {
+            name: 'Ролі',
+            href: '/dashboard/roles',
+        },
+        {
+            name: 'Бренди',
+            href: '/dashboard/brands',
+        },
+    ];
 
     return (
         <ul className={s.list}>
@@ -24,6 +36,7 @@ const NavLinks = () => {
                         href={item.href}
                         className={pathName === item.href ? clsx(s.listLink, s.listLinkActive) : clsx(s.listLink)}
                     >
+                        {getMenuIcon(pathName === item.href, item.name)}
                         {item.name}
                     </Link>
                 </li>

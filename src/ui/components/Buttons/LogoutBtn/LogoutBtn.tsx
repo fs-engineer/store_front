@@ -1,6 +1,6 @@
 import React from 'react';
-import LoginIcon from '@/ui/components/Icons/LoginIcon';
-import s from '../iconButtons.module.css';
+import s from '../buttons.module.css';
+import { PiSignIn } from 'react-icons/pi';
 
 type Props = {
     onOpenModal: () => void;
@@ -8,8 +8,8 @@ type Props = {
 
 const LogoutBtn: React.FC<Props> = ({ onOpenModal }) => {
     return (
-        <button className={s.button} onClick={onOpenModal}>
-            <LoginIcon width={24} height={24} />
+        <button className={s.iconBtn} onClick={onOpenModal}>
+            <PiSignIn className={s.icon} />
         </button>
     );
 };

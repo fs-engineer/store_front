@@ -15,3 +15,27 @@
     background-color: var(--primary-color);
     border: 1px solid var(--neutral-color);
 }
+.iconBtn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+.icon {
+    color: var(--primary-color);
+    width: 28px;
+    height: 28px;
+}
+.sideMenuIcon {
+    margin-right: 10px;
+    fill: var(--neutral-color);
+}
+.sideMenuIconActive {
+    fill: var(--primary-color);
+}

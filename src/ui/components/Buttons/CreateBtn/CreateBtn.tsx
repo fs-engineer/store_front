@@ -1,10 +1,12 @@
 import React from 'react';
-import { CreateIcon } from '@/ui/components';
+import { IoCreateOutline } from 'react-icons/io5';
+import s from '../buttons.module.css';
 
 const CreateBtn = () => {
     return (
-        <button>
-            <CreateIcon />
+        <button className={s.iconBtn}>
+            <IoCreateOutline className={s.icon} />
+            Створити
         </button>
     );
 };

@@ -1,12 +1,12 @@
 import React from 'react';
-import s from '../iconButtons.module.css';
-import LoginIcon from '@/ui/components/Icons/LoginIcon';
+import s from '../buttons.module.css';
 import Link from 'next/link';
+import { PiSignIn } from 'react-icons/pi';
 
 const LoginBtn = () => {
     return (
-        <Link className={s.button} href={'/login'}>
-            <LoginIcon width={24} height={24} />
+        <Link className={s.iconBtn} href={'/login'}>
+            <PiSignIn className={s.icon} />
         </Link>
     );
 };

@@ -1,11 +1,11 @@
 import React from 'react';
-import SearchIcon from '@/ui/components/Icons/SearchIcon';
-import s from '../iconButtons.module.css';
+import s from '../buttons.module.css';
+import { SiIconfinder } from 'react-icons/si';
 
 const SearchBtn: React.FC = () => {
     return (
-        <button type="button" className={s.button}>
-            <SearchIcon width={24} height={24} />
+        <button type="button" className={s.iconBtn}>
+            <SiIconfinder className={s.icon} />
         </button>
     );
 };

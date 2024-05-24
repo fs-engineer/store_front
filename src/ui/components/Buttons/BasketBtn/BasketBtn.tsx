@@ -1,11 +1,11 @@
 import React from 'react';
-import BasketIcon from '@/ui/components/Icons/BasketIcon';
-import s from '../iconButtons.module.css';
+import s from '../buttons.module.css';
+import { FaOpencart } from 'react-icons/fa6';
 
 const BasketBtn = () => {
     return (
-        <button type="button" className={s.button}>
-            <BasketIcon width={22} height={27} />
+        <button type="button" className={s.iconBtn}>
+            <FaOpencart className={s.icon} />
         </button>
     );
 };

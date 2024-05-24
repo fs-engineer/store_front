@@ -1,11 +1,11 @@
 import React from 'react';
-import ProfileIcon from '@/ui/components/Icons/ProfileIcon';
-import s from '../iconButtons.module.css';
+import s from '../buttons.module.css';
+import { GiPlagueDoctorProfile } from 'react-icons/gi';
 
 const ProfileBtn = () => {
     return (
-        <button type="button" className={s.button}>
-            <ProfileIcon width={23} height={23} />
+        <button type="button" className={s.iconBtn}>
+            <GiPlagueDoctorProfile className={s.icon} />
         </button>
     );
 };
