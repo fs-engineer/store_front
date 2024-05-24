@@ -4,8 +4,7 @@ import { AuthError } from 'next-auth';
 import { signIn } from '@/auth';
 import axios from 'axios';
 import { JWT } from 'next-auth/jwt';
-
-const baseUrl = process.env.LOCAL_HOST_DEV_URL;
+import { baseUrl } from '@/constants';
 
 export const refreshToken = async (token: JWT): Promise<JWT> => {
     const { data } = await axios.post(

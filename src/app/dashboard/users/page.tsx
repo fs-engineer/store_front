@@ -1,12 +1,12 @@
 import React from 'react';
 import { ISearchParams } from '@/interfaces';
-import { Container, Title, UserList } from '@/ui/components';
+import { Container, Title, UsersTable } from '@/ui/components';
 
 const Page = async ({ searchParams }: ISearchParams) => {
     return (
         <Container>
             <Title text={'Користувачі'} />
-            <UserList searchParams={searchParams} />
+            <UsersTable searchParams={searchParams} />
         </Container>
     );
 };

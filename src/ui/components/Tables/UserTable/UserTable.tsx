@@ -10,20 +10,19 @@ import TableCell from '@/ui/components/Tables/Table/TableCell';
 import { getDataFields } from '@/common/helpers/getDataFields';
 import { getRolesName } from '@/common/helpers/getRolesName';
 
-const userFields: string[] = ['id', 'email', 'name', 'lastName', 'number', 'roles'];
-
 const UserTable = async ({ searchParams }: ISearchParams) => {
+    const userFields: string[] = ['id', 'email', 'name', 'lastName', 'number', 'roles'];
     const data = await getAllUsers({ searchParams });
 
     if (!data) {
-        console.error('Щось пішло не так, юзери не знайдени');
+        throw new Error('Щось пішло не так, юзери не знайдени');
     }
 
     const { users, count, totalPages } = data;
     if (!users) {
-        console.error('Щось пішло не так, юзери не знайдени');
+        throw new Error('Щось пішло не так, юзери не знайдени');
     }
-    const serializedUsers = getDataFields(users, userFields) as Partial<IUser>[];
+    const filteredUsers = getDataFields(users, userFields) as Partial<IUser>[];
 
     return (
         <Table>
@@ -38,8 +37,8 @@ const UserTable = async ({ searchParams }: ISearchParams) => {
                 </TableRow>
             </TableHead>
             <TableBody>
-                {serializedUsers.length
-                    ? serializedUsers.map((user, idx: number) => (
+                {filteredUsers.length
+                    ? filteredUsers.map((user, idx: number) => (
                           <TableRow key={user.id ?? idx}>
                               <TableCell>{user.id}</TableCell>
                               <TableCell>{user.email}</TableCell>
