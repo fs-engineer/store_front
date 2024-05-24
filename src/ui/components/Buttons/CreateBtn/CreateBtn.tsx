@@ -1,13 +1,18 @@
 import React from 'react';
 import { IoCreateOutline } from 'react-icons/io5';
 import s from '../buttons.module.css';
+import Link from 'next/link';
+import clsx from 'clsx';
 
-const CreateBtn = () => {
+type Props = {
+    path: string;
+};
+const CreateBtn: React.FC<Props> = ({ path }) => {
     return (
-        <button className={s.iconBtn}>
-            <IoCreateOutline className={s.icon} />
+        <Link href={path} className={s.button}>
+            <IoCreateOutline className={clsx(s.icon, s.iconText)} />
             Створити
-        </button>
+        </Link>
     );
 };
 

@@ -6,6 +6,7 @@
     justify-content: center;
     align-items: center;
     border-radius: 5px;
+    text-decoration: none;
     color: var(--primary-color);
     background-color: var(--neutral-color);
     cursor: pointer;
@@ -32,10 +33,14 @@
     width: 28px;
     height: 28px;
 }
+.iconText {
+    margin-right: 10px;
+}
 .sideMenuIcon {
     margin-right: 10px;
     fill: var(--neutral-color);
 }
 .sideMenuIconActive {
+    margin-right: 10px;
     fill: var(--primary-color);
 }
