@@ -22,6 +22,7 @@ export const useCurrentSession = () => {
 
             setStatus('unauthenticated');
         } catch (error) {
+            console.error(error, 'useCurrentSession error');
             setStatus('unauthenticated');
             setSession(null);
         }

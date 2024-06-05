@@ -1,41 +1,26 @@
 import React, { useState, useEffect, ChangeEvent } from 'react';
-import axios from 'axios';
+import s from './SelectInputWithSearch.module.css';
 
 interface DataItem {
-    _id: string;
+    id: number;
     name: string;
 }
 
-interface DropdownWithSearchProps<T> {
-    apiEndpoint: string;
+interface Props {
     placeholder: string;
-    transformData?: (data: any) => T;
+    data: DataItem[];
+    onSelect: (id: number) => void;
 }
 
-const SelectInputWithSearch = <T extends DataItem>({
-    apiEndpoint,
-    placeholder,
-    transformData,
-}: DropdownWithSearchProps<T>) => {
+const SelectInputWithSearch: React.FC<Props> = ({ data, placeholder, onSelect }) => {
     const [searchTerm, setSearchTerm] = useState<string>('');
-    const [options, setOptions] = useState<T[]>([]);
-    const [filteredOptions, setFilteredOptions] = useState<T[]>([]);
+    const [options, setOptions] = useState<DataItem[]>([]);
+    const [filteredOptions, setFilteredOptions] = useState<DataItem[]>([]);
 
     useEffect(() => {
-        const fetchOptions = async () => {
-            try {
-                const response = await axios.get<T[]>(apiEndpoint);
-                const data = transformData ? response.data.map(transformData) : response.data;
-
-                setOptions(data);
-                setFilteredOptions(data);
-            } catch (error) {
-                console.error('Error fetching options:', error);
-            }
-        };
-
-        fetchOptions();
-    }, [apiEndpoint, transformData]);
+        setOptions(data);
+        setFilteredOptions(data);
+    }, [data]);
 
     useEffect(() => {
         setFilteredOptions(options.filter((option) => option.name.toLowerCase().includes(searchTerm.toLowerCase())));
@@ -47,10 +32,23 @@ const SelectInputWithSearch = <T extends DataItem>({
 
     return (
         <div>
-            <input type="text" placeholder={placeholder} value={searchTerm} onChange={handleChange} />
-            <ul>
+            <input
+                className={s.input}
+                type="text"
+                placeholder={placeholder}
+                value={searchTerm}
+                onChange={handleChange}
+            />
+            <ul className={s.list}>
                 {filteredOptions.map((option) => (
-                    <li key={option._id}>{option.name}</li>
+                    <li
+                        className={s.listItem}
+                        key={option.id}
+                        id={option.id.toString().trim()}
+                        onClick={() => onSelect(option.id)}
+                    >
+                        {option.name}
+                    </li>
                 ))}
             </ul>
         </div>

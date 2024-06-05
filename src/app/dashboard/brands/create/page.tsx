@@ -1,7 +1,11 @@
 import React from 'react';
 import { Breadcrumbs, Container } from '@/ui/components';
+import BrandCreateFrom from '@/ui/components/Brands/BrandCreateForm/BrandCreateFrom';
+import { getAllCountries } from '@/app/lib/countries/data';
 
-const Page = () => {
+const Page = async () => {
+    const countries = await getAllCountries();
+    console.log(countries, 'countries');
     return (
         <Container>
             <Breadcrumbs
@@ -14,6 +18,7 @@ const Page = () => {
                     },
                 ]}
             />
+            <BrandCreateFrom countries={countries} />
         </Container>
     );
 };

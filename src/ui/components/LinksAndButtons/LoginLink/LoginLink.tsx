@@ -3,7 +3,7 @@ import s from '../buttons.module.css';
 import Link from 'next/link';
 import { PiSignIn } from 'react-icons/pi';
 
-const LoginBtn = () => {
+const LoginLink = () => {
     return (
         <Link className={s.iconBtn} href={'/login'}>
             <PiSignIn className={s.icon} />
@@ -11,4 +11,4 @@ const LoginBtn = () => {
     );
 };
 
-export default LoginBtn;
+export default LoginLink;

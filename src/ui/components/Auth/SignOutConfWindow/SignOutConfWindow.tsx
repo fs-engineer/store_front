@@ -1,7 +1,7 @@
 import React from 'react';
 import { signOut } from 'next-auth/react';
-import CancelBtn from '@/ui/components/Buttons/CancelBtn/CancelBtn';
-import SubmitBtn from '@/ui/components/Buttons/SubmitBtn/SubmitBtn';
+import CancelBtn from '@/ui/components/LinksAndButtons/CancelBtn/CancelBtn';
+import SubmitBtn from '@/ui/components/LinksAndButtons/SubmitBtn/SubmitBtn';
 import s from './signOutConfWindow.module.css';
 
 type Props = {

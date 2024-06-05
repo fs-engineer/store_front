@@ -7,7 +7,7 @@ import clsx from 'clsx';
 type Props = {
     path: string;
 };
-const CreateBtn: React.FC<Props> = ({ path }) => {
+const CreateLink: React.FC<Props> = ({ path }) => {
     return (
         <Link href={path} className={s.button}>
             <IoCreateOutline className={clsx(s.icon, s.iconText)} />
@@ -16,4 +16,4 @@ const CreateBtn: React.FC<Props> = ({ path }) => {
     );
 };
 
-export default CreateBtn;
+export default CreateLink;

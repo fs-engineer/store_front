@@ -3,13 +3,13 @@
 import React, { useState } from 'react';
 import s from './header.module.css';
 import Logo from '@/ui/components/Logo/Logo';
-import BurgerBtn from '@/ui/components/Buttons/BurgerBtn/BurgerBtn';
-import SearchBtn from '@/ui/components/Buttons/SearchBtn/SearchBtn';
-import LoginBtn from '@/ui/components/Buttons/LoginBtn/LoginBtn';
-import BasketBtn from '@/ui/components/Buttons/BasketBtn/BasketBtn';
-import ProfileBtn from '@/ui/components/Buttons/ProfileBtn/ProfileBtn';
+import BurgerBtn from '@/ui/components/LinksAndButtons/BurgerBtn/BurgerBtn';
+import SearchBtn from '@/ui/components/LinksAndButtons/SearchBtn/SearchBtn';
+import LoginLink from '@/ui/components/LinksAndButtons/LoginLink/LoginLink';
+import BasketBtn from '@/ui/components/LinksAndButtons/BasketBtn/BasketBtn';
+import ProfileBtn from '@/ui/components/LinksAndButtons/ProfileBtn/ProfileBtn';
 import { useCurrentSession } from '@/hooks/useCurrentSession';
-import LogoutBtn from '@/ui/components/Buttons/LogoutBtn/LogoutBtn';
+import LogoutBtn from '@/ui/components/LinksAndButtons/LogoutBtn/LogoutBtn';
 import { Session } from 'next-auth';
 import Modal from '@/ui/components/Modal/Modal';
 import SignOutConfWindow from '@/ui/components/Auth/SignOutConfWindow/SignOutConfWindow';
@@ -41,7 +41,7 @@ const Header = () => {
                         <LogoutBtn onOpenModal={toggleModal} />
                     </>
                 ) : null}
-                {!session?.user?.id ? <LoginBtn /> : null}
+                {!session?.user?.id ? <LoginLink /> : null}
             </header>
 
             {modal ? (

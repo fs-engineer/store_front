@@ -5,7 +5,7 @@ import s from './authForm.module.css';
 import { useFormState } from 'react-dom';
 import { login } from '@/app/lib/auth/actions';
 import Link from 'next/link';
-import SubmitBtn from '@/ui/components/Buttons/SubmitBtn/SubmitBtn';
+import SubmitBtn from '@/ui/components/LinksAndButtons/SubmitBtn/SubmitBtn';
 
 // useState<S>(initialState: S | (() => S)): [S, Dispatch<SetStateAction<S>>];
 
