@@ -5,7 +5,6 @@ import { createBearerToken } from '@/common/helpers/createBearerToken';
 import { baseUrl } from '@/constants';
 
 export const getAllCountries = async () => {
-    console.log(`${baseUrl}/countries/all`, 'countries PATH');
     try {
         const { data } = await axios.get(`${baseUrl}/countries/all`, {
             headers: {

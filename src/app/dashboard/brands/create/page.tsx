@@ -5,7 +5,7 @@ import { getAllCountries } from '@/app/lib/countries/data';
 
 const Page = async () => {
     const countries = await getAllCountries();
-    console.log(countries, 'countries');
+
     return (
         <Container>
             <Breadcrumbs

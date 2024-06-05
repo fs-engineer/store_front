@@ -10,7 +10,7 @@ export const getAllBrands = async ({ searchParams }: ISearchParams) => {
     const currentPage = Number(searchParams?.page) || 1;
 
     try {
-        const { data } = await axios.get(`${baseUrl}/brands`, {
+        const { data } = await axios.get(`${baseUrl}/brands/all`, {
             params: {
                 query: query,
                 page: currentPage,

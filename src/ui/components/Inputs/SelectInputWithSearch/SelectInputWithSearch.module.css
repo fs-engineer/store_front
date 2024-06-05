@@ -1,12 +1,14 @@
 .list {
+    position: absolute;
     display: flex;
     flex-direction: column;
     max-height: 200px;
-    width: 200px;
+    max-width: 250px;
     overflow-y: scroll;
     border: 1px solid var(--devider-color);
     border-radius: 5px;
     padding: 6px;
+    background-color: var(--white-color);
 }
 .listItem {
     padding: 5px;
@@ -20,8 +22,8 @@
     }
 }
 .input {
-    width: 200px;
+    width: 100%;
     border: 1px solid var(--devider-color);
     border-radius: 5px;
-    margin: 0 0 5px 0;
+    padding: 5px;
 }

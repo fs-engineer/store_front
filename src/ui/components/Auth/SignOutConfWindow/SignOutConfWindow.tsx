@@ -1,8 +1,7 @@
 import React from 'react';
 import { signOut } from 'next-auth/react';
-import CancelBtn from '@/ui/components/LinksAndButtons/CancelBtn/CancelBtn';
-import SubmitBtn from '@/ui/components/LinksAndButtons/SubmitBtn/SubmitBtn';
 import s from './signOutConfWindow.module.css';
+import { CancelBtn, SubmitBtn } from '@/ui/components';
 
 type Props = {
     onClose: () => void;

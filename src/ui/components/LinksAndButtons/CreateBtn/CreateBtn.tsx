@@ -1,20 +1,19 @@
 import React from 'react';
-import clsx from 'clsx';
 import s from '../buttons.module.css';
 import { ButtonTypes } from '@/interfaces';
 
 type Props = {
     type: ButtonTypes;
     text: string;
-    onClick?: () => void;
+    onClick: () => void;
 };
 
-const CancelBtn: React.FC<Props> = ({ type, onClick, text }) => {
+const CreateBtn: React.FC<Props> = ({ type = 'button', text = 'Створити', onClick }) => {
     return (
-        <button onClick={onClick} type={type} className={clsx(s.button, s.cancelBtn)}>
+        <button className={s.button} type={type} onClick={onClick}>
             {text}
         </button>
     );
 };
 
-export default CancelBtn;
+export default CreateBtn;

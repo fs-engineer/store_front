@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect, ChangeEvent } from 'react';
 import s from './SelectInputWithSearch.module.css';
 
@@ -16,6 +18,7 @@ const SelectInputWithSearch: React.FC<Props> = ({ data, placeholder, onSelect })
     const [searchTerm, setSearchTerm] = useState<string>('');
     const [options, setOptions] = useState<DataItem[]>([]);
     const [filteredOptions, setFilteredOptions] = useState<DataItem[]>([]);
+    const [isOpenOptionsList, setIsOpenOptionsList] = useState(false);
 
     useEffect(() => {
         setOptions(data);
@@ -27,7 +30,17 @@ const SelectInputWithSearch: React.FC<Props> = ({ data, placeholder, onSelect })
     }, [searchTerm, options]);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setSearchTerm(e.target.value);
+        setSearchTerm(e.target.value.trim());
+    };
+
+    const handleClick = (id: number, optionName: string) => {
+        onSelect(id);
+        setSearchTerm(optionName);
+        toggleOptionsList();
+    };
+
+    const toggleOptionsList = () => {
+        setIsOpenOptionsList((prevState) => !prevState);
     };
 
     return (
@@ -38,19 +51,22 @@ const SelectInputWithSearch: React.FC<Props> = ({ data, placeholder, onSelect })
                 placeholder={placeholder}
                 value={searchTerm}
                 onChange={handleChange}
+                onFocus={toggleOptionsList}
             />
-            <ul className={s.list}>
-                {filteredOptions.map((option) => (
-                    <li
-                        className={s.listItem}
-                        key={option.id}
-                        id={option.id.toString().trim()}
-                        onClick={() => onSelect(option.id)}
-                    >
-                        {option.name}
-                    </li>
-                ))}
-            </ul>
+            {isOpenOptionsList ? (
+                <ul className={s.list}>
+                    {filteredOptions.map((option) => (
+                        <li
+                            className={s.listItem}
+                            key={option.id}
+                            id={option.id.toString().trim()}
+                            onClick={() => handleClick(option.id, option.name)}
+                        >
+                            {option.name}
+                        </li>
+                    ))}
+                </ul>
+            ) : null}
         </div>
     );
 };

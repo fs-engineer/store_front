@@ -26,3 +26,5 @@ export interface IRole {
     name: 'ADMIN' | 'USER' | 'GUEST';
     description: string;
 }
+
+export type ButtonTypes = 'submit' | 'button' | 'reset';
