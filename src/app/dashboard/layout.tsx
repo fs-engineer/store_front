@@ -2,6 +2,7 @@ import React from 'react';
 import Sidebar from '@/ui/components/Sidebar/Sidebar';
 import s from './layout.module.css';
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Layout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
     return (

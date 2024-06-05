@@ -1,3 +1,5 @@
+'use server';
+
 import { ISearchParams } from '@/interfaces';
 import { unstable_noStore as noStore } from 'next/dist/server/web/spec-extension/unstable-no-store';
 import axios from 'axios';

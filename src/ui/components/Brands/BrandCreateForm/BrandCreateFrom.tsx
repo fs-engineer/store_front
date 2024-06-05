@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { Box, CreateBtn, Input, SelectInputWithSearch } from '@/ui/components';
 import s from './brandCreateForm.module.css';
 import { useRouter } from 'next/navigation';

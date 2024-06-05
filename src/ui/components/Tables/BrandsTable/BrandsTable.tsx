@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect, useState } from 'react';
 import Table from '@/ui/components/Tables/Table/Table';
 import TableHead from '@/ui/components/Tables/Table/TableHead';
 import TableRow from '@/ui/components/Tables/Table/TableRow';
@@ -6,22 +8,33 @@ import TableHeadCell from '@/ui/components/Tables/Table/TableHeadCell';
 import TableBody from '@/ui/components/Tables/Table/TableBody';
 import TableCell from '@/ui/components/Tables/Table/TableCell';
 import { getAllBrandsByParams } from '@/app/lib/brands/data';
-import { ISearchParams } from '@/interfaces';
+import { IBrand, ISearchParams } from '@/interfaces';
 import { getDataFields } from '@/common/helpers/getDataFields';
 
-const BrandsTable = async ({ searchParams }: ISearchParams) => {
+const BrandsTable = ({ searchParams }: ISearchParams) => {
     const brandsFields = ['id', 'name', 'country'];
-    const data = await getAllBrandsByParams({ searchParams });
-    if (!data) {
-        throw new Error('Щось пішло не так з цими брендами!');
-    }
+    const [brandsData, setBrandsData] = useState<IBrand[]>([]);
 
-    const { brands, count, totalPages } = data;
-    if (!brands) {
-        throw new Error('Щось пішло не так з цими брендами!');
-    }
+    useEffect(() => {
+        const fetchBrands = async () => {
+            const data = await getAllBrandsByParams({ searchParams });
 
-    const filteredBrands = getDataFields(brands, brandsFields);
+            if (!data) {
+                throw new Error('Щось пішло не так з цими брендами!');
+            }
+
+            const { brands, count, totalPages } = data;
+            if (!brands) {
+                throw new Error('Щось пішло не так з цими брендами!');
+            }
+
+            const filteredBrands = getDataFields(brands, brandsFields) as IBrand[];
+
+            setBrandsData(filteredBrands);
+        };
+
+        fetchBrands();
+    }, [searchParams]);
 
     return (
         <Table>
@@ -33,8 +46,8 @@ const BrandsTable = async ({ searchParams }: ISearchParams) => {
                 </TableRow>
             </TableHead>
             <TableBody>
-                {filteredBrands.length
-                    ? filteredBrands.map((brand) => (
+                {brandsData.length
+                    ? brandsData.map((brand) => (
                           <TableRow key={brand?.id}>
                               <TableCell>{brand?.id}</TableCell>
                               <TableCell>{brand?.name}</TableCell>

@@ -27,4 +27,14 @@ export interface IRole {
     description: string;
 }
 
+export interface ICountry {
+    name: string;
+}
+
+export interface IBrand {
+    id: number;
+    name: string;
+    country: ICountry;
+}
+
 export type ButtonTypes = 'submit' | 'button' | 'reset';
