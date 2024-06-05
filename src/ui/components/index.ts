@@ -1,4 +1,5 @@
 export { default as Container } from './Dashboard/Container/Container';
+export { default as Box } from './Box/Box';
 
 export { default as UsersTable } from '@/ui/components/Tables/UserTable/UserTable';
 export { default as BrandsTable } from './Tables/BrandsTable/BrandsTable';

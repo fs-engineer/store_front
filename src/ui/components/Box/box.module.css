@@ -1,0 +1,10 @@
+.box {
+    padding:  5px 0;
+    width: 150px;
+}
+
+@media (min-width: 600px) {
+    .box {
+        width: 250px
+    }
+}

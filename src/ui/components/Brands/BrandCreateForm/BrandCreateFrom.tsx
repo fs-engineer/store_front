@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { CreateBtn, Input, SelectInputWithSearch } from '@/ui/components';
+import { Box, CreateBtn, Input, SelectInputWithSearch } from '@/ui/components';
 import s from './brandCreateForm.module.css';
 import { createBrand } from '@/app/lib/brands/actions';
 
@@ -34,12 +34,18 @@ const BrandCreateFrom: React.FC<BrandsProps> = ({ countries }) => {
 
     return (
         <form className={s.form}>
-            {countries.length > 0 ? (
-                <SelectInputWithSearch data={countries} placeholder={'Виберіть країну'} onSelect={setCountryId} />
-            ) : null}
-            <Input type={'text'} placeholder={'Введіть назву бренду'} getInputValue={setBrandName} />
+            <Box>
+                {countries.length > 0 ? (
+                    <SelectInputWithSearch data={countries} placeholder={'Виберіть країну'} onSelect={setCountryId} />
+                ) : null}
+            </Box>
+            <Box>
+                <Input type={'text'} placeholder={'Введіть назву бренду'} getInputValue={setBrandName} />
+            </Box>
 
-            <CreateBtn type={'button'} text={'Створити'} onClick={handleFormSubmit} />
+            <Box>
+                <CreateBtn type={'button'} text={'Створити'} onClick={handleFormSubmit} />
+            </Box>
             <ToastContainer />
         </form>
     );

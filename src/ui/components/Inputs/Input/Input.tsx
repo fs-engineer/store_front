@@ -5,11 +5,11 @@ import s from './input.module.css';
 
 type Props = {
     type: string;
-    placeholder: string;
+    placeholder?: string;
     getInputValue: (value: string) => void;
 };
 
-const Input: React.FC<Props> = ({ type = 'text', placeholder, getInputValue }) => {
+const Input: React.FC<Props> = ({ type = 'text', placeholder = 'Введіть назву', getInputValue }) => {
     const [value, setValue] = useState<string>('');
 
     useEffect(() => {
