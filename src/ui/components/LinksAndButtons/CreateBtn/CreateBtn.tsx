@@ -6,11 +6,12 @@ type Props = {
     type: ButtonTypes;
     text: string;
     onClick: () => void;
+    disabled?: boolean;
 };
 
-const CreateBtn: React.FC<Props> = ({ type = 'button', text = 'Створити', onClick }) => {
+const CreateBtn: React.FC<Props> = ({ type = 'button', text = 'Створити', onClick, disabled }) => {
     return (
-        <button className={s.button} type={type} onClick={onClick}>
+        <button className={s.button} type={type} onClick={onClick} disabled={disabled}>
             {text}
         </button>
     );

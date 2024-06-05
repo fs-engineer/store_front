@@ -4,13 +4,13 @@ import axios from 'axios';
 import { baseUrl } from '@/constants';
 import { createBearerToken } from '@/common/helpers/createBearerToken';
 
-export const getAllBrands = async ({ searchParams }: ISearchParams) => {
+export const getAllBrandsByParams = async ({ searchParams }: ISearchParams) => {
     noStore();
     const query = searchParams?.query || '';
     const currentPage = Number(searchParams?.page) || 1;
 
     try {
-        const { data } = await axios.get(`${baseUrl}/brands/all`, {
+        const { data } = await axios.get(`${baseUrl}/brands`, {
             params: {
                 query: query,
                 page: currentPage,

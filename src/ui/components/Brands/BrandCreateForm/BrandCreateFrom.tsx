@@ -1,10 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Box, CreateBtn, Input, SelectInputWithSearch } from '@/ui/components';
 import s from './brandCreateForm.module.css';
+import { useRouter } from 'next/navigation';
 import { createBrand } from '@/app/lib/brands/actions';
 
 type BrandsProps = {
@@ -17,9 +18,11 @@ type BrandsProps = {
 const BrandCreateFrom: React.FC<BrandsProps> = ({ countries }) => {
     const [countryId, setCountryId] = useState<null | number>(null);
     const [brandName, setBrandName] = useState<null | string>(null);
+    const router = useRouter();
 
     const handleFormSubmit = async () => {
         if (!countryId || !brandName) {
+            toast.error('Не вірно введені данні');
             return;
         }
 
@@ -27,9 +30,11 @@ const BrandCreateFrom: React.FC<BrandsProps> = ({ countries }) => {
 
         if (brandResponse?.status === 400) {
             toast.error(brandResponse?.message);
+            return;
         } else if (brandResponse?.id && brandResponse?.name) {
             toast.info(`Бренд ${brandResponse.name} створено`);
         }
+        router.push('/dashboard/brands');
     };
 
     return (
@@ -46,7 +51,6 @@ const BrandCreateFrom: React.FC<BrandsProps> = ({ countries }) => {
             <Box>
                 <CreateBtn type={'button'} text={'Створити'} onClick={handleFormSubmit} />
             </Box>
-            <ToastContainer />
         </form>
     );
 };

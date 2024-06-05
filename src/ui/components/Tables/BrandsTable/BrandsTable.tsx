@@ -5,13 +5,13 @@ import TableRow from '@/ui/components/Tables/Table/TableRow';
 import TableHeadCell from '@/ui/components/Tables/Table/TableHeadCell';
 import TableBody from '@/ui/components/Tables/Table/TableBody';
 import TableCell from '@/ui/components/Tables/Table/TableCell';
-import { getAllBrands } from '@/app/lib/brands/data';
+import { getAllBrandsByParams } from '@/app/lib/brands/data';
 import { ISearchParams } from '@/interfaces';
 import { getDataFields } from '@/common/helpers/getDataFields';
 
 const BrandsTable = async ({ searchParams }: ISearchParams) => {
     const brandsFields = ['id', 'name', 'country'];
-    const data = await getAllBrands({ searchParams });
+    const data = await getAllBrandsByParams({ searchParams });
     if (!data) {
         throw new Error('Щось пішло не так з цими брендами!');
     }
