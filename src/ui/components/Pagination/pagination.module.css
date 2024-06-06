@@ -1,26 +1,56 @@
 .container {
     display: flex;
     justify-content: center;
+    align-items: center;
     padding: 10px 0;
 }
-.arrow {
+.link {
     display: flex;
     justify-content: center;
     align-items: center;
     border: 1px solid var(--neutral-color);
-    border-radius: 5px;
     width: 30px;
     height: 30px;
     padding: 5px;
-    margin: 0 10px;
+    text-decoration: none;
+    color: var(--neutral-color);
 
+    &:hover {
+        color: var(--primary-color);
+        background-color: var(--neutral-color);
+    }
 }
-.disabledArrow {
+.disabledLink {
     border-color: var(--back-color)
-}
-.icon {
-    fill: var(--neutral-color);
 }
 .disabledIcon {
     fill: var(--back-color);
 }
+.rounded {
+    border-radius: 5px;
+}
+.roundedL {
+    border-radius: 5px 0 0 5px;
+}
+.roundedR {
+    border-radius: 0 5px 5px 0;
+}
+.marginR {
+    margin-right: 10px;
+}
+.marginL {
+    margin-left: 10px;
+}
+.disableRBorder {
+    border-color: var(--neutral-color);
+
+    &:not(:last-child) {
+        border-right: none;
+    }
+}
+.isActive {
+    background-color: var(--neutral-color);
+    color: var(--primary-color);
+}
+
+

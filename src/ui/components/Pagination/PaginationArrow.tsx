@@ -14,15 +14,20 @@ const PaginationArrow = ({
 }) => {
     const icon =
         direction === 'left' ? (
-            <IoIosArrowBack className={clsx(isDisabled ? s.disabledIcon : s.icon)} />
+            <IoIosArrowBack className={clsx(isDisabled && s.disabledIcon)} />
         ) : (
-            <IoIosArrowForward className={clsx(isDisabled ? s.disabledIcon : s.icon)} />
+            <IoIosArrowForward className={clsx(isDisabled && s.disabledIcon)} />
         );
+    const className = clsx(s.link, s.rounded, {
+        [s.disabledLink]: isDisabled,
+        [s.marginR]: direction === 'left',
+        [s.marginL]: direction === 'right',
+    });
 
     return isDisabled ? (
-        <div className={isDisabled ? clsx(s.arrow, s.disabledArrow) : s.arrow}>{icon}</div>
+        <div className={className}>{icon}</div>
     ) : (
-        <Link className={isDisabled ? clsx(s.arrow, s.disabledArrow) : s.arrow} href={href}>
+        <Link className={className} href={href}>
             {icon}
         </Link>
     );

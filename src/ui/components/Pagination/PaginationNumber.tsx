@@ -1,6 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import Link from 'next/link';
+import s from './pagination.module.css';
 
 const PaginationNumber = ({
     page,
@@ -13,12 +14,15 @@ const PaginationNumber = ({
     position?: 'first' | 'last' | 'middle' | 'single';
     isActive: boolean;
 }) => {
-    const className = clsx('flex h-10 w-10 items-center justify-center text-sm border', {
-        'rounded-l-md': position === 'first' || position === 'single',
-        'rounded-r-md': position === 'last' || position === 'single',
-        'z-10 bg-blue-600 border-blue-600 text-white': isActive,
-        'hover:bg-gray-100': !isActive && position !== 'middle',
-        'text-gray-300': position === 'middle',
+    //TODO NEED TO ADD STYLES FOR MIDDLE AND NOT ACTIVE, REMOVE THE HOVER
+    const className = clsx(s.link, {
+        [s.roundedL]: position === 'first' || position === 'single',
+        [s.roundedR]: position === 'last' || position === 'single',
+        [s.disableRBorder]: position !== 'single',
+        [s.disabledLink]: position !== 'middle',
+        [s.isActive]: isActive,
+        // [s.hoverBgGray100]: !isActive && position !== 'middle',
+        // [s.textGray300]: position === 'middle',
     });
 
     return isActive || position === 'middle' ? (

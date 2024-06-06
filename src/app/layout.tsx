@@ -6,7 +6,6 @@ import Header from '@/ui/components/Header/Header';
 import { SessionProvider } from 'next-auth/react';
 import s from './layout.module.css';
 import Footer from '@/ui/components/Footer/Footer';
-import { Root } from 'postcss';
 
 export const metadata: Metadata = {
     title: '@kiss.viktory',
