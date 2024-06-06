@@ -1,6 +1,6 @@
 'use client';
 
-import { generatePagination } from '@/app/lib/utils';
+import { generatePagination, getCurrentPage } from '@/app/lib/utils';
 import { usePathname, useSearchParams } from 'next/navigation';
 import PaginationNumber from '@/ui/components/Pagination/PaginationNumber';
 import PaginationArrow from '@/ui/components/Pagination/PaginationArrow';
@@ -10,7 +10,7 @@ import { getPosition } from '@/ui/components/Pagination/utils';
 export default function Pagination({ totalPages }: { totalPages: number }) {
     const pathname = usePathname();
     const searchParams = useSearchParams();
-    const currentPage = Number(searchParams.get('page')) || 1;
+    const currentPage = getCurrentPage();
 
     const createPageURL = (pageNumber: number | string) => {
         const params = new URLSearchParams(searchParams);

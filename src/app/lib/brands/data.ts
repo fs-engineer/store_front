@@ -13,12 +13,12 @@ export const getAllBrandsByParams = async ({ searchParams }: ISearchParams) => {
 
     try {
         const { data } = await axios.get(`${baseUrl}/brands`, {
+            headers: {
+                Authorization: await createBearerToken(),
+            },
             params: {
                 query: query,
                 page: currentPage,
-            },
-            headers: {
-                Authorization: await createBearerToken(),
             },
         });
 

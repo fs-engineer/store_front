@@ -6,6 +6,7 @@ import { Box, CreateBtn, Input, SelectInputWithSearch } from '@/ui/components';
 import s from './brandCreateForm.module.css';
 import { useRouter } from 'next/navigation';
 import { createBrand } from '@/app/lib/brands/actions';
+import { getCurrentPage } from '@/app/lib/utils';
 
 type BrandsProps = {
     countries: {
@@ -18,6 +19,7 @@ const BrandCreateFrom: React.FC<BrandsProps> = ({ countries }) => {
     const [countryId, setCountryId] = useState<null | number>(null);
     const [brandName, setBrandName] = useState<null | string>(null);
     const router = useRouter();
+    const currentPage = getCurrentPage();
 
     const handleFormSubmit = async () => {
         if (!countryId || !brandName) {
@@ -33,7 +35,7 @@ const BrandCreateFrom: React.FC<BrandsProps> = ({ countries }) => {
         } else if (brandResponse?.id && brandResponse?.name) {
             toast.info(`Бренд ${brandResponse.name} створено`);
         }
-        router.push('/dashboard/brands');
+        router.push(`/dashboard/brands?page=${currentPage}`);
     };
 
     return (
