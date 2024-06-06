@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+.arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--neutral-color);
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    margin: 0 10px;
+
+}
+.disabledArrow {
+    border-color: var(--back-color)
+}
+.icon {
+    fill: var(--neutral-color);
+}
+.disabledIcon {
+    fill: var(--back-color);
+}
