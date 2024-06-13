@@ -1,4 +1,4 @@
-import { GiButterfly, GiShamblingZombie } from 'react-icons/gi';
+import { GiBlackBar, GiButterfly, GiShamblingZombie } from 'react-icons/gi';
 import clsx from 'clsx';
 import buttonStyles from '@/ui/components/LinksAndButtons/buttons.module.css';
 import { FaUsersCog } from 'react-icons/fa';
@@ -40,6 +40,16 @@ const getMenuIcon = (isActive: boolean, name: string) => {
         case 'Бренди':
             return (
                 <GiShamblingZombie
+                    className={
+                        isActive
+                            ? clsx(buttonStyles.icon, buttonStyles.sideMenuIconActive)
+                            : clsx(buttonStyles.icon, buttonStyles.sideMenuIcon)
+                    }
+                />
+            );
+        case 'Характеристики':
+            return (
+                <GiBlackBar
                     className={
                         isActive
                             ? clsx(buttonStyles.icon, buttonStyles.sideMenuIconActive)

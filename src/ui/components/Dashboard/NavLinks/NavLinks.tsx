@@ -26,6 +26,10 @@ const NavLinks = () => {
             name: 'Бренди',
             href: '/dashboard/brands',
         },
+        {
+            name: 'Характеристики',
+            href: '/dashboard/characteristics',
+        },
     ];
 
     return (
