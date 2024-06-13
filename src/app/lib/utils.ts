@@ -1,4 +1,4 @@
-import { useSearchParams } from 'next/navigation';
+import { ISearchParams } from '@/interfaces';
 
 export const generatePagination = (currentPage: number, totalPages: number) => {
     if (totalPages <= 7) {
@@ -16,8 +16,10 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
     return [1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages];
 };
 
-// return page number
-export const getCurrentPage = () => {
-    const searchParams = useSearchParams();
-    return Number(searchParams.get('page')) || 1;
+export const getSearchParams = (searchParams: ISearchParams) => {
+    const query = searchParams?.query || '';
+    const currentPage = searchParams?.page || 1;
+    const pageSize = searchParams?.pageSize || 10;
+
+    return { query, pageSize, currentPage };
 };

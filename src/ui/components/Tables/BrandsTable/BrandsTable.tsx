@@ -12,13 +12,17 @@ import { IBrand, ISearchParams } from '@/interfaces';
 import { getDataFields } from '@/common/helpers/getDataFields';
 import Pagination from '@/ui/components/Pagination/Pagination';
 
-const BrandsTable = ({ searchParams }: ISearchParams) => {
-    const brandsFields = ['id', 'name', 'country'];
+type Props = {
+    searchParams: ISearchParams;
+};
+
+const BrandsTable: React.FC<Props> = ({ searchParams }) => {
     const [brandsData, setBrandsData] = useState<IBrand[]>([]);
     const [totalPages, setTotalPages] = useState(0);
     const { page } = searchParams;
 
     useEffect(() => {
+        const fields = ['id', 'name', 'country'];
         const fetchBrands = async () => {
             const data = await getAllBrandsByParams({ searchParams });
 
@@ -31,14 +35,14 @@ const BrandsTable = ({ searchParams }: ISearchParams) => {
                 throw new Error('Щось пішло не так з цими брендами!');
             }
 
-            const filteredBrands = getDataFields(brands, brandsFields) as IBrand[];
+            const filteredBrands = getDataFields(brands, fields) as IBrand[];
 
             setTotalPages(totalPages);
             setBrandsData(filteredBrands);
         };
 
         fetchBrands();
-    }, [page]);
+    }, [page, searchParams]);
 
     return (
         <>

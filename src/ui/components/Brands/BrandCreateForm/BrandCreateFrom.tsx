@@ -6,7 +6,7 @@ import { Box, CreateBtn, Input, SelectInputWithSearch } from '@/ui/components';
 import s from './brandCreateForm.module.css';
 import { useRouter } from 'next/navigation';
 import { createBrand } from '@/app/lib/brands/actions';
-import { getCurrentPage } from '@/app/lib/utils';
+import useCurrentPage from '@/hooks/useCurrentPage';
 
 type BrandsProps = {
     countries: {
@@ -19,7 +19,7 @@ const BrandCreateFrom: React.FC<BrandsProps> = ({ countries }) => {
     const [countryId, setCountryId] = useState<null | number>(null);
     const [brandName, setBrandName] = useState<null | string>(null);
     const router = useRouter();
-    const currentPage = getCurrentPage();
+    const currentPage = useCurrentPage();
 
     const handleFormSubmit = async () => {
         if (!countryId || !brandName) {

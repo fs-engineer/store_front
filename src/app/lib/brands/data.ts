@@ -5,11 +5,11 @@ import { unstable_noStore as noStore } from 'next/dist/server/web/spec-extension
 import axios from 'axios';
 import { baseUrl } from '@/constants';
 import { createBearerToken } from '@/common/helpers/createBearerToken';
+import { getSearchParams } from '@/app/lib/utils';
 
-export const getAllBrandsByParams = async ({ searchParams }: ISearchParams) => {
+export const getAllBrandsByParams = async ({ searchParams }: { searchParams: ISearchParams }) => {
     noStore();
-    const query = searchParams?.query || '';
-    const currentPage = Number(searchParams?.page) || 1;
+    const { query, pageSize, currentPage } = getSearchParams(searchParams);
 
     try {
         const { data } = await axios.get(`${baseUrl}/brands`, {
@@ -17,8 +17,9 @@ export const getAllBrandsByParams = async ({ searchParams }: ISearchParams) => {
                 Authorization: await createBearerToken(),
             },
             params: {
-                query: query,
+                query,
                 page: currentPage,
+                pageSize,
             },
         });
 

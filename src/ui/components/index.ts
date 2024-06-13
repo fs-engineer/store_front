@@ -1,14 +1,17 @@
 export { default as Container } from './Dashboard/Container/Container';
 export { default as Box } from './Box/Box';
 
+// TABLES
 export { default as UsersTable } from '@/ui/components/Tables/UserTable/UserTable';
 export { default as BrandsTable } from './Tables/BrandsTable/BrandsTable';
+export { default as CharacteristicsTable } from './Tables/CharacteristicsTable/CharacteristicsTable';
 
 export { default as Title } from './Dashboard/Title/Title';
 export { default as Breadcrumbs } from './Dashboard/Breadcrumbs/Breadcrumbs';
 
 export { default as CreateLink } from './LinksAndButtons/CreateLink/CreateLink';
 
+// INPUTS
 export { default as Input } from './Inputs/Input/Input';
 export { default as SelectInputWithSearch } from './Inputs/SelectInputWithSearch/SelectInputWithSearch';
 

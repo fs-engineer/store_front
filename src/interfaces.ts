@@ -6,10 +6,9 @@ export interface IIcon {
 }
 
 export interface ISearchParams {
-    searchParams: {
-        query: string;
-        page: number;
-    };
+    query: string;
+    page: number;
+    pageSize: number;
 }
 
 export interface IUser {
