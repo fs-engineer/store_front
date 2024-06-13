@@ -36,4 +36,9 @@ export interface IBrand {
     country: ICountry;
 }
 
+export interface ICharacteristic {
+    id: number;
+    name: string;
+}
+
 export type ButtonTypes = 'submit' | 'button' | 'reset';
