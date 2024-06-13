@@ -2,15 +2,11 @@
 
 import React, { useEffect, useState } from 'react';
 import { getAllBrandsByParams } from '@/app/lib/brands/data';
-import { IBrand, ISearchParams } from '@/interfaces';
+import { IBrand, IProps } from '@/interfaces';
 import { getDataFields } from '@/common/helpers/getDataFields';
 import { Pagination, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from '@/ui/components';
 
-type Props = {
-    searchParams: ISearchParams;
-};
-
-const BrandsTable: React.FC<Props> = ({ searchParams }) => {
+const BrandsTable: React.FC<IProps> = ({ searchParams }) => {
     const [brandsData, setBrandsData] = useState<IBrand[]>([]);
     const [totalPages, setTotalPages] = useState(0);
     const { page } = searchParams;

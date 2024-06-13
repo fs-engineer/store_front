@@ -1,16 +1,12 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { ICharacteristic, ISearchParams } from '@/interfaces';
+import { ICharacteristic, IProps } from '@/interfaces';
 import { getAllCharacteristicsByParams } from '@/app/lib/characteristics/data';
 import { getDataFields } from '@/common/helpers/getDataFields';
 import { Pagination, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from '@/ui/components';
 
-type Props = {
-    searchParams: ISearchParams;
-};
-
-const CharacteristicsTable: React.FC<Props> = ({ searchParams }) => {
+const CharacteristicsTable: React.FC<IProps> = ({ searchParams }) => {
     const [characteristics, setCharacteristics] = useState<ICharacteristic[]>([]);
     const [totalPages, setTotalPages] = useState(0);
     const { page } = searchParams;

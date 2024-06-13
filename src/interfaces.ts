@@ -11,6 +11,10 @@ export interface ISearchParams {
     pageSize: number;
 }
 
+export interface IProps {
+    searchParams: ISearchParams;
+}
+
 export interface IUser {
     id: number;
     email: string;
@@ -39,6 +43,11 @@ export interface IBrand {
 export interface ICharacteristic {
     id: number;
     value: string;
+}
+
+export interface IProductType {
+    id: number;
+    name: string;
 }
 
 export type ButtonTypes = 'submit' | 'button' | 'reset';
