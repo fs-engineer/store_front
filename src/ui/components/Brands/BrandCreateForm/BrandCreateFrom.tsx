@@ -2,8 +2,7 @@
 
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
-import { Box, CreateBtn, Input, SelectInputWithSearch } from '@/ui/components';
-import s from './brandCreateForm.module.css';
+import { Box, CreateBtn, Form, Input, SelectInputWithSearch } from '@/ui/components';
 import { useRouter } from 'next/navigation';
 import { createBrand } from '@/app/lib/brands/actions';
 import useCurrentPage from '@/hooks/useCurrentPage';
@@ -21,7 +20,9 @@ const BrandCreateFrom: React.FC<BrandsProps> = ({ countries }) => {
     const router = useRouter();
     const currentPage = useCurrentPage();
 
-    const handleFormSubmit = async () => {
+    const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
         if (!countryId || !brandName) {
             toast.error('Не вірно введені данні');
             return;
@@ -39,7 +40,7 @@ const BrandCreateFrom: React.FC<BrandsProps> = ({ countries }) => {
     };
 
     return (
-        <form className={s.form}>
+        <Form onSubmit={handleFormSubmit}>
             <Box>
                 {countries.length > 0 ? (
                     <SelectInputWithSearch data={countries} placeholder={'Виберіть країну'} onSelect={setCountryId} />
@@ -48,11 +49,10 @@ const BrandCreateFrom: React.FC<BrandsProps> = ({ countries }) => {
             <Box>
                 <Input type={'text'} placeholder={'Введіть назву бренду'} getInputValue={setBrandName} />
             </Box>
-
             <Box>
-                <CreateBtn type={'button'} text={'Створити'} onClick={handleFormSubmit} />
+                <CreateBtn type={'submit'} text={'Створити'} />
             </Box>
-        </form>
+        </Form>
     );
 };
 

@@ -22,7 +22,7 @@ const CharacteristicsTable: React.FC<Props> = ({ searchParams }) => {
     const { page } = searchParams;
 
     useEffect(() => {
-        const fields = ['id', 'name'];
+        const fields = ['id', 'value'];
         const fetchCharacteristics = async () => {
             const data = await getAllCharacteristicsByParams({ searchParams });
 
@@ -43,13 +43,14 @@ const CharacteristicsTable: React.FC<Props> = ({ searchParams }) => {
 
         fetchCharacteristics();
     }, [page, searchParams]);
+
     return (
         <>
             <Table>
                 <TableHead>
                     <TableRow>
                         <TableHeadCell>id</TableHeadCell>
-                        <TableHeadCell>Назва</TableHeadCell>
+                        <TableHeadCell>Характеристика</TableHeadCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -57,7 +58,7 @@ const CharacteristicsTable: React.FC<Props> = ({ searchParams }) => {
                         ? characteristics.map((characteristic) => (
                               <TableRow key={characteristic?.id}>
                                   <TableCell>{characteristic?.id}</TableCell>
-                                  <TableCell>{characteristic?.name}</TableCell>
+                                  <TableCell>{characteristic?.value}</TableCell>
                               </TableRow>
                           ))
                         : null}

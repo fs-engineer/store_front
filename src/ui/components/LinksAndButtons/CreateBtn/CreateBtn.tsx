@@ -5,7 +5,7 @@ import { ButtonTypes } from '@/interfaces';
 type Props = {
     type: ButtonTypes;
     text: string;
-    onClick: () => void;
+    onClick?: () => void;
     disabled?: boolean;
 };
 

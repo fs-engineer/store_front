@@ -9,12 +9,16 @@ export { default as CharacteristicsTable } from './Tables/CharacteristicsTable/C
 export { default as Title } from './Dashboard/Title/Title';
 export { default as Breadcrumbs } from './Dashboard/Breadcrumbs/Breadcrumbs';
 
-export { default as CreateLink } from './LinksAndButtons/CreateLink/CreateLink';
-
 // INPUTS
 export { default as Input } from './Inputs/Input/Input';
 export { default as SelectInputWithSearch } from './Inputs/SelectInputWithSearch/SelectInputWithSearch';
+export { default as TextArea } from './Inputs/TextArea/TextArea';
+export { default as Form } from './Forms/Form/Form';
 
+// BUTTONS
 export { default as CreateBtn } from './LinksAndButtons/CreateBtn/CreateBtn';
 export { default as CancelBtn } from './LinksAndButtons/CancelBtn/CancelBtn';
 export { default as SubmitBtn } from './LinksAndButtons/SubmitBtn/SubmitBtn';
+
+// LINKS
+export { default as CreateLink } from './LinksAndButtons/CreateLink/CreateLink';

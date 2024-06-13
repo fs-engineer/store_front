@@ -38,7 +38,7 @@ export interface IBrand {
 
 export interface ICharacteristic {
     id: number;
-    name: string;
+    value: string;
 }
 
 export type ButtonTypes = 'submit' | 'button' | 'reset';
