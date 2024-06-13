@@ -2,6 +2,7 @@ import React from 'react';
 import { Breadcrumbs, Container } from '@/ui/components';
 import BrandCreateFrom from '@/ui/components/Brands/BrandCreateForm/BrandCreateFrom';
 import { getAllCountries } from '@/app/lib/countries/data';
+import { brandsKey, dashboardKey } from '@/constants';
 
 const Page = async () => {
     const countries = await getAllCountries();
@@ -10,10 +11,10 @@ const Page = async () => {
         <Container>
             <Breadcrumbs
                 breadcrumbs={[
-                    { label: 'Бренди', href: '/dashboard/brands' },
+                    { label: 'Бренди', href: `/${dashboardKey}/${brandsKey}` },
                     {
                         label: 'Створити бренд',
-                        href: '/dashboard/brands/create',
+                        href: `/${dashboardKey}/${brandsKey}/create`,
                         active: true,
                     },
                 ]}
