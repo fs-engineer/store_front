@@ -2,15 +2,9 @@
 
 import React, { useEffect, useState } from 'react';
 import { ICharacteristic, ISearchParams } from '@/interfaces';
-import Table from '@/ui/components/Tables/Table/Table';
-import TableHead from '@/ui/components/Tables/Table/TableHead';
-import TableRow from '@/ui/components/Tables/Table/TableRow';
-import TableHeadCell from '@/ui/components/Tables/Table/TableHeadCell';
-import TableBody from '@/ui/components/Tables/Table/TableBody';
-import TableCell from '@/ui/components/Tables/Table/TableCell';
-import Pagination from '@/ui/components/Pagination/Pagination';
 import { getAllCharacteristicsByParams } from '@/app/lib/characteristics/data';
 import { getDataFields } from '@/common/helpers/getDataFields';
+import { Pagination, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from '@/ui/components';
 
 type Props = {
     searchParams: ISearchParams;

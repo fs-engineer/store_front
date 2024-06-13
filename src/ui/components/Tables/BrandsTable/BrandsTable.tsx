@@ -1,16 +1,10 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import Table from '@/ui/components/Tables/Table/Table';
-import TableHead from '@/ui/components/Tables/Table/TableHead';
-import TableRow from '@/ui/components/Tables/Table/TableRow';
-import TableHeadCell from '@/ui/components/Tables/Table/TableHeadCell';
-import TableBody from '@/ui/components/Tables/Table/TableBody';
-import TableCell from '@/ui/components/Tables/Table/TableCell';
 import { getAllBrandsByParams } from '@/app/lib/brands/data';
 import { IBrand, ISearchParams } from '@/interfaces';
 import { getDataFields } from '@/common/helpers/getDataFields';
-import Pagination from '@/ui/components/Pagination/Pagination';
+import { Pagination, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from '@/ui/components';
 
 type Props = {
     searchParams: ISearchParams;
