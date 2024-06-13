@@ -9,6 +9,7 @@ import getMenuIcon from '@/ui/components/Dashboard/NavLinks/helpers/getMenuIcon/
 import {
     brandsKey,
     characteristicsKey,
+    dashboardKey,
     hairTypesKey,
     productsKey,
     productTypesKey,
@@ -19,13 +20,17 @@ import {
 const NavLinks = () => {
     const pathName = usePathname();
     const menuItems = [
-        { name: productsKey, value: 'Продукти', href: `/dashboard/${productsKey}` },
-        { name: usersKey, value: 'Користувачі', href: `/dashboard/${usersKey}` },
-        { name: rolesKey, value: 'Ролі', href: `/dashboard/${rolesKey}` },
-        { name: brandsKey, value: 'Бренди', href: `/dashboard/${brandsKey}` },
-        { name: characteristicsKey, value: 'Характеристики', href: `/dashboard/${characteristicsKey}` },
-        { name: productTypesKey, value: 'Типи продукту', href: `/dashboard/${productTypesKey}` },
-        { name: hairTypesKey, value: 'Типи волосся', href: `/dashboard/${hairTypesKey}` },
+        { name: productsKey, value: 'Продукти', href: `/${dashboardKey}/${productsKey}` },
+        { name: usersKey, value: 'Користувачі', href: `/${dashboardKey}/${usersKey}` },
+        { name: rolesKey, value: 'Ролі', href: `/${dashboardKey}/${rolesKey}` },
+        { name: brandsKey, value: 'Бренди', href: `/${dashboardKey}/${productsKey}/${brandsKey}` },
+        {
+            name: characteristicsKey,
+            value: 'Характеристики',
+            href: `/${dashboardKey}/${productsKey}/${characteristicsKey}`,
+        },
+        { name: productTypesKey, value: 'Типи продукту', href: `/${dashboardKey}/${productsKey}/${productTypesKey}` },
+        { name: hairTypesKey, value: 'Типи волосся', href: `/${dashboardKey}/${productsKey}/${hairTypesKey}` },
     ];
 
     return (

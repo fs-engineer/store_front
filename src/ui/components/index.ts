@@ -22,3 +22,12 @@ export { default as SubmitBtn } from './LinksAndButtons/SubmitBtn/SubmitBtn';
 
 // LINKS
 export { default as CreateLink } from './LinksAndButtons/CreateLink/CreateLink';
+
+//TABLES
+export { default as Table } from './Tables/Table/Table';
+export { default as TableHead } from './Tables/Table/TableHead';
+export { default as TableRow } from './Tables/Table/TableRow';
+export { default as TableHeadCell } from './Tables/Table/TableHeadCell';
+export { default as TableBody } from './Tables/Table/TableBody';
+export { default as TableCell } from './Tables/Table/TableCell';
+export { default as Pagination } from './Pagination/Pagination';

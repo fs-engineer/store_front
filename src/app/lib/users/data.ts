@@ -4,7 +4,7 @@ import { ISearchParams } from '@/interfaces';
 import { baseUrl } from '@/constants';
 import { createBearerToken } from '@/common/helpers/createBearerToken';
 
-export const getAllUsers = async ({ searchParams }: ISearchParams) => {
+export const getAllUsersByParams = async ({ searchParams }: { searchParams: ISearchParams }) => {
     noStore();
     const query = searchParams?.query || '';
     const currentPage = Number(searchParams?.page) || 1;
