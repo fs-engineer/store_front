@@ -1,27 +1,27 @@
 import React from 'react';
 import { Breadcrumbs, Container } from '@/ui/components';
-import CharacteristicsCreateForm from '@/ui/components/Characteristics/CharacteristicsCreateForm/CharacteristicsCreateForm';
-import { characteristicsKey, dashboardKey, productsKey } from '@/constants';
 import { IProps } from '@/interfaces';
+import { characteristicsKey, dashboardKey, productsKey, productTypesKey } from '@/constants';
 
 const Page: React.FC<IProps> = ({ searchParams }) => {
-    const currentPage = searchParams?.page || 1;
+    const currentPge = searchParams?.page || 1;
+
     return (
         <Container>
             <Breadcrumbs
                 breadcrumbs={[
                     {
-                        label: 'Характеристики',
-                        href: `/${dashboardKey}/${productsKey}/${characteristicsKey}?page=${currentPage}`,
+                        label: 'Типи продуктів',
+                        href: `/${dashboardKey}/${productsKey}/${productTypesKey}?page=${currentPge}`,
                     },
                     {
-                        label: 'Створити бренд',
+                        label: 'Створити тип продукту',
                         href: `/${dashboardKey}/${productsKey}/${characteristicsKey}/create`,
                         active: true,
                     },
                 ]}
             />
-            <CharacteristicsCreateForm />
+            {/*<CharacteristicsCreateForm />*/}
         </Container>
     );
 };
