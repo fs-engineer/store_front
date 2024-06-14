@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, CreateLink, Title } from '@/ui/components';
 import DashboardTopBar from '@/ui/components/Dashboard/DashboardTopBar/DashboardTopBar';
 import { IProps } from '@/interfaces';
+import ProductsTable from '@/ui/components/Tables/ProductsTable/ProductsTable';
 
 const Page: React.FC<IProps> = ({ searchParams }) => {
     return (
@@ -10,7 +11,7 @@ const Page: React.FC<IProps> = ({ searchParams }) => {
                 <CreateLink path={'products/create'} />
             </DashboardTopBar>
             <Title text={'Продукти'} />
-            {/*<BrandsTable searchParams={searchParams} />*/}
+            <ProductsTable searchParams={searchParams} />
         </Container>
     );
 };

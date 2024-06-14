@@ -55,4 +55,16 @@ export interface IHairTypes {
     name: string;
 }
 
+export interface IProduct {
+    id: number;
+    name: string;
+    price: number;
+    description: string;
+    brandId: number;
+    favorites: boolean;
+    composition: string;
+    wayToUse: string;
+    images: string[];
+}
+
 export type ButtonTypes = 'submit' | 'button' | 'reset';

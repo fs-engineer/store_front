@@ -1,38 +1,38 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { getAllBrandsByParams } from '@/app/lib/brands/data';
-import { IBrand, IProps } from '@/interfaces';
-import { getDataFields } from '@/common/helpers/getDataFields';
+import { IProduct, IProps } from '@/interfaces';
 import { Pagination, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from '@/ui/components';
+import { getAllProductsByParams } from '@/app/lib/products/data';
+import { getDataFields } from '@/common/helpers/getDataFields';
 
-const BrandsTable: React.FC<IProps> = ({ searchParams }) => {
-    const [brandsData, setBrandsData] = useState<IBrand[]>([]);
+const ProductsTable: React.FC<IProps> = ({ searchParams }) => {
+    const [products, setProducts] = useState<IProduct[]>([]);
     const [totalPages, setTotalPages] = useState(0);
     const page = searchParams?.page || 1;
 
     useEffect(() => {
-        const fields = ['id', 'name', 'country'];
+        const fields = ['id', 'name', 'price'];
 
-        const fetchBrands = async () => {
-            const data = await getAllBrandsByParams({ searchParams });
+        const fetchProducts = async () => {
+            const data = await getAllProductsByParams({ searchParams });
 
             if (!data) {
-                throw new Error('Щось пішло не так з цими брендами!');
+                throw new Error('Щось пішло не так з цими продуктами!');
             }
 
             const { rows, count, totalPages } = data;
             if (!rows) {
-                throw new Error('Щось пішло не так з цими брендами!');
+                throw new Error('Щось пішло не так з цими продуктами!');
             }
 
-            const filteredBrands = getDataFields(rows, fields) as IBrand[];
+            const filteredProducts = getDataFields(rows, fields) as IProduct[];
 
             setTotalPages(totalPages);
-            setBrandsData(filteredBrands);
+            setProducts(filteredProducts);
         };
 
-        fetchBrands();
+        fetchProducts();
     }, [page, searchParams]);
 
     return (
@@ -42,16 +42,16 @@ const BrandsTable: React.FC<IProps> = ({ searchParams }) => {
                     <TableRow>
                         <TableHeadCell>id</TableHeadCell>
                         <TableHeadCell>Назва</TableHeadCell>
-                        <TableHeadCell>Країна</TableHeadCell>
+                        <TableHeadCell>Ціна</TableHeadCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {brandsData.length
-                        ? brandsData.map((brand) => (
+                    {products.length
+                        ? products.map((brand) => (
                               <TableRow key={brand?.id}>
                                   <TableCell>{brand?.id}</TableCell>
                                   <TableCell>{brand?.name}</TableCell>
-                                  <TableCell>{brand?.country?.name}</TableCell>
+                                  <TableCell>{brand?.price} грн</TableCell>
                               </TableRow>
                           ))
                         : null}
@@ -62,4 +62,4 @@ const BrandsTable: React.FC<IProps> = ({ searchParams }) => {
     );
 };
 
-export default BrandsTable;
+export default ProductsTable;
