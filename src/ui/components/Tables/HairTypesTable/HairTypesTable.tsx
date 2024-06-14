@@ -5,6 +5,7 @@ import { IHairTypes, IProps } from '@/interfaces';
 import { Pagination, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from '@/ui/components';
 import { getAllHairTypesByParams } from '@/app/lib/hairTypes/data';
 import { getDataFields } from '@/common/helpers/getDataFields';
+import { toast } from 'react-toastify';
 
 const HairTypesTable: React.FC<IProps> = ({ searchParams }) => {
     const [hairTypes, setHairTypes] = useState<IHairTypes[]>([]);
@@ -29,6 +30,7 @@ const HairTypesTable: React.FC<IProps> = ({ searchParams }) => {
 
             setTotalPages(totalPages);
             setHairTypes(filteredHairTypes);
+            toast.info(`Знайдено ${count} типів волосся`);
         };
 
         fetchHairTypes();

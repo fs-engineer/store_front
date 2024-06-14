@@ -5,6 +5,7 @@ import { ICharacteristic, IProps } from '@/interfaces';
 import { getAllCharacteristicsByParams } from '@/app/lib/characteristics/data';
 import { getDataFields } from '@/common/helpers/getDataFields';
 import { Pagination, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from '@/ui/components';
+import { toast } from 'react-toastify';
 
 const CharacteristicsTable: React.FC<IProps> = ({ searchParams }) => {
     const [characteristics, setCharacteristics] = useState<ICharacteristic[]>([]);
@@ -28,6 +29,7 @@ const CharacteristicsTable: React.FC<IProps> = ({ searchParams }) => {
 
             setTotalPages(totalPages);
             setCharacteristics(filteredCharacteristics);
+            toast.info(`Знайдено ${count} характеристик`);
         };
 
         fetchCharacteristics();

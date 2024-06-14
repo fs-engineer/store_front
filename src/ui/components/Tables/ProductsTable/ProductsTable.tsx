@@ -13,7 +13,6 @@ import { toast } from 'react-toastify';
 const ProductsTable: React.FC<IProps> = ({ searchParams }) => {
     const [products, setProducts] = useState<IProduct[]>([]);
     const [totalPages, setTotalPages] = useState(0);
-    const page = searchParams?.page || 1;
 
     useEffect(() => {
         const fields = ['id', 'name', 'price', 'favorite', 'recommended', 'rate'];

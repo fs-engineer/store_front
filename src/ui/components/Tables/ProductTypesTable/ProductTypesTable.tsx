@@ -5,6 +5,7 @@ import { Pagination, Table, TableBody, TableCell, TableHead, TableHeadCell, Tabl
 import { IProductType, IProps } from '@/interfaces';
 import { getAllProductTypesByParams } from '@/app/lib/productTypes/data';
 import { getDataFields } from '@/common/helpers/getDataFields';
+import { toast } from 'react-toastify';
 
 const ProductTypesTable: React.FC<IProps> = ({ searchParams }) => {
     const [productTypes, setProductTypes] = useState<IProductType[]>([]);
@@ -28,6 +29,7 @@ const ProductTypesTable: React.FC<IProps> = ({ searchParams }) => {
 
             setTotalPages(totalPages);
             setProductTypes(filteredTypes);
+            toast.info(`Знайдено ${count} типів`);
         };
 
         fetchProductTypes();
