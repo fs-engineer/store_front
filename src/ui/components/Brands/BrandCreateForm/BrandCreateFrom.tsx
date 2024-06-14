@@ -6,6 +6,7 @@ import { Box, CreateBtn, Form, Input, SelectInputWithSearch } from '@/ui/compone
 import { useRouter } from 'next/navigation';
 import { createBrand } from '@/app/lib/brands/actions';
 import useCurrentPage from '@/hooks/useCurrentPage';
+import { brandsKey, dashboardKey, productsKey } from '@/constants';
 
 type BrandsProps = {
     countries: {
@@ -36,7 +37,7 @@ const BrandCreateFrom: React.FC<BrandsProps> = ({ countries }) => {
         } else if (brandResponse?.id && brandResponse?.name) {
             toast.info(`Бренд ${brandResponse.name} створено`);
         }
-        router.push(`/dashboard/brands?page=${currentPage}`);
+        router.push(`/${dashboardKey}/${productsKey}/${brandsKey}?page=${currentPage}`);
     };
 
     return (

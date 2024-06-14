@@ -1,16 +1,22 @@
 import React from 'react';
 import { Breadcrumbs, Container } from '@/ui/components';
 import CharacteristicsCreateForm from '@/ui/components/Characteristics/CharacteristicsCreateForm/CharacteristicsCreateForm';
+import { characteristicsKey, dashboardKey, productsKey } from '@/constants';
+import { IProps } from '@/interfaces';
 
-const Page = () => {
+const Page: React.FC<IProps> = ({ searchParams }) => {
+    const currentPage = searchParams?.page || 1;
     return (
         <Container>
             <Breadcrumbs
                 breadcrumbs={[
-                    { label: 'Характеристики', href: '/dashboard/characteristics' },
+                    {
+                        label: 'Характеристики',
+                        href: `/${dashboardKey}/${productsKey}/${characteristicsKey}?page=${currentPage}`,
+                    },
                     {
                         label: 'Створити бренд',
-                        href: '/dashboard/characteristics/create',
+                        href: `/${dashboardKey}/${productsKey}/${characteristicsKey}/create`,
                         active: true,
                     },
                 ]}

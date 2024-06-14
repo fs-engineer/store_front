@@ -2,17 +2,17 @@
 
 import { ISearchParams } from '@/interfaces';
 import { unstable_noStore as noStore } from 'next/dist/server/web/spec-extension/unstable-no-store';
-import axios from 'axios';
-import { baseUrl, brandsKey } from '@/constants';
-import { createBearerToken } from '@/common/helpers/createBearerToken';
 import { getSearchParams } from '@/app/lib/utils';
+import axios from 'axios';
+import { baseUrl, productTypesKey } from '@/constants';
+import { createBearerToken } from '@/common/helpers/createBearerToken';
 
-export const getAllBrandsByParams = async ({ searchParams }: { searchParams: ISearchParams }) => {
+export const getAllProductTypesByParams = async ({ searchParams }: { searchParams: ISearchParams }) => {
     noStore();
     const { query, pageSize, currentPage } = getSearchParams(searchParams);
 
     try {
-        const { data } = await axios.get(`${baseUrl}/${brandsKey}`, {
+        const { data } = await axios.get(`${baseUrl}/${productTypesKey}`, {
             headers: {
                 Authorization: await createBearerToken(),
             },

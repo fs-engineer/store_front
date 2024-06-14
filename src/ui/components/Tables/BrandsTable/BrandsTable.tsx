@@ -2,15 +2,11 @@
 
 import React, { useEffect, useState } from 'react';
 import { getAllBrandsByParams } from '@/app/lib/brands/data';
-import { IBrand, ISearchParams } from '@/interfaces';
+import { IBrand, IProps } from '@/interfaces';
 import { getDataFields } from '@/common/helpers/getDataFields';
 import { Pagination, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from '@/ui/components';
 
-type Props = {
-    searchParams: ISearchParams;
-};
-
-const BrandsTable: React.FC<Props> = ({ searchParams }) => {
+const BrandsTable: React.FC<IProps> = ({ searchParams }) => {
     const [brandsData, setBrandsData] = useState<IBrand[]>([]);
     const [totalPages, setTotalPages] = useState(0);
     const { page } = searchParams;
@@ -24,12 +20,12 @@ const BrandsTable: React.FC<Props> = ({ searchParams }) => {
                 throw new Error('Щось пішло не так з цими брендами!');
             }
 
-            const { brands, count, totalPages } = data;
-            if (!brands) {
+            const { rows, count, totalPages } = data;
+            if (!rows) {
                 throw new Error('Щось пішло не так з цими брендами!');
             }
 
-            const filteredBrands = getDataFields(brands, fields) as IBrand[];
+            const filteredBrands = getDataFields(rows, fields) as IBrand[];
 
             setTotalPages(totalPages);
             setBrandsData(filteredBrands);

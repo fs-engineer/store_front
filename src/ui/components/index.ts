@@ -30,4 +30,6 @@ export { default as TableRow } from './Tables/Table/TableRow';
 export { default as TableHeadCell } from './Tables/Table/TableHeadCell';
 export { default as TableBody } from './Tables/Table/TableBody';
 export { default as TableCell } from './Tables/Table/TableCell';
+
+//PAGINATION
 export { default as Pagination } from './Pagination/Pagination';

@@ -1,15 +1,11 @@
 import React from 'react';
 import { getAllUsersByParams } from '@/app/lib/users/data';
-import { ISearchParams, IUser } from '@/interfaces';
+import { IProps, IUser } from '@/interfaces';
 import { getDataFields } from '@/common/helpers/getDataFields';
 import { getRolesName } from '@/common/helpers/getRolesName';
 import { Pagination, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from '@/ui/components';
 
-type Props = {
-    searchParams: ISearchParams;
-};
-
-const UserTable: React.FC<Props> = async ({ searchParams }) => {
+const UserTable: React.FC<IProps> = async ({ searchParams }) => {
     const userFields: string[] = ['id', 'email', 'name', 'lastName', 'number', 'roles'];
     const data = await getAllUsersByParams({ searchParams });
 
