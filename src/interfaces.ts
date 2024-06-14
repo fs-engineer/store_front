@@ -61,10 +61,11 @@ export interface IProduct {
     price: number;
     description: string;
     brandId: number;
-    favorites: boolean;
     composition: string;
     wayToUse: string;
     images: string[];
+    recommended: boolean;
+    rate: number;
 }
 
 export type ButtonTypes = 'submit' | 'button' | 'reset';

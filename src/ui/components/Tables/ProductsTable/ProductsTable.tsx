@@ -5,6 +5,9 @@ import { IProduct, IProps } from '@/interfaces';
 import { Pagination, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from '@/ui/components';
 import { getAllProductsByParams } from '@/app/lib/products/data';
 import { getDataFields } from '@/common/helpers/getDataFields';
+import { IoIosCheckmark } from 'react-icons/io';
+import s from './productTable.module.css';
+import { IoClose } from 'react-icons/io5';
 
 const ProductsTable: React.FC<IProps> = ({ searchParams }) => {
     const [products, setProducts] = useState<IProduct[]>([]);
@@ -12,11 +15,10 @@ const ProductsTable: React.FC<IProps> = ({ searchParams }) => {
     const page = searchParams?.page || 1;
 
     useEffect(() => {
-        const fields = ['id', 'name', 'price'];
+        const fields = ['id', 'name', 'price', 'favorite', 'recommended', 'rate'];
 
         const fetchProducts = async () => {
             const data = await getAllProductsByParams({ searchParams });
-
             if (!data) {
                 throw new Error('Щось пішло не так з цими продуктами!');
             }
@@ -43,6 +45,8 @@ const ProductsTable: React.FC<IProps> = ({ searchParams }) => {
                         <TableHeadCell>id</TableHeadCell>
                         <TableHeadCell>Назва</TableHeadCell>
                         <TableHeadCell>Ціна</TableHeadCell>
+                        <TableHeadCell>Рекомендації</TableHeadCell>
+                        <TableHeadCell>Рейтинг</TableHeadCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -52,6 +56,14 @@ const ProductsTable: React.FC<IProps> = ({ searchParams }) => {
                                   <TableCell>{brand?.id}</TableCell>
                                   <TableCell>{brand?.name}</TableCell>
                                   <TableCell>{brand?.price} грн</TableCell>
+                                  <TableCell>
+                                      {brand?.recommended ? (
+                                          <IoIosCheckmark className={s.true} />
+                                      ) : (
+                                          <IoClose className={s.false} />
+                                      )}
+                                  </TableCell>
+                                  <TableCell>{brand?.rate}</TableCell>
                               </TableRow>
                           ))
                         : null}
