@@ -5,11 +5,11 @@ import { getAllBrandsByParams } from '@/app/lib/brands/data';
 import { IBrand, IProps } from '@/interfaces';
 import { getDataFields } from '@/common/helpers/getDataFields';
 import { Pagination, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from '@/ui/components';
+import { toast } from 'react-toastify';
 
 const BrandsTable: React.FC<IProps> = ({ searchParams }) => {
     const [brandsData, setBrandsData] = useState<IBrand[]>([]);
     const [totalPages, setTotalPages] = useState(0);
-    const page = searchParams?.page || 1;
 
     useEffect(() => {
         const fields = ['id', 'name', 'country'];
@@ -30,10 +30,11 @@ const BrandsTable: React.FC<IProps> = ({ searchParams }) => {
 
             setTotalPages(totalPages);
             setBrandsData(filteredBrands);
+            toast.info(`Знайдено ${count} брендів`);
         };
 
         fetchBrands();
-    }, [page, searchParams]);
+    }, [searchParams]);
 
     return (
         <>

@@ -9,7 +9,6 @@ import { getDataFields } from '@/common/helpers/getDataFields';
 const HairTypesTable: React.FC<IProps> = ({ searchParams }) => {
     const [hairTypes, setHairTypes] = useState<IHairTypes[]>([]);
     const [totalPages, setTotalPages] = useState(0);
-    const page = searchParams?.page || 1;
 
     useEffect(() => {
         const fields = ['id', 'name'];
@@ -33,7 +32,7 @@ const HairTypesTable: React.FC<IProps> = ({ searchParams }) => {
         };
 
         fetchHairTypes();
-    }, [page, searchParams]);
+    }, [searchParams]);
     return (
         <>
             <Table>

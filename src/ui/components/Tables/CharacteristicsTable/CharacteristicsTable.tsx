@@ -9,7 +9,6 @@ import { Pagination, Table, TableBody, TableCell, TableHead, TableHeadCell, Tabl
 const CharacteristicsTable: React.FC<IProps> = ({ searchParams }) => {
     const [characteristics, setCharacteristics] = useState<ICharacteristic[]>([]);
     const [totalPages, setTotalPages] = useState(0);
-    const page = searchParams?.page || 1;
 
     useEffect(() => {
         const fields = ['id', 'value'];
@@ -32,7 +31,7 @@ const CharacteristicsTable: React.FC<IProps> = ({ searchParams }) => {
         };
 
         fetchCharacteristics();
-    }, [page, searchParams]);
+    }, [searchParams]);
 
     return (
         <>

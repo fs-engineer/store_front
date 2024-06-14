@@ -9,7 +9,6 @@ import { getDataFields } from '@/common/helpers/getDataFields';
 const ProductTypesTable: React.FC<IProps> = ({ searchParams }) => {
     const [productTypes, setProductTypes] = useState<IProductType[]>([]);
     const [totalPages, setTotalPages] = useState(0);
-    const { page, query } = searchParams;
 
     useEffect(() => {
         const fields = ['id', 'name'];
@@ -32,7 +31,7 @@ const ProductTypesTable: React.FC<IProps> = ({ searchParams }) => {
         };
 
         fetchProductTypes();
-    }, [page, query]);
+    }, [searchParams]);
 
     return (
         <>

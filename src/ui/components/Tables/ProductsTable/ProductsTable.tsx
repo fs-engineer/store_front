@@ -8,6 +8,7 @@ import { getDataFields } from '@/common/helpers/getDataFields';
 import { IoIosCheckmark } from 'react-icons/io';
 import s from './productTable.module.css';
 import { IoClose } from 'react-icons/io5';
+import { toast } from 'react-toastify';
 
 const ProductsTable: React.FC<IProps> = ({ searchParams }) => {
     const [products, setProducts] = useState<IProduct[]>([]);
@@ -32,10 +33,11 @@ const ProductsTable: React.FC<IProps> = ({ searchParams }) => {
 
             setTotalPages(totalPages);
             setProducts(filteredProducts);
+            toast.info(`Знайдено ${count} продуктів`);
         };
 
         fetchProducts();
-    }, [page, searchParams]);
+    }, [searchParams]);
 
     return (
         <>
