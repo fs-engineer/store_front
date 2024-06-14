@@ -1,7 +1,7 @@
 'use server';
 
 import axios from 'axios';
-import { baseUrl } from '@/constants';
+import { baseUrl, brandsKey } from '@/constants';
 import { createBearerToken } from '@/common/helpers/createBearerToken';
 import { brandSchema } from '@/app/lib/brands/zod';
 
@@ -14,7 +14,7 @@ export const createBrand = async (brandDto: CreateBrandDto) => {
     try {
         const { name, countryId } = await brandSchema.parseAsync(brandDto);
         const { data } = await axios.post(
-            `${baseUrl}/brands/`,
+            `${baseUrl}/${brandsKey}/`,
             { name, countryId },
             {
                 headers: {

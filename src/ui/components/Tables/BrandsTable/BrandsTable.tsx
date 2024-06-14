@@ -20,12 +20,12 @@ const BrandsTable: React.FC<IProps> = ({ searchParams }) => {
                 throw new Error('Щось пішло не так з цими брендами!');
             }
 
-            const { brands, count, totalPages } = data;
-            if (!brands) {
+            const { rows, count, totalPages } = data;
+            if (!rows) {
                 throw new Error('Щось пішло не так з цими брендами!');
             }
 
-            const filteredBrands = getDataFields(brands, fields) as IBrand[];
+            const filteredBrands = getDataFields(rows, fields) as IBrand[];
 
             setTotalPages(totalPages);
             setBrandsData(filteredBrands);

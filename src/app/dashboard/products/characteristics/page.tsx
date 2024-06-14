@@ -1,14 +1,10 @@
 import React from 'react';
 import { CharacteristicsTable, Container, CreateLink, Title } from '@/ui/components';
-import { ISearchParams } from '@/interfaces';
+import { IProps } from '@/interfaces';
 import DashboardTopBar from '@/ui/components/Dashboard/DashboardTopBar/DashboardTopBar';
 import { characteristicsKey } from '@/constants';
 
-type Props = {
-    searchParams: ISearchParams;
-};
-
-const Page: React.FC<Props> = ({ searchParams }) => {
+const Page: React.FC<IProps> = ({ searchParams }) => {
     const page = searchParams?.page || 1;
 
     return (

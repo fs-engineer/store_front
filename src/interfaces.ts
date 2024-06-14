@@ -50,4 +50,9 @@ export interface IProductType {
     name: string;
 }
 
+export interface IHairTypes {
+    id: number;
+    name: string;
+}
+
 export type ButtonTypes = 'submit' | 'button' | 'reset';
