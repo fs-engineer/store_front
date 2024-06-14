@@ -16,7 +16,7 @@ const HairTypesTable: React.FC<IProps> = ({ searchParams }) => {
 
         const fetchHairTypes = async () => {
             const data = await getAllHairTypesByParams({ searchParams });
-            console.log(data);
+
             if (!data) {
                 throw new Error('Щось пішло не так з цими характеристиками!');
             }

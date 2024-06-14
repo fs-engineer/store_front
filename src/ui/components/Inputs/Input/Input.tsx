@@ -22,7 +22,7 @@ const Input: React.FC<Props> = ({ type = 'text', placeholder = 'Введіть �
             type={type}
             placeholder={placeholder}
             value={value}
-            onChange={(e) => setValue(e.target.value)}
+            onChange={(e) => setValue(e.target.value.trim())}
         />
     );
 };
