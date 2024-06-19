@@ -48,7 +48,12 @@ const BrandCreateFrom: React.FC<BrandsProps> = ({ countries }) => {
                 ) : null}
             </Box>
             <Box>
-                <Input type={'text'} placeholder={'Введіть назву бренду'} getInputValue={setBrandName} />
+                <Input
+                    name={'brandName'}
+                    type={'text'}
+                    placeholder={'Введіть назву бренду'}
+                    getInputValue={setBrandName}
+                />
             </Box>
             <Box>
                 <CreateBtn type={'submit'} text={'Створити'} />
