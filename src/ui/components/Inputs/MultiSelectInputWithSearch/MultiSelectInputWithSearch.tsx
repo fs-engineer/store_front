@@ -3,6 +3,7 @@
 import React, { useState, useEffect, ChangeEvent } from 'react';
 import s from '../SelectInputWithSearch/SelectInputWithSearch.module.css';
 import { ISelectInputDataItem } from '@/interfaces';
+import ResetInputBtn from '@/ui/components/LinksAndButtons/ResetInputBtn/ResetInputBtn';
 
 interface Props {
     placeholder: string;
@@ -26,6 +27,10 @@ const SelectInputWithSearch: React.FC<Props> = ({ data, placeholder, onSelect })
         setFilteredOptions(options.filter((option) => option.name.toLowerCase().includes(searchTerm.toLowerCase())));
     }, [searchTerm, options]);
 
+    useEffect(() => {
+        onSelect(selectedItems);
+    }, [selectedItems, onSelect]);
+
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(e.target.value.trim());
     };
@@ -36,7 +41,12 @@ const SelectInputWithSearch: React.FC<Props> = ({ data, placeholder, onSelect })
         } else {
             setSelectedItems([...selectedItems, id]);
         }
-        onSelect(selectedItems);
+    };
+
+    const handleReset = () => {
+        setSelectedItems([]);
+        setSearchTerm('');
+        setIsOpenOptionsList(false);
     };
 
     const toggleOptionsList = () => {
@@ -44,7 +54,7 @@ const SelectInputWithSearch: React.FC<Props> = ({ data, placeholder, onSelect })
     };
 
     return (
-        <div>
+        <div className={s.wrapper}>
             <input
                 className={s.input}
                 type="text"
@@ -53,6 +63,7 @@ const SelectInputWithSearch: React.FC<Props> = ({ data, placeholder, onSelect })
                 onChange={handleChange}
                 onFocus={toggleOptionsList}
             />
+            {selectedItems.length > 0 ? <ResetInputBtn onClick={handleReset} /> : null}
             {isOpenOptionsList ? (
                 <ul className={s.list}>
                     {filteredOptions.map((option) => (

@@ -29,3 +29,20 @@ export const getAllProductTypesByParams = async ({ searchParams }: { searchParam
         return null;
     }
 };
+
+export const getAllProductTypes = async () => {
+    noStore();
+
+    try {
+        const { data } = await axios.get(`${baseUrl}/${productTypesKey}/all`, {
+            headers: {
+                Authorization: await createBearerToken(),
+            },
+        });
+
+        return data;
+    } catch (e) {
+        console.error(e);
+        return null;
+    }
+};

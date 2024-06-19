@@ -28,3 +28,19 @@ export const getAllHairTypesByParams = async ({ searchParams }: { searchParams: 
         return null;
     }
 };
+
+export const getAllHairTypes = async () => {
+    noStore();
+
+    try {
+        const { data } = await axios.get(`${baseUrl}/${hairTypesKey}/all`, {
+            headers: {
+                Authorization: await createBearerToken(),
+            },
+        });
+        return data;
+    } catch (e) {
+        console.error(e);
+        return null;
+    }
+};

@@ -1,9 +1,9 @@
 'use server';
 
-import { productTypeSchema } from '@/app/lib/productTypes/zod';
 import axios from 'axios';
 import { baseUrl, hairTypesKey } from '@/constants';
 import { createBearerToken } from '@/common/helpers/createBearerToken';
+import { hairTypeSchema } from '@/app/lib/hairTypes/zod';
 
 type HairTypeDto = {
     name: string;
@@ -11,7 +11,7 @@ type HairTypeDto = {
 
 export const createHairType = async (dto: HairTypeDto) => {
     try {
-        const { name } = await productTypeSchema.parseAsync(dto);
+        const { name } = await hairTypeSchema.parseAsync(dto);
         const { data } = await axios.post(
             `${baseUrl}/${hairTypesKey}/`,
             { name },

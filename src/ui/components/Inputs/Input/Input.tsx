@@ -14,7 +14,7 @@ const Input: React.FC<Props> = ({ name, type = 'text', placeholder = 'Введі
     const [value, setValue] = useState<string>('');
 
     useEffect(() => {
-        getInputValue(value);
+        getInputValue(value.trim());
     }, [value, getInputValue]);
 
     return (
@@ -24,7 +24,7 @@ const Input: React.FC<Props> = ({ name, type = 'text', placeholder = 'Введі
             type={type}
             placeholder={placeholder}
             value={value}
-            onChange={(e) => setValue(e.target.value.trim())}
+            onChange={(e) => setValue(e.target.value)}
         />
     );
 };

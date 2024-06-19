@@ -29,3 +29,20 @@ export const getAllBrandsByParams = async ({ searchParams }: { searchParams: ISe
         return null;
     }
 };
+
+export const getAllBrands = async () => {
+    noStore();
+
+    try {
+        const { data } = await axios.get(`${baseUrl}/${brandsKey}/all`, {
+            headers: {
+                Authorization: await createBearerToken(),
+            },
+        });
+
+        return data;
+    } catch (e) {
+        console.error(e);
+        return null;
+    }
+};
