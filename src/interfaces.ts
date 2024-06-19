@@ -68,4 +68,9 @@ export interface IProduct {
     rate: number;
 }
 
+export interface ISelectInputDataItem {
+    id: number;
+    name: string;
+}
+
 export type ButtonTypes = 'submit' | 'button' | 'reset';

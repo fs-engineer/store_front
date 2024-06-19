@@ -1,13 +1,13 @@
 'use client';
 
 import React, { useState, useEffect, ChangeEvent } from 'react';
-import s from './SelectInputWithSearch.module.css';
+import s from '../SelectInputWithSearch/SelectInputWithSearch.module.css';
 import { ISelectInputDataItem } from '@/interfaces';
 
 interface Props {
     placeholder: string;
     data: ISelectInputDataItem[];
-    onSelect: (id: number) => void;
+    onSelect: (ids: number[]) => void;
 }
 
 const SelectInputWithSearch: React.FC<Props> = ({ data, placeholder, onSelect }) => {
@@ -15,6 +15,7 @@ const SelectInputWithSearch: React.FC<Props> = ({ data, placeholder, onSelect })
     const [options, setOptions] = useState<ISelectInputDataItem[]>([]);
     const [filteredOptions, setFilteredOptions] = useState<ISelectInputDataItem[]>([]);
     const [isOpenOptionsList, setIsOpenOptionsList] = useState(false);
+    const [selectedItems, setSelectedItems] = useState<number[]>([]);
 
     useEffect(() => {
         setOptions(data);
@@ -29,10 +30,13 @@ const SelectInputWithSearch: React.FC<Props> = ({ data, placeholder, onSelect })
         setSearchTerm(e.target.value.trim());
     };
 
-    const handleClick = (id: number, optionName: string) => {
-        onSelect(id);
-        setSearchTerm(optionName);
-        toggleOptionsList();
+    const handleClick = (id: number) => {
+        if (selectedItems.includes(id)) {
+            setSelectedItems(selectedItems.filter((item) => item !== id));
+        } else {
+            setSelectedItems([...selectedItems, id]);
+        }
+        onSelect(selectedItems);
     };
 
     const toggleOptionsList = () => {
@@ -56,9 +60,9 @@ const SelectInputWithSearch: React.FC<Props> = ({ data, placeholder, onSelect })
                             className={s.listItem}
                             key={option.id}
                             id={option.id.toString().trim()}
-                            onClick={() => handleClick(option.id, option.name)}
+                            onClick={() => handleClick(option.id)}
                         >
-                            {option.name}
+                            {selectedItems.includes(option.id) ? '☑' : '☐'} {option.name}
                         </li>
                     ))}
                 </ul>

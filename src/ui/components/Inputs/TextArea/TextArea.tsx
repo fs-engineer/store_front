@@ -26,6 +26,7 @@ const TextArea: React.FC<Props> = ({ placeholder, id, name, cols = 30, rows = 10
             cols={cols}
             rows={rows}
             value={value}
+            placeholder={placeholder}
             onChange={(e) => setValue(e.target.value)}
             className={s.area}
         />

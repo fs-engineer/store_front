@@ -28,3 +28,20 @@ export const getAllCharacteristicsByParams = async ({ searchParams }: { searchPa
         return null;
     }
 };
+
+export const getAllCharacteristics = async () => {
+    noStore();
+
+    try {
+        const { data } = await axios.get(`${baseUrl}/${characteristicsKey}/all`, {
+            headers: {
+                Authorization: await createBearerToken(),
+            },
+        });
+
+        return data;
+    } catch (e) {
+        console.error(e);
+        return null;
+    }
+};
