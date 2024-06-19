@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
 import useCurrentPage from '@/hooks/useCurrentPage';
 import { createCharacteristic } from '@/app/lib/characteristics/actions';
+import { characteristicsKey, dashboardKey } from '@/constants';
 
 const CharacteristicsCreateForm = () => {
     const [characterValue, setCharacterValue] = useState('');
@@ -30,7 +31,7 @@ const CharacteristicsCreateForm = () => {
             toast.info(`Бренд ${response.name} створено`);
         }
 
-        router.push(`/dashboard/characteristics?page=${currentPage}`);
+        router.push(`/${dashboardKey}/${characteristicsKey}?page=${currentPage}`);
     };
 
     return (
