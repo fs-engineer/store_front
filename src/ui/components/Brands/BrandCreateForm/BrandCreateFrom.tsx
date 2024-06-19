@@ -44,7 +44,12 @@ const BrandCreateFrom: React.FC<BrandsProps> = ({ countries }) => {
         <Form onSubmit={handleFormSubmit}>
             <Box>
                 {countries.length > 0 ? (
-                    <SelectInputWithSearch data={countries} placeholder={'Виберіть країну'} onSelect={setCountryId} />
+                    <SelectInputWithSearch
+                        name={'brand'}
+                        data={countries}
+                        placeholder={'Виберіть країну'}
+                        onSelect={setCountryId}
+                    />
                 ) : null}
             </Box>
             <Box>
