@@ -11,8 +11,8 @@ export { default as Breadcrumbs } from './Dashboard/Breadcrumbs/Breadcrumbs';
 
 // INPUTS
 export { default as Input } from './Inputs/Input/Input';
-export { default as SelectInputWithSearch } from './Inputs/SelectInputWithSearch/SelectInputWithSearch';
-export { default as MultiSelectInputWithSearch } from './Inputs/MultiSelectInputWithSearch/MultiSelectInputWithSearch';
+export { default as SelectInputWithSearch } from '@/ui/components/Inputs/SelectInputsWithSearch/SelectInputWithSearch/SelectInputWithSearch';
+export { default as MultiSelectInputWithSearch } from '@/ui/components/Inputs/SelectInputsWithSearch/MultiSelectInputWithSearch/MultiSelectInputWithSearch';
 export { default as TextArea } from './Inputs/TextArea/TextArea';
 export { default as Form } from './Forms/Form/Form';
 

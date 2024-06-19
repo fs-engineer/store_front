@@ -9,6 +9,7 @@
     border-radius: 5px;
     padding: 6px;
     background-color: var(--white-color);
+    z-index: 10;
 }
 .listItem {
     padding: 5px;
@@ -16,10 +17,15 @@
 
     &:hover {
         background-color: var(--back-color);
+        color: var(--neutral-color);
     }
     &:not(:last-child) {
         border-bottom: 1px solid var(--devider-color);
     }
+}
+.listItemSelected {
+    background-color: var(--neutral-color);
+    color: var(--primary-color);
 }
 .input {
     width: 100%;
@@ -27,6 +33,6 @@
     border-radius: 5px;
     padding: 5px;
 }
-.wrapper {
+.container {
     position: relative;
 }

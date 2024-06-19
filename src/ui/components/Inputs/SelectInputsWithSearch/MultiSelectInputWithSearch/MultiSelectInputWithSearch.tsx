@@ -1,22 +1,26 @@
 'use client';
 
-import React, { useState, useEffect, ChangeEvent } from 'react';
-import s from '../SelectInputWithSearch/SelectInputWithSearch.module.css';
+import React, { useState, useEffect, ChangeEvent, useRef } from 'react';
+import s from '../SelectInputWithSearch.module.css';
 import { ISelectInputDataItem } from '@/interfaces';
 import ResetInputBtn from '@/ui/components/LinksAndButtons/ResetInputBtn/ResetInputBtn';
+import SearchInputList from '@/ui/components/Inputs/SelectInputsWithSearch/SearchInputList/SearchInputList';
 
 interface Props {
     placeholder: string;
     data: ISelectInputDataItem[];
     onSelect: (ids: number[]) => void;
+    name: string;
 }
 
-const SelectInputWithSearch: React.FC<Props> = ({ data, placeholder, onSelect }) => {
+const SelectInputWithSearch: React.FC<Props> = ({ data, placeholder, onSelect, name }) => {
     const [searchTerm, setSearchTerm] = useState<string>('');
     const [options, setOptions] = useState<ISelectInputDataItem[]>([]);
     const [filteredOptions, setFilteredOptions] = useState<ISelectInputDataItem[]>([]);
     const [isOpenOptionsList, setIsOpenOptionsList] = useState(false);
     const [selectedItems, setSelectedItems] = useState<number[]>([]);
+
+    const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         setOptions(data);
@@ -30,6 +34,27 @@ const SelectInputWithSearch: React.FC<Props> = ({ data, placeholder, onSelect })
     useEffect(() => {
         onSelect(selectedItems);
     }, [selectedItems, onSelect]);
+
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+            if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+                handleClose();
+            }
+        }
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [containerRef]);
+
+    const handleOpen = () => {
+        setIsOpenOptionsList(true);
+    };
+
+    const handleClose = () => {
+        setIsOpenOptionsList(false);
+    };
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(e.target.value.trim());
@@ -49,34 +74,25 @@ const SelectInputWithSearch: React.FC<Props> = ({ data, placeholder, onSelect })
         setIsOpenOptionsList(false);
     };
 
-    const toggleOptionsList = () => {
-        setIsOpenOptionsList((prevState) => !prevState);
-    };
-
     return (
-        <div className={s.wrapper}>
+        <div className={s.container} ref={containerRef}>
             <input
+                name={name}
                 className={s.input}
                 type="text"
                 placeholder={placeholder}
                 value={searchTerm}
                 onChange={handleChange}
-                onFocus={toggleOptionsList}
+                onFocus={handleOpen}
             />
             {selectedItems.length > 0 ? <ResetInputBtn onClick={handleReset} /> : null}
             {isOpenOptionsList ? (
-                <ul className={s.list}>
-                    {filteredOptions.map((option) => (
-                        <li
-                            className={s.listItem}
-                            key={option.id}
-                            id={option.id.toString().trim()}
-                            onClick={() => handleClick(option.id)}
-                        >
-                            {selectedItems.includes(option.id) ? '☑' : '☐'} {option.name}
-                        </li>
-                    ))}
-                </ul>
+                <SearchInputList
+                    onClose={handleClose}
+                    onSelect={handleClick}
+                    options={filteredOptions}
+                    selectedItems={selectedItems}
+                />
             ) : null}
         </div>
     );
