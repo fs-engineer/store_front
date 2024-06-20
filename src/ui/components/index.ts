@@ -15,6 +15,7 @@ export { default as SelectInputWithSearch } from '@/ui/components/Inputs/SelectI
 export { default as MultiSelectInputWithSearch } from '@/ui/components/Inputs/SelectInputsWithSearch/MultiSelectInputWithSearch/MultiSelectInputWithSearch';
 export { default as TextArea } from './Inputs/TextArea/TextArea';
 export { default as Form } from './Forms/Form/Form';
+export { default as UploadFiles } from './Inputs/UploadFiles/UploadFiles';
 
 // BUTTONS
 export { default as CreateBtn } from './LinksAndButtons/CreateBtn/CreateBtn';

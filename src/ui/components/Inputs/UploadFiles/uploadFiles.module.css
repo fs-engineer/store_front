@@ -1,0 +1,13 @@
+.input {
+    display: none;
+    width: 100%;
+}
+.label {
+    display: block;
+    color: #6c6c6c;
+    width: 100%;
+    padding: 5px;
+    border: 1px solid var(--devider-color);
+    border-radius: 5px;
+    cursor: pointer;
+}

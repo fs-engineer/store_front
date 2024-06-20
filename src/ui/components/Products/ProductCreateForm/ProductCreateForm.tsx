@@ -9,6 +9,7 @@ import {
     MultiSelectInputWithSearch,
     SelectInputWithSearch,
     TextArea,
+    UploadFiles,
 } from '@/ui/components';
 import { ISelectInputDataItem } from '@/interfaces';
 import { getAllCharacteristics } from '@/app/lib/characteristics/data';
@@ -36,10 +37,11 @@ const ProductCreateForm = () => {
     const [typeOptions, setTypeOptions] = useState<ISelectInputDataItem[]>([]);
     const [hairTypeIds, setHairTypeIds] = useState<number[]>([]);
     const [hairTypeOptions, setHairTypeOptions] = useState<ISelectInputDataItem[]>([]);
+    const [files, setFiles] = useState<FileList | null>(null);
 
     const router = useRouter();
     const currentPage = useCurrentPage();
-
+    console.log(files, 'files');
     useEffect(() => {
         const fetchCharacteristics = async () => {
             const data = await getAllCharacteristics();
@@ -151,6 +153,9 @@ const ProductCreateForm = () => {
                     data={brandOptions}
                     onSelect={setBrandId}
                 />
+            </Box>
+            <Box>
+                <UploadFiles placeholder={'Виберіть файли'} onGetFiles={setFiles} />
             </Box>
             <Box>
                 <Input name={'price'} type={'number'} getInputValue={setPrice} placeholder={'Введіть ціну продукту'} />
