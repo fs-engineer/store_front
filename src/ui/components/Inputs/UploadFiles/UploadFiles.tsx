@@ -2,11 +2,12 @@
 
 import React, { useEffect, useId, useState } from 'react';
 import s from './uploadFiles.module.css';
+import { formatFileQuantityText } from '@/ui/components/Inputs/UploadFiles/helpers';
 
 type Props = {
     name: string;
     placeholder?: string;
-    onGetFiles: (files: FileList) => void;
+    onGetFiles: (files: FileList | []) => void;
     accept?: string;
 };
 
@@ -16,7 +17,7 @@ const UploadFiles: React.FC<Props> = ({
     onGetFiles,
     accept = 'image/*,.jpg,.png',
 }) => {
-    const [files, setFiles] = useState<FileList | null>(null);
+    const [files, setFiles] = useState<FileList | []>([]);
     const id = useId();
 
     useEffect(() => {
@@ -26,13 +27,13 @@ const UploadFiles: React.FC<Props> = ({
     }, [files, onGetFiles]);
 
     const handleFilesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setFiles(e.target.files);
+        setFiles(e.target.files || []);
     };
 
     return (
         <>
             <label className={s.label} htmlFor={id}>
-                {placeholder}
+                {formatFileQuantityText(files.length, placeholder)}
             </label>
             <input
                 className={s.input}
