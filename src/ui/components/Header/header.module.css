@@ -10,6 +10,7 @@
     align-items: center;
     background-color: var(--neutral-color);
     padding: 0 24px 0 24px;
+    z-index: 999;
 }
 .logoWrap {
     display: flex;

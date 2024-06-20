@@ -1,0 +1,31 @@
+.label {
+    color: var(--placeholder-color);
+    cursor: pointer;
+    width: 100%;
+}
+.input {
+    display: none;
+    visibility: hidden;
+}
+.box {
+    position: relative;
+    width: 25px;
+    height: 25px;
+    border: 1px solid var(--devider-color);
+    border-radius: 5px;
+    cursor: pointer;
+}
+.icon {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-35%, -60%);
+    color: var(--green-color);
+}
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
