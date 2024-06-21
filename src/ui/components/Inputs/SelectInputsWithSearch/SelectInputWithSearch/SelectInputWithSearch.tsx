@@ -11,9 +11,10 @@ interface Props {
     placeholder: string;
     data: ISelectInputDataItem[];
     onSelect: (id: number | null) => void;
+    autoComplete?: 'on' | 'off';
 }
 
-const SelectInputWithSearch: React.FC<Props> = ({ name, data, placeholder, onSelect }) => {
+const SelectInputWithSearch: React.FC<Props> = ({ name, data, placeholder, onSelect, autoComplete = 'off' }) => {
     const [searchTerm, setSearchTerm] = useState<string>('');
     const [options, setOptions] = useState<ISelectInputDataItem[]>([]);
     const [id, setId] = useState<number | null>(null);
@@ -86,7 +87,7 @@ const SelectInputWithSearch: React.FC<Props> = ({ name, data, placeholder, onSel
                 value={searchTerm}
                 onChange={handleChange}
                 onFocus={handleOpen}
-                autoComplete="off"
+                autoComplete={autoComplete}
             />
             {id ? <ResetInputBtn onClick={handleReset} /> : null}
             {isOpenOptionsList ? (
