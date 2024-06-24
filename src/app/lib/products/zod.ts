@@ -1,4 +1,4 @@
-import { array, number, object, string } from 'zod';
+import { array, boolean, custom, number, object, string } from 'zod';
 
 export const productSchema = object({
     name: string().min(3, { message: 'Name is should be min 3 symbols' }),
@@ -8,5 +8,6 @@ export const productSchema = object({
     types: array(number().positive({ message: 'Each type ID must be a positive number' })),
     hairTypes: array(number().positive({ message: 'Each hair type ID must be a positive number' })),
     characteristics: array(number().positive({ message: 'Each characteristic ID must be a positive number' })),
+    recommended: boolean(),
     directions: string().min(5, { message: 'Directions are required' }),
 });

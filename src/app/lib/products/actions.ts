@@ -1,19 +1,20 @@
 'use server';
 
 import axios from 'axios';
-import { baseUrl, productsKey, productTypesKey } from '@/constants';
+import { baseUrl, productsKey } from '@/constants';
 import { createBearerToken } from '@/common/helpers/createBearerToken';
 import { productSchema } from '@/app/lib/products/zod';
 
 type CreateProductDto = {
-    name: string;
-    price: number;
-    brandId: number;
+    name: string | null;
+    price: number | null;
+    brandId: number | null;
     description: string;
     types: number[];
     hairTypes: number[];
     characteristics: number[];
     directions: string;
+    recommended: boolean;
 };
 
 export const createProduct = async (dto: CreateProductDto) => {

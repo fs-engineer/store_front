@@ -15,10 +15,11 @@ const ProductsTable: React.FC<IProps> = ({ searchParams }) => {
     const [totalPages, setTotalPages] = useState(0);
 
     useEffect(() => {
-        const fields = ['id', 'name', 'price', 'favorite', 'recommended', 'rate'];
+        const fields = ['id', 'name', 'price', 'favorite', 'recommended', 'rate', 'images', 'hairType'];
 
         const fetchProducts = async () => {
             const data = await getAllProductsByParams({ searchParams });
+
             if (!data) {
                 throw new Error('Щось пішло не так з цими продуктами!');
             }
