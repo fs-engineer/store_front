@@ -7,23 +7,19 @@ type Props = {
     name: string;
     type: string;
     placeholder?: string;
-    getInputValue: (value: string) => void;
+    getValue: (value: string) => void;
     autoComplete?: 'on' | 'off';
+    value: string | number;
 };
 
 const Input: React.FC<Props> = ({
     name,
     type = 'text',
     placeholder = 'Введіть назву',
-    getInputValue,
+    getValue,
     autoComplete = 'off',
+    value,
 }) => {
-    const [value, setValue] = useState<string>('');
-
-    useEffect(() => {
-        getInputValue(value.trim());
-    }, [value, getInputValue]);
-
     return (
         <input
             name={name}
@@ -31,7 +27,7 @@ const Input: React.FC<Props> = ({
             type={type}
             placeholder={placeholder}
             value={value}
-            onChange={(e) => setValue(e.target.value)}
+            onChange={(e) => getValue(e.target.value)}
             autoComplete={autoComplete}
         />
     );

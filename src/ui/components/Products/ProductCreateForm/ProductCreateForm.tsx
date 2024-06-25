@@ -34,8 +34,9 @@ import s from './productCreateForm.module.css';
 
 // TODO: need to add product preview to the right side
 const ProductCreateForm = () => {
-    const [name, setName] = useState<string | null>(null);
-    const [price, setPrice] = useState<string | null>(null);
+    const [name, setName] = useState<string>('');
+    const [price, setPrice] = useState<string>('');
+    const [volume, setVolume] = useState<string>('');
     const [brandId, setBrandId] = useState<null | number>(null);
     const [brandOptions, setBrandOptions] = useState<ISelectInputDataItem[]>([]);
     const [description, setDescription] = useState('');
@@ -187,7 +188,8 @@ const ProductCreateForm = () => {
                     <Input
                         name={'productName'}
                         type={'text'}
-                        getInputValue={setName}
+                        value={name}
+                        getValue={setName}
                         placeholder={'Введіть назву продукту'}
                     />
                 </Box>
@@ -206,8 +208,18 @@ const ProductCreateForm = () => {
                     <Input
                         name={'price'}
                         type={'number'}
-                        getInputValue={setPrice}
+                        value={price}
+                        getValue={setPrice}
                         placeholder={'Введіть ціну продукту'}
+                    />
+                </Box>
+                <Box>
+                    <Input
+                        name={'volume'}
+                        type={'number'}
+                        value={volume}
+                        getValue={setVolume}
+                        placeholder={"Введіть об'єм продукту"}
                     />
                 </Box>
                 <Box>
