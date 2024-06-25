@@ -10,14 +10,22 @@ interface Props {
     name: string;
     placeholder: string;
     data: ISelectInputDataItem[];
-    onSelect: (id: number | null) => void;
+    getSelectedId: (id: number | null) => void;
     autoComplete?: 'on' | 'off';
+    selectedId: number | null;
 }
 
-const SelectInputWithSearch: React.FC<Props> = ({ name, data, placeholder, onSelect, autoComplete = 'off' }) => {
+const SelectInputWithSearch: React.FC<Props> = ({
+    name,
+    data,
+    placeholder,
+    getSelectedId,
+    autoComplete = 'off',
+    selectedId,
+}) => {
     const [searchTerm, setSearchTerm] = useState<string>('');
     const [options, setOptions] = useState<ISelectInputDataItem[]>([]);
-    const [id, setId] = useState<number | null>(null);
+    // const [id, setId] = useState<number | null>(null);
     const [filteredOptions, setFilteredOptions] = useState<ISelectInputDataItem[]>([]);
     const [isOpenOptionsList, setIsOpenOptionsList] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
@@ -28,18 +36,19 @@ const SelectInputWithSearch: React.FC<Props> = ({ name, data, placeholder, onSel
     }, [data]);
 
     useEffect(() => {
+        console.log('11111111111');
         if (searchTerm === '') {
-            setId(null);
+            getSelectedId(null);
         }
-    }, [searchTerm]);
+    }, [searchTerm, getSelectedId]);
 
     useEffect(() => {
         setFilteredOptions(options.filter((option) => option.name.toLowerCase().includes(searchTerm.toLowerCase())));
     }, [searchTerm, options]);
 
-    useEffect(() => {
-        onSelect(id);
-    }, [id, onSelect]);
+    // useEffect(() => {
+    //     onSelect(id);
+    // }, [id, onSelect]);
 
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
@@ -67,13 +76,16 @@ const SelectInputWithSearch: React.FC<Props> = ({ name, data, placeholder, onSel
     };
 
     const handleClick = (id: number, optionName: string) => {
-        setId(id);
+        // setId(id);
+        getSelectedId(id);
+
         setSearchTerm(optionName);
         handleClose();
     };
 
     const handleReset = () => {
-        setId(null);
+        // setId(null);
+        getSelectedId(null);
         setSearchTerm('');
     };
 
@@ -89,7 +101,7 @@ const SelectInputWithSearch: React.FC<Props> = ({ name, data, placeholder, onSel
                 onFocus={handleOpen}
                 autoComplete={autoComplete}
             />
-            {id ? <ResetInputBtn onClick={handleReset} /> : null}
+            {selectedId ? <ResetInputBtn onClick={handleReset} /> : null}
             {isOpenOptionsList ? (
                 <SearchInputList onClose={handleClose} onSelect={handleClick} options={filteredOptions} />
             ) : null}

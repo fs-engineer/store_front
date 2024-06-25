@@ -37,7 +37,7 @@ const ProductCreateForm = () => {
     const [name, setName] = useState<string>('');
     const [price, setPrice] = useState<string>('');
     const [volume, setVolume] = useState<string>('');
-    const [brandId, setBrandId] = useState<null | number>(null);
+    const [brandId, setBrandId] = useState<number | null>(null);
     const [brandOptions, setBrandOptions] = useState<ISelectInputDataItem[]>([]);
     const [description, setDescription] = useState('');
     const [directions, setDirections] = useState('');
@@ -196,9 +196,10 @@ const ProductCreateForm = () => {
                 <Box>
                     <SelectInputWithSearch
                         name={'brand'}
+                        selectedId={brandId}
                         placeholder={'Виберіть назву бренду'}
                         data={brandOptions}
-                        onSelect={setBrandId}
+                        getSelectedId={setBrandId}
                     />
                 </Box>
                 <Box>
