@@ -228,7 +228,8 @@ const ProductCreateForm = () => {
                         name={'type'}
                         placeholder={'Виберіть тип продукту'}
                         data={typeOptions}
-                        onSelect={setTypeIds}
+                        selectedItems={typeIds}
+                        getSelectedItems={setTypeIds}
                     />
                 </Box>
                 <Box>
@@ -236,7 +237,8 @@ const ProductCreateForm = () => {
                         name={'hairType'}
                         placeholder={'Виберіть тип волосся'}
                         data={hairTypeOptions}
-                        onSelect={setHairTypeIds}
+                        selectedItems={hairTypeIds}
+                        getSelectedItems={setHairTypeIds}
                     />
                 </Box>
                 <Box>
@@ -244,7 +246,8 @@ const ProductCreateForm = () => {
                         name={'characteristics'}
                         placeholder={'Виберіть характеристики'}
                         data={characteristicsOptions}
-                        onSelect={setCharacteristicIds}
+                        selectedItems={characteristicIds}
+                        getSelectedItems={setCharacteristicIds}
                     />
                 </Box>
                 <Box>

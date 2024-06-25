@@ -9,17 +9,24 @@ import SearchInputList from '@/ui/components/Inputs/SelectInputsWithSearch/Searc
 interface Props {
     placeholder: string;
     data: ISelectInputDataItem[];
-    onSelect: (ids: number[]) => void;
     name: string;
     autoComplete?: 'on' | 'off';
+    selectedItems: number[];
+    getSelectedItems: (ids: number[]) => void;
 }
 
-const SelectInputWithSearch: React.FC<Props> = ({ data, placeholder, onSelect, name, autoComplete = 'off' }) => {
+const SelectInputWithSearch: React.FC<Props> = ({
+    data,
+    placeholder,
+    selectedItems,
+    getSelectedItems,
+    name,
+    autoComplete = 'off',
+}) => {
     const [searchTerm, setSearchTerm] = useState<string>('');
     const [options, setOptions] = useState<ISelectInputDataItem[]>([]);
     const [filteredOptions, setFilteredOptions] = useState<ISelectInputDataItem[]>([]);
     const [isOpenOptionsList, setIsOpenOptionsList] = useState(false);
-    const [selectedItems, setSelectedItems] = useState<number[]>([]);
 
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -32,9 +39,9 @@ const SelectInputWithSearch: React.FC<Props> = ({ data, placeholder, onSelect, n
         setFilteredOptions(options.filter((option) => option.name.toLowerCase().includes(searchTerm.toLowerCase())));
     }, [searchTerm, options]);
 
-    useEffect(() => {
-        onSelect(selectedItems);
-    }, [selectedItems, onSelect]);
+    // useEffect(() => {
+    //     onSelect(selectedItems);
+    // }, [selectedItems, onSelect]);
 
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
@@ -63,14 +70,14 @@ const SelectInputWithSearch: React.FC<Props> = ({ data, placeholder, onSelect, n
 
     const handleClick = (id: number) => {
         if (selectedItems.includes(id)) {
-            setSelectedItems(selectedItems.filter((item) => item !== id));
+            getSelectedItems(selectedItems.filter((item) => item !== id));
         } else {
-            setSelectedItems([...selectedItems, id]);
+            getSelectedItems([...selectedItems, id]);
         }
     };
 
     const handleReset = () => {
-        setSelectedItems([]);
+        getSelectedItems([]);
         setSearchTerm('');
         setIsOpenOptionsList(false);
     };

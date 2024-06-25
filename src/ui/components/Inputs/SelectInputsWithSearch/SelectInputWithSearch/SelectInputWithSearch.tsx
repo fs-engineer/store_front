@@ -25,7 +25,6 @@ const SelectInputWithSearch: React.FC<Props> = ({
 }) => {
     const [searchTerm, setSearchTerm] = useState<string>('');
     const [options, setOptions] = useState<ISelectInputDataItem[]>([]);
-    // const [id, setId] = useState<number | null>(null);
     const [filteredOptions, setFilteredOptions] = useState<ISelectInputDataItem[]>([]);
     const [isOpenOptionsList, setIsOpenOptionsList] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
@@ -36,7 +35,6 @@ const SelectInputWithSearch: React.FC<Props> = ({
     }, [data]);
 
     useEffect(() => {
-        console.log('11111111111');
         if (searchTerm === '') {
             getSelectedId(null);
         }
@@ -45,10 +43,6 @@ const SelectInputWithSearch: React.FC<Props> = ({
     useEffect(() => {
         setFilteredOptions(options.filter((option) => option.name.toLowerCase().includes(searchTerm.toLowerCase())));
     }, [searchTerm, options]);
-
-    // useEffect(() => {
-    //     onSelect(id);
-    // }, [id, onSelect]);
 
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
@@ -76,7 +70,6 @@ const SelectInputWithSearch: React.FC<Props> = ({
     };
 
     const handleClick = (id: number, optionName: string) => {
-        // setId(id);
         getSelectedId(id);
 
         setSearchTerm(optionName);
@@ -84,7 +77,6 @@ const SelectInputWithSearch: React.FC<Props> = ({
     };
 
     const handleReset = () => {
-        // setId(null);
         getSelectedId(null);
         setSearchTerm('');
     };
