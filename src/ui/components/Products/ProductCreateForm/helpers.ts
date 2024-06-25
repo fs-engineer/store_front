@@ -2,8 +2,8 @@ import { ICharacteristic } from '@/interfaces';
 import { toast } from 'react-toastify';
 
 type FormValues = {
-    name: string | null;
-    price: string | null;
+    name: string;
+    price: string;
     brandId: number | null;
     typeIds: number[];
     hairTypeIds: number[];
@@ -11,6 +11,7 @@ type FormValues = {
     description: string;
     directions: string;
     recommended: boolean;
+    volume: string;
 };
 
 export const renameCharacteristicsFields = (data: ICharacteristic[]) => {

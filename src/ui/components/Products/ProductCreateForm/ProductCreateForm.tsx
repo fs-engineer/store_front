@@ -149,6 +149,7 @@ const ProductCreateForm = () => {
             description,
             directions,
             recommended,
+            volume,
         });
         if (!isAllValuesValid) return;
 
@@ -162,6 +163,7 @@ const ProductCreateForm = () => {
             hairTypes: hairTypeIds,
             recommended,
             characteristics: characteristicIds,
+            volume: Number(volume),
         };
 
         try {
@@ -175,7 +177,7 @@ const ProductCreateForm = () => {
                 await uploadFiles(response.id);
             }
 
-            router.push(`/${dashboardKey}/${productsKey}?page=${currentPage}`);
+            // router.push(`/${dashboardKey}/${productsKey}?page=${currentPage}`);
         } catch (e) {
             console.log(e);
         }

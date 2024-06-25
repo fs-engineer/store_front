@@ -15,6 +15,7 @@ type CreateProductDto = {
     characteristics: number[];
     directions: string;
     recommended: boolean;
+    volume: number;
 };
 
 export const createProduct = async (dto: CreateProductDto) => {
@@ -28,8 +29,8 @@ export const createProduct = async (dto: CreateProductDto) => {
         });
 
         return data;
-    } catch (e) {
-        console.error(e, 'create product error');
+    } catch (e: any) {
+        console.log(`Create product error: ${Date.now()} `, e.message);
         return null;
     }
 };
