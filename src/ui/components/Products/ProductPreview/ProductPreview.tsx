@@ -4,6 +4,7 @@ import { ISelectInputDataItem } from '@/interfaces';
 import s from './productPreview.module.css';
 import { getOptionNames } from '@/ui/components/Products/ProductPreview/helpers';
 import ProductImagePreview from '@/ui/components/Products/ProductImagePreview/ProductImagePreview';
+import clsx from 'clsx';
 
 type Props = {
     name: string | null;
@@ -49,21 +50,45 @@ const ProductPreview: React.FC<Props> = ({
 
     return (
         <div className={s.container}>
-            <p className={s.brand}>{brandName}</p>
-            <p className={s.name}>{name}</p>
-            <p className={s.type}>{types && types.join(', ')}</p>
-            <ProductImagePreview images={images} />
+            <div>
+                <p className={s.brand}>{brandName}</p>
+                <p className={s.name}>{name}</p>
+                <p className={s.type}>{types && types.join(', ')}</p>
+            </div>
 
-            <p>{price && price + 'грн.'}</p>
-            {recommended ? <p>Рекомендований товар</p> : null}
-            <p>Тип волосся</p>
-            <ul>{hairTypes && hairTypes.map((el) => <li key={el}>{el}</li>)}</ul>
-            <p>Характеристики</p>
-            <ul>{characteristics && characteristics.map((el) => <li key={el}>{el}</li>)}</ul>
-            <p>Опис товару</p>
-            <p>{description}</p>
-            <p>Спосіб застосування</p>
-            <p>{directions}</p>
+            <div className={s.descriptionWrapper}>
+                <div>
+                    <ProductImagePreview images={images} />
+                    <div className={s.priceContainer}>
+                        {recommended ? <p className={s.greenText}>Рекомендований товар</p> : null}
+                        <p className={clsx(s.subtitle, s.price)}>{price && price + 'грн.'}</p>
+                    </div>
+                </div>
+                <div style={{ paddingLeft: '20px' }}>
+                    <h3 className={s.subtitle}>Тип волосся</h3>
+                    <ul className={s.list}>
+                        {hairTypes &&
+                            hairTypes.map((el) => (
+                                <li key={el} className={s.listItem}>
+                                    {el}
+                                </li>
+                            ))}
+                    </ul>
+                    <h3 className={s.subtitle}>Характеристики</h3>
+                    <ul className={s.list}>
+                        {characteristics &&
+                            characteristics.map((el) => (
+                                <li key={el} className={s.listItem}>
+                                    {el}
+                                </li>
+                            ))}
+                    </ul>
+                    <h3 className={s.subtitle}>Опис товару</h3>
+                    <p className={s.description}>{description}</p>
+                    <h3 className={s.subtitle}>Спосіб застосування</h3>
+                    <p className={s.description}>{directions}</p>
+                </div>
+            </div>
         </div>
     );
 };

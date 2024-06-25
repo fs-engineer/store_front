@@ -1,5 +1,5 @@
 .container {
-    padding: 0 0 0 20px;
+    padding: 0 0 0 30px;
 }
 .brand {
     font-weight: 700;
@@ -19,4 +19,39 @@
 .type {
     font-size: 1.25rem;
     font-weight: 400;
+    margin: 0 0 20px;
+}
+.priceContainer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0 20px
+}
+.price {
+    flex-grow: 1;
+    text-align: right;
+}
+.subtitle {
+    font-weight: 700;
+    font-size: 1.25rem;
+    padding: 0 0 10px;
+}
+.greenText {
+    color: var(--green-color);
+    font-size: 1.25rem;
+}
+.list {
+    padding: 0 0 20px 20px;
+    list-style: disc;
+}
+.listItem {
+    &:not(:last-child) {
+        margin: 0 0 10px;
+    }
+}
+.descriptionWrapper {
+    display: flex;
+}
+.description {
+    padding: 0 0 20px 20px;
+    max-width: 630px
 }

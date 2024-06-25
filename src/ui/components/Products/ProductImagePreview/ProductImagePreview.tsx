@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import s from './productImagePreview.module.css';
 
@@ -7,24 +7,23 @@ type Props = {
 };
 
 const ProductImagePreview: React.FC<Props> = ({ images }) => {
-    const imageLinkArray = Array.from(images).map((file) => URL.createObjectURL(file)) || [];
-    const [selectedImage, setSelectedImage] = useState<string | null>(imageLinkArray[0] || null);
-    console.log(selectedImage, 'selected image');
+    const [imageUrls, setImageUrls] = useState<string[]>([]);
+    const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+    useEffect(() => {
+        const imageLinkArray = Array.from(images).map((file) => URL.createObjectURL(file)) || [];
+
+        setSelectedImage(imageLinkArray[0]);
+        setImageUrls(imageLinkArray);
+    }, [images]);
 
     return (
         <div className={s.container}>
             <ul className={s.imageList}>
-                {imageLinkArray.length > 0 &&
-                    imageLinkArray.map((link) => (
-                        <li key={link} className={s.imageListItem}>
-                            <Image
-                                className={s.smallImage}
-                                src={link}
-                                alt={link}
-                                width={86}
-                                height={86}
-                                onClick={() => setSelectedImage(link)}
-                            />
+                {imageUrls.length > 0 &&
+                    imageUrls.map((link) => (
+                        <li key={link} className={s.imageListItem} onClick={() => setSelectedImage(link)}>
+                            <Image className={s.smallImage} src={link} alt={link} width={86} height={86} />
                         </li>
                     ))}
             </ul>
@@ -36,7 +35,7 @@ const ProductImagePreview: React.FC<Props> = ({ images }) => {
                             alt={'product preview'}
                             className={s.bigImage}
                             width={388}
-                            height={412}
+                            height={388}
                         />
                     )}
                 </div>
