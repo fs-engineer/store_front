@@ -28,6 +28,9 @@ import { useRouter } from 'next/navigation';
 import useCurrentPage from '@/hooks/useCurrentPage';
 import { dashboardKey, productsKey } from '@/constants';
 import { uploadImage } from '@/app/lib/images/actions';
+import ProductPreview from '@/ui/components/Products/ProductPreview/ProductPreview';
+
+import s from './productCreateForm.module.css';
 
 // TODO: need to add product preview to the right side
 const ProductCreateForm = () => {
@@ -178,78 +181,101 @@ const ProductCreateForm = () => {
     };
 
     return (
-        <Form onSubmit={handleSubmit}>
-            <Box>
-                <Input
-                    name={'productName'}
-                    type={'text'}
-                    getInputValue={setName}
-                    placeholder={'Введіть назву продукту'}
-                />
-            </Box>
-            <Box>
-                <SelectInputWithSearch
-                    name={'brand'}
-                    placeholder={'Виберіть назву бренду'}
-                    data={brandOptions}
-                    onSelect={setBrandId}
-                />
-            </Box>
-            <Box>
-                <UploadFiles name={'files'} placeholder={'Виберіть файли'} onGetFiles={setImages} />
-            </Box>
-            <Box>
-                <Input name={'price'} type={'number'} getInputValue={setPrice} placeholder={'Введіть ціну продукту'} />
-            </Box>
-            <Box>
-                <MultiSelectInputWithSearch
-                    name={'type'}
-                    placeholder={'Виберіть тип продукту'}
-                    data={typeOptions}
-                    onSelect={setTypeIds}
-                />
-            </Box>
-            <Box>
-                <MultiSelectInputWithSearch
-                    name={'hairType'}
-                    placeholder={'Виберіть тип волосся'}
-                    data={hairTypeOptions}
-                    onSelect={setHairTypeIds}
-                />
-            </Box>
-            <Box>
-                <MultiSelectInputWithSearch
-                    name={'characteristics'}
-                    placeholder={'Виберіть характеристики'}
-                    data={characteristicsOptions}
-                    onSelect={setCharacteristicIds}
-                />
-            </Box>
-            <Box>
-                <TextArea
-                    name={'description'}
-                    placeholder={'Введіть опис продукту'}
-                    getTextAreaValue={setDescription}
-                />
-            </Box>
-            <Box>
-                <TextArea
-                    name={'directions'}
-                    placeholder={'Введіть спосіб користування'}
-                    getTextAreaValue={setDirections}
-                />
-            </Box>
-            <Box>
-                <CheckBox
-                    name={'files'}
-                    placeholder={'Додати цей продукт до рекомендованих?'}
-                    onGetValue={setRecommended}
-                />
-            </Box>
-            <Box>
-                <CreateBtn type="submit" />
-            </Box>
-        </Form>
+        <div className={s.container}>
+            <Form onSubmit={handleSubmit}>
+                <Box>
+                    <Input
+                        name={'productName'}
+                        type={'text'}
+                        getInputValue={setName}
+                        placeholder={'Введіть назву продукту'}
+                    />
+                </Box>
+                <Box>
+                    <SelectInputWithSearch
+                        name={'brand'}
+                        placeholder={'Виберіть назву бренду'}
+                        data={brandOptions}
+                        onSelect={setBrandId}
+                    />
+                </Box>
+                <Box>
+                    <UploadFiles name={'files'} placeholder={'Виберіть файли'} onGetFiles={setImages} />
+                </Box>
+                <Box>
+                    <Input
+                        name={'price'}
+                        type={'number'}
+                        getInputValue={setPrice}
+                        placeholder={'Введіть ціну продукту'}
+                    />
+                </Box>
+                <Box>
+                    <MultiSelectInputWithSearch
+                        name={'type'}
+                        placeholder={'Виберіть тип продукту'}
+                        data={typeOptions}
+                        onSelect={setTypeIds}
+                    />
+                </Box>
+                <Box>
+                    <MultiSelectInputWithSearch
+                        name={'hairType'}
+                        placeholder={'Виберіть тип волосся'}
+                        data={hairTypeOptions}
+                        onSelect={setHairTypeIds}
+                    />
+                </Box>
+                <Box>
+                    <MultiSelectInputWithSearch
+                        name={'characteristics'}
+                        placeholder={'Виберіть характеристики'}
+                        data={characteristicsOptions}
+                        onSelect={setCharacteristicIds}
+                    />
+                </Box>
+                <Box>
+                    <TextArea
+                        name={'description'}
+                        placeholder={'Введіть опис продукту'}
+                        getTextAreaValue={setDescription}
+                    />
+                </Box>
+                <Box>
+                    <TextArea
+                        name={'directions'}
+                        placeholder={'Введіть спосіб користування'}
+                        getTextAreaValue={setDirections}
+                    />
+                </Box>
+                <Box>
+                    <CheckBox
+                        name={'files'}
+                        placeholder={'Додати цей продукт до рекомендованих?'}
+                        onGetValue={setRecommended}
+                    />
+                </Box>
+                <Box>
+                    <CreateBtn type="submit" />
+                </Box>
+            </Form>
+            <ProductPreview
+                name={name}
+                price={price}
+                brandId={brandId}
+                brandOptions={brandOptions}
+                description={description}
+                directions={directions}
+                characteristicIds={characteristicIds}
+                characteristicsOptions={characteristicsOptions}
+                typeIds={typeIds}
+                typeOptions={typeOptions}
+                hairTypeIds={hairTypeIds}
+                hairTypeOptions={hairTypeOptions}
+                recommended={recommended}
+                images={images}
+            />
+        </div>
     );
 };
 
