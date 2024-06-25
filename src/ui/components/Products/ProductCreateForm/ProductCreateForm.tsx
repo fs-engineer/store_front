@@ -28,7 +28,7 @@ import { useRouter } from 'next/navigation';
 import useCurrentPage from '@/hooks/useCurrentPage';
 import { dashboardKey, productsKey } from '@/constants';
 import { uploadImage } from '@/app/lib/images/actions';
-import ProductPreview from '@/ui/components/Products/ProductPreview/ProductPreview';
+import CreateProductPreview from '@/ui/components/Products/CreateProductPreview/CreateProductPreview';
 
 import s from './productCreateForm.module.css';
 
@@ -177,7 +177,7 @@ const ProductCreateForm = () => {
                 await uploadFiles(response.id);
             }
 
-            // router.push(`/${dashboardKey}/${productsKey}?page=${currentPage}`);
+            router.push(`/${dashboardKey}/${productsKey}?page=${currentPage}`);
         } catch (e) {
             console.log(e);
         }
@@ -274,7 +274,7 @@ const ProductCreateForm = () => {
                     <CreateBtn type="submit" />
                 </Box>
             </Form>
-            <ProductPreview
+            <CreateProductPreview
                 name={name}
                 price={price}
                 brandId={brandId}

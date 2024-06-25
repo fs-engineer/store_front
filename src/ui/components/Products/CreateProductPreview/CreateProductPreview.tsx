@@ -1,8 +1,8 @@
 import React from 'react';
 import { ISelectInputDataItem } from '@/interfaces';
 
-import s from './productPreview.module.css';
-import { getOptionNames } from '@/ui/components/Products/ProductPreview/helpers';
+import s from './createProductPreview.module.css';
+import { getOptionNames } from '@/ui/components/Products/CreateProductPreview/helpers';
 import ProductImagePreview from '@/ui/components/Products/ProductImagePreview/ProductImagePreview';
 import clsx from 'clsx';
 
@@ -23,7 +23,7 @@ type Props = {
     images: FileList | [];
 };
 
-const ProductPreview: React.FC<Props> = ({
+const CreateProductPreview: React.FC<Props> = ({
     name,
     price,
     brandId,
@@ -40,13 +40,13 @@ const ProductPreview: React.FC<Props> = ({
     images,
 }) => {
     const brandName = brandOptions.length > 0 && brandId ? brandOptions.find((el) => el.id === brandId)?.name : null;
-    const types = typeOptions.length > 0 && typeIds.length > 0 ? getOptionNames(typeOptions, typeIds) : null;
+    const types = typeOptions.length > 0 && typeIds.length > 0 ? getOptionNames(typeOptions, typeIds) : [];
     const hairTypes =
-        hairTypeOptions.length > 0 && hairTypeIds.length > 0 ? getOptionNames(hairTypeOptions, hairTypeIds) : null;
+        hairTypeOptions.length > 0 && hairTypeIds.length > 0 ? getOptionNames(hairTypeOptions, hairTypeIds) : [];
     const characteristics =
         characteristicsOptions.length > 0 && characteristicIds.length > 0
             ? getOptionNames(characteristicsOptions, characteristicIds)
-            : null;
+            : [];
 
     return (
         <div className={s.container}>
@@ -65,32 +65,41 @@ const ProductPreview: React.FC<Props> = ({
                     </div>
                 </div>
                 <div style={{ paddingLeft: '20px' }}>
-                    <h3 className={s.subtitle}>Тип волосся</h3>
+                    {hairTypes.length > 0 ? <h3 className={s.subtitle}>Тип волосся</h3> : null}
                     <ul className={s.list}>
-                        {hairTypes &&
+                        {hairTypes.length > 0 &&
                             hairTypes.map((el) => (
                                 <li key={el} className={s.listItem}>
                                     {el}
                                 </li>
                             ))}
                     </ul>
-                    <h3 className={s.subtitle}>Характеристики</h3>
+                    {characteristics.length > 0 ? <h3 className={s.subtitle}>Характеристики</h3> : null}
                     <ul className={s.list}>
-                        {characteristics &&
-                            characteristics.map((el) => (
-                                <li key={el} className={s.listItem}>
-                                    {el}
-                                </li>
-                            ))}
+                        {characteristics.length > 0
+                            ? characteristics.map((el) => (
+                                  <li key={el} className={s.listItem}>
+                                      {el}
+                                  </li>
+                              ))
+                            : null}
                     </ul>
-                    <h3 className={s.subtitle}>Опис товару</h3>
-                    <p className={s.description}>{description}</p>
-                    <h3 className={s.subtitle}>Спосіб застосування</h3>
-                    <p className={s.description}>{directions}</p>
+                    {description ? (
+                        <>
+                            <h3 className={s.subtitle}>Опис товару</h3>
+                            <p className={s.description}>{description}</p>
+                        </>
+                    ) : null}
+                    {directions ? (
+                        <>
+                            <h3 className={s.subtitle}>Спосіб застосування</h3>
+                            <p className={s.description}>{directions}</p>
+                        </>
+                    ) : null}
                 </div>
             </div>
         </div>
     );
 };
 
-export default ProductPreview;
+export default CreateProductPreview;
