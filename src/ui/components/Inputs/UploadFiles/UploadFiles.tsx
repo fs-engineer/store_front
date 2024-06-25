@@ -3,6 +3,7 @@
 import React, { useEffect, useId, useState } from 'react';
 import s from './uploadFiles.module.css';
 import { formatFileQuantityText } from '@/ui/components/Inputs/UploadFiles/helpers';
+import { toast } from 'react-toastify';
 
 type Props = {
     name: string;
@@ -27,7 +28,12 @@ const UploadFiles: React.FC<Props> = ({
     }, [files, onGetFiles]);
 
     const handleFilesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setFiles(e.target.files || []);
+        const files = e.target.files;
+        if (files && files.length > 5) {
+            toast.error('Можна додати максимум 5 файлів');
+            return;
+        }
+        setFiles(files || []);
     };
 
     return (
