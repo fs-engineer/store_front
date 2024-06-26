@@ -205,7 +205,7 @@ const ProductCreateForm = () => {
                     />
                 </Box>
                 <Box>
-                    <UploadFiles name={'files'} placeholder={'Виберіть файли'} onGetFiles={setImages} />
+                    <UploadFiles name={'files'} placeholder={'Виберіть файли'} onGetFiles={setImages} quantity={5} />
                 </Box>
                 <Box>
                     <Input

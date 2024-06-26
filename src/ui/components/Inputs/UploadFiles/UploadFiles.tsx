@@ -10,6 +10,7 @@ type Props = {
     placeholder?: string;
     onGetFiles: (files: FileList | []) => void;
     accept?: string;
+    quantity?: number;
 };
 
 const UploadFiles: React.FC<Props> = ({
@@ -17,6 +18,7 @@ const UploadFiles: React.FC<Props> = ({
     placeholder = 'Select file',
     onGetFiles,
     accept = 'image/*,.jpg,.png',
+    quantity = 3,
 }) => {
     const [files, setFiles] = useState<FileList | []>([]);
     const id = useId();
@@ -29,7 +31,7 @@ const UploadFiles: React.FC<Props> = ({
 
     const handleFilesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const files = e.target.files;
-        if (files && files.length > 5) {
+        if (files && files.length > quantity) {
             toast.error('Можна додати максимум 5 файлів');
             return;
         }
