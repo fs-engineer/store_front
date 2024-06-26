@@ -1,8 +1,8 @@
 import React from 'react';
 import { ISelectInputDataItem } from '@/interfaces';
 
-import s from './createProductPreview.module.css';
-import { getOptionNames } from '@/ui/components/Products/CreateProductPreview/helpers';
+import s from './ProductPreview.module.css';
+import { getOptionNames } from '@/ui/components/Products/ProductPreview/helpers';
 import ProductImagePreview from '@/ui/components/Products/ProductImagePreview/ProductImagePreview';
 import clsx from 'clsx';
 
@@ -20,10 +20,11 @@ type Props = {
     hairTypeIds: number[];
     hairTypeOptions: ISelectInputDataItem[];
     recommended: boolean;
+    volume: string;
     images: FileList | [];
 };
 
-const CreateProductPreview: React.FC<Props> = ({
+const ProductPreview: React.FC<Props> = ({
     name,
     price,
     brandId,
@@ -38,6 +39,7 @@ const CreateProductPreview: React.FC<Props> = ({
     hairTypeOptions,
     recommended,
     images,
+    volume,
 }) => {
     const brandName = brandOptions.length > 0 && brandId ? brandOptions.find((el) => el.id === brandId)?.name : null;
     const types = typeOptions.length > 0 && typeIds.length > 0 ? getOptionNames(typeOptions, typeIds) : [];
@@ -47,7 +49,7 @@ const CreateProductPreview: React.FC<Props> = ({
         characteristicsOptions.length > 0 && characteristicIds.length > 0
             ? getOptionNames(characteristicsOptions, characteristicIds)
             : [];
-
+    console.log(volume);
     return (
         <div className={s.container}>
             <div>
@@ -96,10 +98,16 @@ const CreateProductPreview: React.FC<Props> = ({
                             <p className={s.description}>{directions}</p>
                         </>
                     ) : null}
+                    {volume ? (
+                        <>
+                            <h3 className={s.subtitle}>{"Об'єм"}</h3>
+                            <p className={s.description}>{volume}</p>
+                        </>
+                    ) : null}
                 </div>
             </div>
         </div>
     );
 };
 
-export default CreateProductPreview;
+export default ProductPreview;

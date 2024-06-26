@@ -28,7 +28,7 @@ import { useRouter } from 'next/navigation';
 import useCurrentPage from '@/hooks/useCurrentPage';
 import { dashboardKey, productsKey } from '@/constants';
 import { uploadImage } from '@/app/lib/images/actions';
-import CreateProductPreview from '@/ui/components/Products/CreateProductPreview/CreateProductPreview';
+import ProductPreview from '@/ui/components/Products/ProductPreview/ProductPreview';
 
 import s from './productCreateForm.module.css';
 
@@ -217,15 +217,6 @@ const ProductCreateForm = () => {
                     />
                 </Box>
                 <Box>
-                    <Input
-                        name={'volume'}
-                        type={'number'}
-                        value={volume}
-                        getValue={setVolume}
-                        placeholder={"Введіть об'єм продукту"}
-                    />
-                </Box>
-                <Box>
                     <MultiSelectInputWithSearch
                         name={'type'}
                         placeholder={'Виберіть тип продукту'}
@@ -264,6 +255,15 @@ const ProductCreateForm = () => {
                     />
                 </Box>
                 <Box>
+                    <Input
+                        name={'volume'}
+                        type={'number'}
+                        value={volume}
+                        getValue={setVolume}
+                        placeholder={"Введіть об'єм продукту"}
+                    />
+                </Box>
+                <Box>
                     <CheckBox
                         name={'files'}
                         placeholder={'Додати цей продукт до рекомендованих?'}
@@ -274,7 +274,7 @@ const ProductCreateForm = () => {
                     <CreateBtn type="submit" />
                 </Box>
             </Form>
-            <CreateProductPreview
+            <ProductPreview
                 name={name}
                 price={price}
                 brandId={brandId}
@@ -289,6 +289,7 @@ const ProductCreateForm = () => {
                 hairTypeOptions={hairTypeOptions}
                 recommended={recommended}
                 images={images}
+                volume={volume}
             />
         </div>
     );
