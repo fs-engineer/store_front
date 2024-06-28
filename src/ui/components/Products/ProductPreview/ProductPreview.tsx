@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ISelectInputDataItem } from '@/interfaces';
 
 import s from './ProductPreview.module.css';
@@ -41,6 +41,14 @@ const ProductPreview: React.FC<Props> = ({
     images,
     volume,
 }) => {
+    const [imageUrls, setImageUrls] = useState<string[]>([]);
+
+    useEffect(() => {
+        const imageLinkArray = Array.from(images).map((file) => URL.createObjectURL(file)) || [];
+
+        setImageUrls(imageLinkArray);
+    }, [images]);
+
     const brandName = brandOptions.length > 0 && brandId ? brandOptions.find((el) => el.id === brandId)?.name : null;
     const types = typeOptions.length > 0 && typeIds.length > 0 ? getOptionNames(typeOptions, typeIds) : [];
     const hairTypes =
@@ -60,7 +68,7 @@ const ProductPreview: React.FC<Props> = ({
 
             <div className={s.descriptionWrapper}>
                 <div>
-                    <ProductImagePreview images={images} />
+                    <ProductImagePreview imageUrls={imageUrls} />
                     <div className={s.priceContainer}>
                         {recommended ? <p className={s.greenText}>Рекомендований товар</p> : null}
                         <p className={clsx(s.subtitle, s.price)}>{price && price + ' грн.'}</p>
