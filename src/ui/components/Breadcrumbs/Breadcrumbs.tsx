@@ -11,7 +11,7 @@ interface Breadcrumb {
 export default function Breadcrumbs({ breadcrumbs }: { breadcrumbs: Breadcrumb[] }) {
     return (
         <nav aria-label="Breadcrumb" className={s.nav}>
-            <ol className={s.list}>
+            <ul className={s.list}>
                 {breadcrumbs.map((breadcrumb, index) => (
                     <li
                         key={breadcrumb.href}
@@ -24,7 +24,7 @@ export default function Breadcrumbs({ breadcrumbs }: { breadcrumbs: Breadcrumb[]
                         {index < breadcrumbs.length - 1 ? <span className={s.span}>/</span> : null}
                     </li>
                 ))}
-            </ol>
+            </ul>
         </nav>
     );
 }

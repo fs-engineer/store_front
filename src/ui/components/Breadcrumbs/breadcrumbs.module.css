@@ -7,14 +7,22 @@
     list-style-type: none;
 }
 .listItem {
-    font-weight: 400;
+    font-weight: 700;
+    color: var(--devider-color);
 }
 .listItemActive {
-    font-weight: 900;
+    font-weight: 700;
+    color: var(--neutral-color);
 }
 .link {
     text-decoration: none;
-    color: var(--neutral-color)
+    color: inherit;
+    font-size: 1.25rem;
+
+    @media (min-width: 600px) {
+        font-size: 1.5rem;
+    }
+
 }
 .span {
     margin: 0 5px;
