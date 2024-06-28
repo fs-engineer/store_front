@@ -36,7 +36,6 @@ const SelectInputWithSearch: React.FC<Props> = ({
     }, [data]);
 
     useEffect(() => {
-        console.log('11111111111');
         if (searchTerm === '') {
             getSelectedId(null);
         }

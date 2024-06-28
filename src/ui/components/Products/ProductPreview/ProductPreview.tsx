@@ -49,7 +49,7 @@ const ProductPreview: React.FC<Props> = ({
         characteristicsOptions.length > 0 && characteristicIds.length > 0
             ? getOptionNames(characteristicsOptions, characteristicIds)
             : [];
-    console.log(volume);
+
     return (
         <div className={s.container}>
             <div>
