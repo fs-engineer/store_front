@@ -34,8 +34,8 @@ const ProductImagePreview: React.FC<Props> = ({ images }) => {
                     ))}
             </ul>
             <div>
-                <div className={s.bigImageWrapper}>
-                    {selectedImage && (
+                {selectedImage && (
+                    <div className={s.bigImageWrapper}>
                         <Image
                             src={selectedImage}
                             alt={'Велика іконка попереднього перегляду'}
@@ -43,8 +43,8 @@ const ProductImagePreview: React.FC<Props> = ({ images }) => {
                             width={388}
                             height={388}
                         />
-                    )}
-                </div>
+                    </div>
+                )}
             </div>
         </div>
     );

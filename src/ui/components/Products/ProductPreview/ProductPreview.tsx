@@ -63,7 +63,7 @@ const ProductPreview: React.FC<Props> = ({
                     <ProductImagePreview images={images} />
                     <div className={s.priceContainer}>
                         {recommended ? <p className={s.greenText}>Рекомендований товар</p> : null}
-                        <p className={clsx(s.subtitle, s.price)}>{price && price + 'грн.'}</p>
+                        <p className={clsx(s.subtitle, s.price)}>{price && price + ' грн.'}</p>
                     </div>
                 </div>
                 <div style={{ paddingLeft: '20px' }}>
@@ -101,7 +101,7 @@ const ProductPreview: React.FC<Props> = ({
                     {volume ? (
                         <>
                             <h3 className={s.subtitle}>{"Об'єм"}</h3>
-                            <p className={s.description}>{volume}</p>
+                            <p className={s.description}>{volume + ' мл'}</p>
                         </>
                     ) : null}
                 </div>
