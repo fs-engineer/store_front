@@ -23,7 +23,13 @@ const ProductImagePreview: React.FC<Props> = ({ images }) => {
                 {imageUrls.length > 0 &&
                     imageUrls.map((link) => (
                         <li key={link} className={s.imageListItem} onClick={() => setSelectedImage(link)}>
-                            <Image className={s.smallImage} src={link} alt={link} width={86} height={86} />
+                            <Image
+                                className={s.smallImage}
+                                src={link}
+                                alt={'Маленька іконка попереднього перегляду'}
+                                width={52}
+                                height={52}
+                            />
                         </li>
                     ))}
             </ul>
@@ -32,7 +38,7 @@ const ProductImagePreview: React.FC<Props> = ({ images }) => {
                     {selectedImage && (
                         <Image
                             src={selectedImage}
-                            alt={'product preview'}
+                            alt={'Велика іконка попереднього перегляду'}
                             className={s.bigImage}
                             width={388}
                             height={388}

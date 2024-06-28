@@ -7,7 +7,7 @@ export { default as BrandsTable } from './Tables/BrandsTable/BrandsTable';
 export { default as CharacteristicsTable } from './Tables/CharacteristicsTable/CharacteristicsTable';
 
 export { default as Title } from './Dashboard/Title/Title';
-export { default as Breadcrumbs } from './Dashboard/Breadcrumbs/Breadcrumbs';
+export { default as Breadcrumbs } from '@/ui/components/Breadcrumbs/Breadcrumbs';
 
 // INPUTS
 export { default as Input } from './Inputs/Input/Input';

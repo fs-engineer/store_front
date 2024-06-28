@@ -12,19 +12,29 @@
     }
 }
 .bigImageWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 5px;
     width: 388px;
+    height: 388px;
     margin-bottom: 16px;
+    background-color: var(--back-color);
 
     @media (min-width: 600px) {
         width: 524px;
+        height: 524px;
     }
 }
 .bigImage {
     width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 .smallImage {
     width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 .imageList {
     display: flex;
@@ -36,9 +46,10 @@
 }
 .imageListItem {
     width: 52px;
+    height: 52px;
     border-radius: 5px;
+    background-color: var(--back-color);
     cursor: pointer;
-    overflow: hidden;
 
     &:not(:last-child) {
         margin: 0 16px 0 0;
@@ -46,6 +57,7 @@
 
     @media (min-width: 600px) {
         width: 86px;
+        height: 86px;
 
         &:not(:last-child) {
             margin: 0 0 20px;
