@@ -13,10 +13,14 @@ import LogoutBtn from '@/ui/components/LinksAndButtons/LogoutBtn/LogoutBtn';
 import { Session } from 'next-auth';
 import Modal from '@/ui/components/Modal/Modal';
 import SignOutConfWindow from '@/ui/components/Auth/SignOutConfWindow/SignOutConfWindow';
+import DashboardBtn from '@/ui/components/LinksAndButtons/DashboardBtn/DashboardBtn';
+import { ROLES } from '@/constants';
 
 const Header = () => {
     const [modal, setModal] = useState(false);
     const { session }: { session: Session | null } = useCurrentSession();
+    const roles = session?.user?.roles;
+    const isAdmin = roles && Array.isArray(roles) && roles.length > 0 && roles.includes(ROLES.ADMIN);
 
     const toggleModal = () => {
         setModal((prevState) => !prevState);
@@ -35,6 +39,7 @@ const Header = () => {
                 <div className={s.rightMarginWrap}>
                     <BasketBtn />
                 </div>
+                {isAdmin ? <DashboardBtn /> : null}
                 {session?.user?.id ? (
                     <>
                         <ProfileBtn />

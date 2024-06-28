@@ -7,5 +7,10 @@ export const brandsKey = 'brands';
 export const characteristicsKey = 'characteristics';
 export const productTypesKey = 'product-types';
 export const hairTypesKey = 'hair-types';
-
 export const dashboardKey = 'dashboard';
+
+export const ROLES = {
+    ADMIN: 'ADMIN',
+    USER: 'USER',
+    GUEST: 'GUEST',
+};
