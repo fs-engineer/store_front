@@ -36,10 +36,14 @@ const Header = () => {
                 <div className={s.logoWrap}>
                     <Logo />
                 </div>
+                {isAdmin ? (
+                    <div className={s.rightMarginWrap}>
+                        <DashboardBtn />
+                    </div>
+                ) : null}
                 <div className={s.rightMarginWrap}>
                     <BasketBtn />
                 </div>
-                {isAdmin ? <DashboardBtn /> : null}
                 {session?.user?.id ? (
                     <>
                         <ProfileBtn />
