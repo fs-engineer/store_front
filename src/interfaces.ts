@@ -55,17 +55,28 @@ export interface IHairTypes {
     name: string;
 }
 
+export interface IImage {
+    id: number;
+    secureUrl: string;
+}
+
+export interface IType {
+    id: number;
+    name: string;
+}
+
 export interface IProduct {
     id: number;
     name: string;
     price: number;
     description: string;
     brandId: number;
-    composition: string;
-    wayToUse: string;
-    images: string[];
+    volume: number;
+    directions: string;
     recommended: boolean;
     rate: number;
+    types: IType[];
+    images: IImage[];
 }
 
 export interface ISelectInputDataItem {

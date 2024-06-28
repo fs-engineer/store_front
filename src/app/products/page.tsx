@@ -1,15 +1,23 @@
 import React from 'react';
-import Link from 'next/link';
+import { Breadcrumbs, PageContainer, ProductsList } from '@/ui/components';
+import { productsKey } from '@/constants';
+import { IProps } from '@/interfaces';
 
-const Page = async () => {
+const Page: React.FC<IProps> = async ({ searchParams }) => {
     return (
-        <div>
-            <h1>Products page</h1>
-            <Link href="/" style={{ marginRight: '20px' }}>
-                home
-            </Link>
-            <Link href="/dashboard">dashboard</Link>
-        </div>
+        <PageContainer>
+            <Breadcrumbs
+                breadcrumbs={[
+                    { label: 'Головна', href: `/` },
+                    {
+                        label: 'Товари',
+                        href: `/${productsKey}`,
+                        active: true,
+                    },
+                ]}
+            />
+            <ProductsList searchParams={searchParams} />
+        </PageContainer>
     );
 };
 

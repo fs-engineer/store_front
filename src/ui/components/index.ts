@@ -1,10 +1,6 @@
 export { default as Container } from './Dashboard/Container/Container';
 export { default as Box } from './Box/Box';
-
-// TABLES
-export { default as UsersTable } from '@/ui/components/Tables/UserTable/UserTable';
-export { default as BrandsTable } from './Tables/BrandsTable/BrandsTable';
-export { default as CharacteristicsTable } from './Tables/CharacteristicsTable/CharacteristicsTable';
+export { default as PageContainer } from '@/ui/components/Containers/PageContainer/PageContainer';
 
 export { default as Title } from './Dashboard/Title/Title';
 export { default as Breadcrumbs } from '@/ui/components/Breadcrumbs/Breadcrumbs';
@@ -26,7 +22,13 @@ export { default as SubmitBtn } from './LinksAndButtons/SubmitBtn/SubmitBtn';
 // LINKS
 export { default as CreateLink } from './LinksAndButtons/CreateLink/CreateLink';
 
+//Lists
+export { default as ProductsList } from './Products/ProductsList/ProductsList';
+
 //TABLES
+export { default as UsersTable } from '@/ui/components/Tables/UserTable/UserTable';
+export { default as BrandsTable } from './Tables/BrandsTable/BrandsTable';
+export { default as CharacteristicsTable } from './Tables/CharacteristicsTable/CharacteristicsTable';
 export { default as Table } from './Tables/Table/Table';
 export { default as TableHead } from './Tables/Table/TableHead';
 export { default as TableRow } from './Tables/Table/TableRow';
