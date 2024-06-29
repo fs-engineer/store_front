@@ -34,7 +34,7 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
                 <p>{product.description}</p>
             </Accordion>
             <Divider />
-            <Accordion title={'Опис товару'}>
+            <Accordion title={'Характеристики'}>
                 <ul className={s.charList}>
                     {product.characteristics
                         ? product.characteristics.map((el) => <li key={el.id}>{el.value}</li>)
