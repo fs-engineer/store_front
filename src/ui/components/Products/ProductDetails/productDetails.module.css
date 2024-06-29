@@ -21,9 +21,11 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    padding: 16px 0 0;
 }
-.charList {
-    list-style: disc;
-    padding: 0 0 0 20px;
+.btnWrap {
+    display: flex;
+    padding: 24px 0 24px;
 }
+
 
