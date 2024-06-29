@@ -1,0 +1,29 @@
+.accordion {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding: 0 5px 0;
+    cursor: pointer;
+}
+.title {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+.titleWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.icon {
+    color: var(--neutral-color);
+    width: 20px;
+    height: 20px;
+}
+.iconUp {
+    transform: rotateX(180deg);
+}
+.childrenWrap {
+    padding: 5px 0 5px;
+}

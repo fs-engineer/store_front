@@ -5,7 +5,7 @@
     max-height: 200px;
     max-width: 250px;
     overflow-y: scroll;
-    border: 1px solid var(--devider-color);
+    border: 1px solid var(--divider-color);
     border-radius: 5px;
     padding: 6px;
     background-color: var(--white-color);
@@ -20,7 +20,7 @@
         color: var(--neutral-color);
     }
     &:not(:last-child) {
-        border-bottom: 1px solid var(--devider-color);
+        border-bottom: 1px solid var(--divider-color);
     }
 }
 .listItemSelected {
@@ -29,7 +29,7 @@
 }
 .input {
     width: 100%;
-    border: 1px solid var(--devider-color);
+    border: 1px solid var(--divider-color);
     border-radius: 5px;
     padding: 5px;
 }

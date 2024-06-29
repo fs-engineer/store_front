@@ -8,7 +8,7 @@
 }
 .listItem {
     font-weight: 700;
-    color: var(--devider-color);
+    color: var(--divider-color);
 }
 .listItemActive {
     font-weight: 700;

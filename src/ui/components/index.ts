@@ -38,3 +38,9 @@ export { default as TableCell } from './Tables/Table/TableCell';
 
 //PAGINATION
 export { default as Pagination } from './Pagination/Pagination';
+
+//MENUS
+export { default as Accordion } from '@/ui/components/Containers/Accordion/Accordion';
+
+//UI
+export { default as Divider } from './Divider/Divider';

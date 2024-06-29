@@ -71,12 +71,14 @@ export interface IProduct {
     price: number;
     description: string;
     brandId: number;
+    brand: IBrand;
     volume: number;
     directions: string;
     recommended: boolean;
     rate: number;
     types: IType[];
     images: IImage[];
+    characteristics: ICharacteristic[];
 }
 
 export interface ISelectInputDataItem {
