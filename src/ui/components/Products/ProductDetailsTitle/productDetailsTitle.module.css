@@ -1,0 +1,24 @@
+.wrap {
+    @media (min-width: 600px) {
+        margin: 0 0 0 65px;
+    }
+}
+.subtitle {
+    font-size: 1rem;
+    color: var(--accent-red-color);
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+.title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0 0 2px;
+}
+.types {
+    font-size: 0.88rem;
+
+    @media (min-width: 600px) {
+        margin: 0 0 24px;
+    }
+}

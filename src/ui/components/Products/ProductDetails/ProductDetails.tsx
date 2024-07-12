@@ -5,6 +5,8 @@ import ProductImagePreview from '@/ui/components/Products/ProductImagePreview/Pr
 import s from './productDetails.module.css';
 import { CreateBtn, Divider } from '@/ui/components';
 import ProductAccordionMobile from '@/ui/components/Products/ProductAccordionMobile/ProductAccordionMobile';
+import ProductDetailsTitle from '@/ui/components/Products/ProductDetailsTitle/ProductDetailsTitle';
+import Advantages from '@/ui/components/Advantages/Advantages';
 
 type Props = {
     product: IProduct;
@@ -15,10 +17,8 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
 
     return (
         <div className={s.container}>
-            <div>
-                {product?.brand?.name ? <h3 className={s.subtitle}>{product.brand.name}</h3> : null}
-                <h2 className={s.title}>{product.name}</h2>
-                <p>{product.types ? product.types.map((type) => type.name).join(' ') : null}</p>
+            <div className={s.titleImageWrap}>
+                <ProductDetailsTitle name={product.name} brand={product.brand} types={product.types} />
                 <ProductImagePreview imageUrls={imageUrls} />
             </div>
             <div className={s.articleWrap}>
@@ -34,6 +34,7 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
             </div>
             <Divider />
             <ProductAccordionMobile product={product} />
+            <Advantages />
         </div>
     );
 };
