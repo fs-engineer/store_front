@@ -79,6 +79,8 @@ export interface IProduct {
     types: IType[];
     images: IImage[];
     characteristics: ICharacteristic[];
+    composition: string;
+    article: string;
 }
 
 export interface ISelectInputDataItem {

@@ -1,0 +1,29 @@
+.container {
+    width: 100%;
+    padding: 64px 0 0;
+}
+.list {
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    padding: 14px 0;
+}
+.tabItem {
+    cursor: pointer;
+    font-size: 1.25rem;
+    color: var(--divider-color);
+    font-weight: 700;
+
+    &:not(:last-child) {
+        margin: 0 32px 0 0;
+    }
+}
+.active {
+    color: var(--neutral-color);
+}
+.contentWrap {
+    padding: 36px 0 0;
+}
+.tabContent {
+    font-size: 1.25rem;
+}

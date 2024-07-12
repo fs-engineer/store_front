@@ -10,6 +10,7 @@ import ProductDetailsTitle from '@/ui/components/Products/ProductDetailsTitle/Pr
 import Advantages from '@/ui/components/Advantages/Advantages';
 import useWindowSize from '@/hooks/useWindowSize';
 import ProductDetailsButtons from '@/ui/components/Products/ProductDetailsButtons/ProductDetailsButtons';
+import ProductDetailsTabs from '@/ui/components/Products/ProductDetailsTabs/ProductDetailsTabs';
 
 type Props = {
     product: IProduct;
@@ -38,6 +39,14 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
                     <Divider />
                     <ProductAccordionMobile product={product} />
                 </>
+            ) : null}
+            {width && width > 600 ? (
+                <ProductDetailsTabs
+                    description={product.description}
+                    characteristics={product.characteristics}
+                    directions={product.directions}
+                    composition={product.composition}
+                />
             ) : null}
             <Advantages />
         </div>
