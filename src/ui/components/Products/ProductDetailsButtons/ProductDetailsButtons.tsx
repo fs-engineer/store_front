@@ -5,13 +5,14 @@ import { CreateBtn, Divider } from '@/ui/components';
 type Props = {
     volume: number;
     price: number;
+    article: number;
 };
 
-const ProductDetailsButtons: React.FC<Props> = ({ volume, price }) => {
+const ProductDetailsButtons: React.FC<Props> = ({ volume, price, article }) => {
     return (
         <>
             <div className={s.articleWrap}>
-                <p className={s.article}>Артикул: треба додати до бази</p>
+                <p className={s.article}>Артикул: {article}</p>
             </div>
             <Divider />
             <div className={s.priceWrap}>

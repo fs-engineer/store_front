@@ -80,7 +80,7 @@ export interface IProduct {
     images: IImage[];
     characteristics: ICharacteristic[];
     composition: string;
-    article: string;
+    article: number;
 }
 
 export interface ISelectInputDataItem {

@@ -28,14 +28,18 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
                 <div className={s.titleButtonsWrap}>
                     <ProductDetailsTitle name={product.name} brand={product.brand} types={product.types} />
                     {width && width >= 600 ? (
-                        <ProductDetailsButtons volume={product.volume} price={product.price} />
+                        <ProductDetailsButtons
+                            volume={product.volume}
+                            price={product.price}
+                            article={product.article}
+                        />
                     ) : null}
                 </div>
                 <ProductImagePreview imageUrls={imageUrls} />
             </div>
             {width && width < 600 ? (
                 <>
-                    <ProductDetailsButtons volume={product.volume} price={product.price} />
+                    <ProductDetailsButtons volume={product.volume} price={product.price} article={product.article} />
                     <Divider />
                     <ProductAccordionMobile product={product} />
                 </>

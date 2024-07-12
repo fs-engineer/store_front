@@ -282,7 +282,7 @@ const ProductCreateForm = () => {
                         type={'number'}
                         value={article}
                         getValue={setArticle}
-                        placeholder={'Введіть артикль продукту'}
+                        placeholder={'Введіть артикул продукту'}
                     />
                 </Box>
                 <Box>
