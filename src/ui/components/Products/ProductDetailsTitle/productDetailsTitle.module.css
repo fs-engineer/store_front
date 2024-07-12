@@ -8,17 +8,26 @@
     color: var(--accent-red-color);
     font-weight: 700;
     margin-bottom: 12px;
+
+    @media (min-width: 600px) {
+        font-size: 1.25rem;
+    }
 }
 .title {
     font-size: 1.25rem;
     font-weight: 700;
     text-transform: uppercase;
     margin: 0 0 2px;
+
+    @media (min-width: 600px) {
+        font-size: 1.5rem;
+    }
 }
 .types {
     font-size: 0.88rem;
 
     @media (min-width: 600px) {
+        font-size: 1.25rem;
         margin: 0 0 24px;
     }
 }

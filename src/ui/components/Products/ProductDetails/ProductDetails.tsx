@@ -1,12 +1,14 @@
+'use client';
+
 import React from 'react';
 import { IProduct } from '@/interfaces';
 import ProductImagePreview from '@/ui/components/Products/ProductImagePreview/ProductImagePreview';
-
 import s from './productDetails.module.css';
 import { CreateBtn, Divider } from '@/ui/components';
 import ProductAccordionMobile from '@/ui/components/Products/ProductAccordionMobile/ProductAccordionMobile';
 import ProductDetailsTitle from '@/ui/components/Products/ProductDetailsTitle/ProductDetailsTitle';
 import Advantages from '@/ui/components/Advantages/Advantages';
+import useWindowSize from '@/hooks/useWindowSize';
 
 type Props = {
     product: IProduct;
@@ -14,6 +16,9 @@ type Props = {
 
 const ProductDetails: React.FC<Props> = ({ product }) => {
     const imageUrls = (product.images && product.images.map((el) => el.secureUrl)) || [];
+    const { width } = useWindowSize();
+
+    console.log(width);
 
     return (
         <div className={s.container}>
@@ -32,8 +37,12 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
             <div className={s.btnWrap}>
                 <CreateBtn type={'button'} text={'Купити'} />
             </div>
-            <Divider />
-            <ProductAccordionMobile product={product} />
+            {width && width < 600 ? (
+                <>
+                    <Divider />
+                    <ProductAccordionMobile product={product} />
+                </>
+            ) : null}
             <Advantages />
         </div>
     );
