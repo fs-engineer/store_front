@@ -8,7 +8,7 @@
     @media (min-width: 600px) {
         flex-direction: row;
         width: 630px;
-        height: 560px;
+        height: 524px;
     }
 }
 .bigImageWrapper {
@@ -22,6 +22,7 @@
     background-color: var(--back-color);
 
     @media (min-width: 600px) {
+        margin-bottom: 0;
         width: 524px;
         height: 524px;
     }

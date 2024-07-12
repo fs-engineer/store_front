@@ -11,25 +11,12 @@
         justify-content: flex-end;
     }
 }
-.article {
-    font-weight: 700;
-}
-.articleWrap {
-    padding: 24px 0 24px;
-}
-.priceWrap {
+.titleButtonsWrap {
+    display: flex;
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 16px 0 0;
-}
-.title {
-    font-size: 1.25rem;
-    font-weight: 700;
-}
-.btnWrap {
-    display: flex;
-    padding: 24px 0 24px;
-}
 
-
+    @media (min-width: 600px) {
+        flex-direction: column;
+        margin: 0 0 0 65px;
+    }
+}
