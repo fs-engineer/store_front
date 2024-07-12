@@ -16,6 +16,8 @@ type CreateProductDto = {
     directions: string;
     recommended: boolean;
     volume: number;
+    composition: string;
+    article: number;
 };
 
 export const createProduct = async (dto: CreateProductDto) => {

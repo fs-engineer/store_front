@@ -49,6 +49,8 @@ const ProductCreateForm = () => {
     const [hairTypeOptions, setHairTypeOptions] = useState<ISelectInputDataItem[]>([]);
     const [images, setImages] = useState<FileList | []>([]);
     const [recommended, setRecommended] = useState(false);
+    const [composition, setComposition] = useState('');
+    const [article, setArticle] = useState('');
 
     const router = useRouter();
     const currentPage = useCurrentPage();
@@ -150,6 +152,8 @@ const ProductCreateForm = () => {
             directions,
             recommended,
             volume,
+            composition,
+            article,
         });
         if (!isAllValuesValid) return;
 
@@ -164,6 +168,8 @@ const ProductCreateForm = () => {
             recommended,
             characteristics: characteristicIds,
             volume: Number(volume),
+            composition,
+            article: Number(article),
         };
 
         try {
@@ -255,12 +261,28 @@ const ProductCreateForm = () => {
                     />
                 </Box>
                 <Box>
+                    <TextArea
+                        name={'composition'}
+                        placeholder={'Введіть склад товару'}
+                        getTextAreaValue={setComposition}
+                    />
+                </Box>
+                <Box>
                     <Input
                         name={'volume'}
                         type={'number'}
                         value={volume}
                         getValue={setVolume}
                         placeholder={"Введіть об'єм продукту"}
+                    />
+                </Box>
+                <Box>
+                    <Input
+                        name={'article'}
+                        type={'number'}
+                        value={article}
+                        getValue={setArticle}
+                        placeholder={'Введіть артикль продукту'}
                     />
                 </Box>
                 <Box>

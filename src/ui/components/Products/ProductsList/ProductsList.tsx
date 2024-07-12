@@ -9,12 +9,12 @@ import { Pagination } from '@/ui/components';
 import ProductCard from '@/ui/components/Tables/ProductCard/ProductCard';
 
 const ProductsList: React.FC<IProps> = ({ searchParams }) => {
-    const fields = ['id', 'name', 'price', 'images', 'types'];
     const [products, setProducts] = useState<IProduct[]>([]);
     const [totalPages, setTotalPages] = useState(0);
 
     useEffect(() => {
         const fetchProducts = async () => {
+            const fields = ['id', 'name', 'price', 'images', 'types'];
             const data = await getAllProductsByParams({ searchParams });
 
             if (!data) {
@@ -40,7 +40,7 @@ const ProductsList: React.FC<IProps> = ({ searchParams }) => {
             <ul className={s.list}>
                 <ProductCard products={products} imgWidth={185} imgHeight={335} />
             </ul>
-            <Pagination totalPages={totalPages} />
+            {products.length ? <Pagination totalPages={totalPages} /> : null}
         </>
     );
 };

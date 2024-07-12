@@ -12,6 +12,8 @@ type FormValues = {
     directions: string;
     recommended: boolean;
     volume: string;
+    article: string;
+    composition: string;
 };
 
 export const renameCharacteristicsFields = (data: ICharacteristic[]) => {
@@ -27,6 +29,8 @@ export const checkFormExistValues = ({
     characteristicIds,
     description,
     directions,
+    composition,
+    article,
 }: FormValues) => {
     if (!name) {
         toast.error('Треба ввести назву продукту');
@@ -51,6 +55,12 @@ export const checkFormExistValues = ({
         return false;
     } else if (!directions) {
         toast.error('Треба додати спосіб користування');
+        return false;
+    } else if (!composition) {
+        toast.error('Треба додати склад продукту');
+        return false;
+    } else if (!article) {
+        toast.error('Треба додати артикль продукту');
         return false;
     } else {
         return true;

@@ -11,4 +11,6 @@ export const productSchema = object({
     recommended: boolean(),
     directions: string().min(5, { message: 'Directions are required' }),
     volume: number().min(1, { message: 'Volume should be min 1 symbol' }),
+    composition: string().min(10, { message: 'Composition should be min 10 symbol' }),
+    article: number(),
 });
