@@ -1,6 +1,6 @@
 import { GiBlackBar, GiButterfly, GiShamblingZombie, GiWomanElfFace } from 'react-icons/gi';
 import clsx from 'clsx';
-import buttonStyles from '@/ui/components/LinksAndButtons/buttons.module.css';
+import buttonStyles from '@/ui/components/ButtonsAndLinks/buttons.module.css';
 import { FaAirFreshener, FaUsersCog } from 'react-icons/fa';
 import { FaUserSecret } from 'react-icons/fa6';
 import React from 'react';

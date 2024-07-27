@@ -3,7 +3,7 @@
 import React, { useState, useEffect, ChangeEvent, useRef } from 'react';
 import s from '../SelectInputWithSearch.module.css';
 import { ISelectInputDataItem } from '@/interfaces';
-import ResetInputBtn from '@/ui/components/LinksAndButtons/ResetInputBtn/ResetInputBtn';
+import ResetInputBtn from '@/ui/components/ButtonsAndLinks/ResetInputBtn/ResetInputBtn';
 import SearchInputList from '@/ui/components/Inputs/SelectInputsWithSearch/SearchInputList/SearchInputList';
 
 interface Props {

@@ -1,7 +1,7 @@
 import React from 'react';
 import s from '@/ui/components/Auth/AuthForms/authForm.module.css';
 import Link from 'next/link';
-import SubmitBtn from '@/ui/components/LinksAndButtons/SubmitBtn/SubmitBtn';
+import SubmitBtn from '@/ui/components/ButtonsAndLinks/SubmitBtn/SubmitBtn';
 
 const RegisterForm = () => {
     return (

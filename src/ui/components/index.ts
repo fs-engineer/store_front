@@ -15,12 +15,12 @@ export { default as UploadFiles } from './Inputs/UploadFiles/UploadFiles';
 export { default as CheckBox } from './Inputs/CheckBox/CheckBox';
 
 // BUTTONS
-export { default as CreateBtn } from './LinksAndButtons/CreateBtn/CreateBtn';
-export { default as CancelBtn } from './LinksAndButtons/CancelBtn/CancelBtn';
-export { default as SubmitBtn } from './LinksAndButtons/SubmitBtn/SubmitBtn';
+export { default as CreateBtn } from '@/ui/components/ButtonsAndLinks/CreateBtn/CreateBtn';
+export { default as CancelBtn } from '@/ui/components/ButtonsAndLinks/CancelBtn/CancelBtn';
+export { default as SubmitBtn } from '@/ui/components/ButtonsAndLinks/SubmitBtn/SubmitBtn';
 
 // LINKS
-export { default as CreateLink } from './LinksAndButtons/CreateLink/CreateLink';
+export { default as CreateLink } from '@/ui/components/ButtonsAndLinks/CreateLink/CreateLink';
 
 //Lists
 export { default as ProductsList } from './Products/ProductsList/ProductsList';
