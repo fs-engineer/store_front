@@ -19,17 +19,15 @@ const AddToCartBtn: React.FC<Props> = ({ id, price, quantity = 1 }) => {
     const [storageValue, setStorageValue] = useLocalStorage('kiss.viktory.userCart', []);
 
     useEffect(() => {
-        if (cart && !cart?.id) return;
+        if (!cart || !cart.id) return;
 
         if (!storageValue.length && cart) {
             setStorageValue([cart]);
         } else {
-            if (!cart) return;
-
             const filteredCart = storageValue.filter((el: Cart) => el.id !== cart.id);
             setStorageValue([...filteredCart, cart]);
         }
-    }, [cart]);
+    }, [cart, setStorageValue, storageValue]);
 
     const addToCart = () => {
         setCart({ id, price, quantity });
