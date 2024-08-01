@@ -1,39 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { CreateBtn } from '@/ui/components';
-import useLocalStorage from '@/hooks/useLocalStorage';
+import { IProduct } from '@/interfaces';
+import { useCart } from '@/hooks/useCart';
 
-type Cart = {
-    id: number;
+interface IProps {
+    product: IProduct;
     quantity: number;
-    price: number;
-};
+}
 
-type Props = {
-    id: number;
-    price: number;
-    quantity: number;
-};
+const AddToCartBtn: React.FC<IProps> = ({ product, quantity = 1 }) => {
+    const { addToCart } = useCart();
+    const { name, types, id, images, volume, price, article } = product;
+    const stringifiedTypes = types.map((el) => el.name).join(' ');
+    const image = images[0].secureUrl;
 
-const AddToCartBtn: React.FC<Props> = ({ id, price, quantity = 1 }) => {
-    const [cart, setCart] = useState<Cart | null>(null);
-    const [storageValue, setStorageValue] = useLocalStorage('kiss.viktory.userCart', []);
-
-    useEffect(() => {
-        if (!cart || !cart.id) return;
-
-        if (!storageValue.length && cart) {
-            setStorageValue([cart]);
-        } else {
-            const filteredCart = storageValue.filter((el: Cart) => el.id !== cart.id);
-            setStorageValue([...filteredCart, cart]);
-        }
-    }, [cart]);
-
-    const addToCart = () => {
-        setCart({ id, price, quantity });
+    const handleClick = () => {
+        addToCart({ name, types: stringifiedTypes, id, image, volume, price, article, quantity });
     };
 
-    return <CreateBtn type={'button'} text={'Купити'} onClick={addToCart} />;
+    return <CreateBtn type={'button'} text={'Купити'} onClick={handleClick} />;
 };
 
 export default AddToCartBtn;

@@ -5,7 +5,7 @@ import { Divider } from '@/ui/components';
 type Props = {
     volume: number;
     price: number;
-    article: number;
+    article: string;
     productId: number;
 };
 

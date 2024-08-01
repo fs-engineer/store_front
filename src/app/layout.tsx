@@ -6,6 +6,7 @@ import Header from '@/ui/components/Header/Header';
 import { SessionProvider } from 'next-auth/react';
 import s from './layout.module.css';
 import Footer from '@/ui/components/Footer/Footer';
+import CartProvider from '@/ui/context/CartProvider';
 
 export const metadata: Metadata = {
     title: '@kiss.viktory',
@@ -17,9 +18,11 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
         <html lang="en">
             <body className={`${nunito.className} antialiased`}>
                 <SessionProvider>
-                    <Header />
-                    <main className={s.main}>{children}</main>
-                    <Footer />
+                    <CartProvider>
+                        <Header />
+                        <main className={s.main}>{children}</main>
+                        <Footer />
+                    </CartProvider>
                 </SessionProvider>
             </body>
         </html>

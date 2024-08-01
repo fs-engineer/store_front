@@ -34,7 +34,7 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
                                 price={product.price}
                                 article={product.article}
                             />
-                            <ProductDetailsButtons id={product.id} price={product.price} />
+                            <ProductDetailsButtons product={product} />
                         </>
                     ) : null}
                 </div>
@@ -48,7 +48,7 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
                         price={product.price}
                         article={product.article}
                     />
-                    <ProductDetailsButtons id={product.id} price={product.price} />
+                    <ProductDetailsButtons product={product} />
                     <Divider />
                     <ProductAccordionMobile product={product} />
                 </>

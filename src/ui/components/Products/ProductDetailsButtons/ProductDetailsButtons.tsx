@@ -4,13 +4,13 @@ import AddToCartBtn from '@/ui/components/ButtonsAndLinks/AddToCartBtn/AddToCart
 import { Select } from '@/ui/components';
 import FavBtn from '@/ui/components/ButtonsAndLinks/FavBtn/FavBtn';
 import clsx from 'clsx';
+import { IProduct } from '@/interfaces';
 
-type Props = {
-    id: number;
-    price: number;
-};
+interface IProps {
+    product: IProduct;
+}
 
-const ProductDetailsButtons: React.FC<Props> = ({ id, price }) => {
+const ProductDetailsButtons: React.FC<IProps> = ({ product }) => {
     const [quantity, setQuantity] = useState(1);
     const numbersArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -24,7 +24,7 @@ const ProductDetailsButtons: React.FC<Props> = ({ id, price }) => {
                 <Select options={numbersArray} getValue={handleChangeQuantity} />
             </li>
             <li className={clsx(s.item, s.cartBtnWrap)}>
-                <AddToCartBtn quantity={quantity} id={id} price={price} />
+                <AddToCartBtn quantity={quantity} product={product} />
             </li>
             <li className={s.item}>
                 <FavBtn favorite={false} />

@@ -80,12 +80,23 @@ export interface IProduct {
     images: IImage[];
     characteristics: ICharacteristic[];
     composition: string;
-    article: number;
+    article: string;
 }
 
 export interface ISelectInputDataItem {
     id: number;
     name: string;
+}
+
+export interface ICart {
+    id: number;
+    name: string;
+    types: string;
+    image: string;
+    volume: number;
+    price: number;
+    article: string;
+    quantity: number;
 }
 
 export type ButtonTypes = 'submit' | 'button' | 'reset';

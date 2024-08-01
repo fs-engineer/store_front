@@ -11,6 +11,10 @@ export const dashboardKey = 'dashboard';
 export const aboutKey = 'about';
 export const deliveryKey = 'delivery';
 export const contactsKey = 'contacts';
+export const checkoutKey = 'checkout';
+
+//LOCAL STORAGE
+export const cartLocalStorage = 'kiss.viktory.userCart';
 
 export const ROLES = {
     ADMIN: 'ADMIN',
