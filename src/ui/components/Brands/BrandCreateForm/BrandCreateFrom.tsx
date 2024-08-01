@@ -16,8 +16,8 @@ type BrandsProps = {
 };
 
 const BrandCreateFrom: React.FC<BrandsProps> = ({ countries }) => {
-    const [countryId, setCountryId] = useState<null | number>(null);
-    const [brandName, setBrandName] = useState<null | string>(null);
+    const [countryId, setCountryId] = useState<number | null>(null);
+    const [brandName, setBrandName] = useState<string>('');
     const router = useRouter();
     const currentPage = useCurrentPage();
 
@@ -40,24 +40,30 @@ const BrandCreateFrom: React.FC<BrandsProps> = ({ countries }) => {
         router.push(`/${dashboardKey}/${productsKey}/${brandsKey}?page=${currentPage}`);
     };
 
+    const handleChangeCountryId = (id: number | null) => {
+        setCountryId(id);
+    };
+
     return (
         <Form onSubmit={handleFormSubmit}>
             <Box>
                 {countries.length > 0 ? (
                     <SelectInputWithSearch
-                        name={'brand'}
+                        name={'countries'}
                         data={countries}
                         placeholder={'Виберіть країну'}
-                        onSelect={setCountryId}
+                        getSelectedId={handleChangeCountryId}
+                        selectedId={countryId}
                     />
                 ) : null}
             </Box>
             <Box>
                 <Input
+                    value={brandName}
                     name={'brandName'}
                     type={'text'}
                     placeholder={'Введіть назву бренду'}
-                    getInputValue={setBrandName}
+                    getValue={setBrandName}
                 />
             </Box>
             <Box>
