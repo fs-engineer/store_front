@@ -1,4 +1,4 @@
-.btnWrap {
+.list {
     display: flex;
     padding: 24px 0 24px;
 
@@ -6,19 +6,11 @@
         padding: 24px 0 0;
     }
 }
-.article {
-    font-weight: 700;
+.item {
+    &:not(:last-child) {
+        margin-right: 12px;
+    }
 }
-.articleWrap {
-    padding: 24px 0 24px;
-}
-.priceWrap {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 16px 0 0;
-}
-.title {
-    font-size: 1.25rem;
-    font-weight: 700;
+.cartBtnWrap {
+    flex-grow: 1;
 }

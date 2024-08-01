@@ -9,8 +9,9 @@ import ProductAccordionMobile from '@/ui/components/Products/ProductAccordionMob
 import ProductDetailsTitle from '@/ui/components/Products/ProductDetailsTitle/ProductDetailsTitle';
 import Advantages from '@/ui/components/Advantages/Advantages';
 import useWindowSize from '@/hooks/useWindowSize';
-import ProductDetailsButtons from '@/ui/components/Products/ProductDetailsButtons/ProductDetailsButtons';
+import ProductInfo from '@/ui/components/Products/ProductInfo/ProductInfo';
 import ProductDetailsTabs from '@/ui/components/Products/ProductDetailsTabs/ProductDetailsTabs';
+import ProductDetailsButtons from '@/ui/components/Products/ProductDetailsButtons/ProductDetailsButtons';
 
 type Props = {
     product: IProduct;
@@ -20,26 +21,34 @@ const ProductDetails: React.FC<Props> = ({ product }) => {
     const imageUrls = (product.images && product.images.map((el) => el.secureUrl)) || [];
     const { width } = useWindowSize();
 
-    console.log(width);
-
     return (
         <div className={s.container}>
             <div className={s.titleImageWrap}>
                 <div className={s.titleButtonsWrap}>
                     <ProductDetailsTitle name={product.name} brand={product.brand} types={product.types} />
                     {width && width >= 600 ? (
-                        <ProductDetailsButtons
-                            volume={product.volume}
-                            price={product.price}
-                            article={product.article}
-                        />
+                        <>
+                            <ProductInfo
+                                productId={product.id}
+                                volume={product.volume}
+                                price={product.price}
+                                article={product.article}
+                            />
+                            <ProductDetailsButtons id={product.id} price={product.price} />
+                        </>
                     ) : null}
                 </div>
                 <ProductImagePreview imageUrls={imageUrls} />
             </div>
             {width && width < 600 ? (
                 <>
-                    <ProductDetailsButtons volume={product.volume} price={product.price} article={product.article} />
+                    <ProductInfo
+                        productId={product.id}
+                        volume={product.volume}
+                        price={product.price}
+                        article={product.article}
+                    />
+                    <ProductDetailsButtons id={product.id} price={product.price} />
                     <Divider />
                     <ProductAccordionMobile product={product} />
                 </>
