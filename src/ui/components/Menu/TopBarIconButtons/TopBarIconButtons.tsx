@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import DashboardBtn from '@/ui/components/ButtonsAndLinks/DashboardBtn/DashboardBtn';
 import BasketBtn from '@/ui/components/ButtonsAndLinks/BasketBtn/BasketBtn';

@@ -18,7 +18,7 @@ export default function Breadcrumbs({ breadcrumbs }: { breadcrumbs: Breadcrumb[]
                         aria-current={breadcrumb.active}
                         className={clsx(breadcrumb.active ? s.listItemActive : s.listItem)}
                     >
-                        <Link href={breadcrumb.href} className={s.link}>
+                        <Link href={breadcrumb.href} className={clsx(s.link, { [s.activeLink]: breadcrumb.active })}>
                             {breadcrumb.label}
                         </Link>
                         {index < breadcrumbs.length - 1 ? <span className={s.span}>/</span> : null}

@@ -4,7 +4,6 @@
 .list {
     display: flex;
     justify-content:flex-start;
-    list-style-type: none;
 }
 .listItem {
     font-weight: 700;
@@ -23,6 +22,9 @@
         font-size: 1.5rem;
     }
 
+}
+.activeLink {
+    cursor: text;
 }
 .span {
     margin: 0 5px;
