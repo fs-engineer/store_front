@@ -11,7 +11,7 @@ type Props = {
 };
 
 const ProductDetailsButtons: React.FC<Props> = ({ id, price }) => {
-    const [quantity, setQuantity] = useState(0);
+    const [quantity, setQuantity] = useState(1);
     const numbersArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
     const handleChangeQuantity = (value: string | number) => {
@@ -24,7 +24,7 @@ const ProductDetailsButtons: React.FC<Props> = ({ id, price }) => {
                 <Select options={numbersArray} getValue={handleChangeQuantity} />
             </li>
             <li className={clsx(s.item, s.cartBtnWrap)}>
-                <AddToCartBtn quantity={Number(quantity)} id={id} price={price} />
+                <AddToCartBtn quantity={quantity} id={id} price={price} />
             </li>
             <li className={s.item}>
                 <FavBtn favorite={false} />

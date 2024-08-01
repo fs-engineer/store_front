@@ -14,7 +14,7 @@ type Props = {
     quantity: number;
 };
 
-const AddToCartBtn: React.FC<Props> = ({ id, price, quantity }) => {
+const AddToCartBtn: React.FC<Props> = ({ id, price, quantity = 1 }) => {
     const [cart, setCart] = useState<Cart | null>(null);
     const [storageValue, setStorageValue] = useLocalStorage('kiss.viktory.userCart', []);
 
