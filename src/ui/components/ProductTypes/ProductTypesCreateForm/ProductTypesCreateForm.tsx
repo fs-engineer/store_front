@@ -35,7 +35,7 @@ const ProductTypesCreateForm = () => {
     return (
         <Form onSubmit={handleSubmit}>
             <Box>
-                <Input type={'text'} getInputValue={setTypeName} />
+                <Input type={'text'} name={'typeName'} value={typeName} getValue={setTypeName} />
             </Box>
             <Box>
                 <CreateBtn type={'submit'} text={'Створити'} />

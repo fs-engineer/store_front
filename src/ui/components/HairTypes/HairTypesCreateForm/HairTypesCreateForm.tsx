@@ -35,7 +35,7 @@ const HairTypesCreateForm = () => {
     return (
         <Form onSubmit={handleSubmit}>
             <Box>
-                <Input type={'text'} getInputValue={setHairTypeName} />
+                <Input type={'text'} value={hairTypeName} getValue={setHairTypeName} name={'hairTypeName'} />
             </Box>
             <Box>
                 <CreateBtn type={'submit'} text={'Створити'} />
