@@ -12,11 +12,11 @@ const Page: React.FC<IProps> = ({ searchParams }) => {
             <Breadcrumbs
                 breadcrumbs={[
                     {
-                        label: 'Типи продуктів',
+                        label: 'Типи волосся',
                         href: `/${dashboardKey}/${productsKey}/${hairTypesKey}?page=${currentPge}`,
                     },
                     {
-                        label: 'Створити тип продукту',
+                        label: 'Створити тип волосся',
                         href: `/${dashboardKey}/${productsKey}/${hairTypesKey}/create`,
                         active: true,
                     },

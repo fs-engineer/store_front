@@ -15,7 +15,7 @@ const Page: React.FC<IProps> = ({ searchParams }) => {
                         href: `/${dashboardKey}/${productsKey}/${characteristicsKey}?page=${currentPage}`,
                     },
                     {
-                        label: 'Створити бренд',
+                        label: 'Створити характеристику',
                         href: `/${dashboardKey}/${productsKey}/${characteristicsKey}/create`,
                         active: true,
                     },
