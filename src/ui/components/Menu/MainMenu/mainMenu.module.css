@@ -1,0 +1,17 @@
+.list {
+    display: flex;
+    justify-content: center;
+    flex-grow: 2;
+}
+.item {
+    &:not(:last-child) {
+        margin-right: 32px;
+    }
+}
+.link {
+    color: var(--light-grey-trans-color);
+    text-decoration: none;
+}
+.activeLink {
+    color: var(--primary-color);
+}

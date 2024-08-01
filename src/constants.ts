@@ -8,6 +8,9 @@ export const characteristicsKey = 'characteristics';
 export const productTypesKey = 'product-types';
 export const hairTypesKey = 'hair-types';
 export const dashboardKey = 'dashboard';
+export const aboutKey = 'about';
+export const deliveryKey = 'delivery';
+export const contactsKey = 'contacts';
 
 export const ROLES = {
     ADMIN: 'ADMIN',
