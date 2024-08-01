@@ -27,7 +27,7 @@ const AddToCartBtn: React.FC<Props> = ({ id, price, quantity = 1 }) => {
             const filteredCart = storageValue.filter((el: Cart) => el.id !== cart.id);
             setStorageValue([...filteredCart, cart]);
         }
-    }, [cart, setStorageValue, storageValue]);
+    }, [cart]);
 
     const addToCart = () => {
         setCart({ id, price, quantity });
