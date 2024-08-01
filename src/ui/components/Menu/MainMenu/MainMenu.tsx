@@ -27,10 +27,7 @@ const MainMenu: React.FC<Props> = ({ items = [] }) => {
                 <ul className={s.list}>
                     {items.map((item) => (
                         <li key={item.name} className={s.item}>
-                            <Link
-                                href={item.href}
-                                className={pathName === item.href ? clsx(s.link, s.activeLink) : clsx(s.link)}
-                            >
+                            <Link href={item.href} className={clsx(s.link, { [s.activeLink]: pathName === item.href })}>
                                 {item.value}
                             </Link>
                         </li>
