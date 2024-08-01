@@ -169,7 +169,7 @@ const ProductCreateForm = () => {
             characteristics: characteristicIds,
             volume: Number(volume),
             composition,
-            article: Number(article),
+            article,
         };
 
         try {
